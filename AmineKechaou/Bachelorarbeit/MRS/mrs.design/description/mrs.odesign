@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="mrs" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="mrs" version="12.0.0.2017041100">
   <ownedViewpoints name="MRS Viewpoint" modelFileExtension="mrs">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="MRS Diagram" initialisation="true" domainClass="mrs.ModularReferenceStructure" enablePopupBars="true">
       <metamodel href="http://www.example.org/mrs#/"/>
@@ -149,7 +149,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.eContainer().oclAsType(diagram::DDiagramElement).target.oclAsType(mrs::Metamodel)/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getContainingMetamodel()">
                 <subModelOperations xsi:type="tool_1:Unset" featureName="visibleEClassifiers" elementExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -159,7 +159,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.eContainer().oclAsType(diagram::DDiagramElement).target.oclAsType(mrs::Metamodel)/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getContainingMetamodel()">
                 <subModelOperations xsi:type="tool_1:Unset" featureName="visibleEPackages" elementExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -208,4 +208,13 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="mrs.design.Services"/>
   </ownedViewpoints>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties of dependency">
+    <categories name="Default Category">
+      <pages name="Referenced EClassifiers" labelExpression="Referenced EClassifiers" domainClass="mrs.Metamodel" semanticCandidateExpression="var:self" preconditionExpression="aql:input.context().semanticDecorator().oclIsTypeOf(diagram::DEdge)" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <groups name="EClassifiers" labelExpression="List of referenced EClassifiers" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:LabelDescription" name="Label" labelExpression="Referenced EClassifiers:" valueExpression="aql:input.context().semanticDecorator().oclAsType(diagram::DEdge).getEdgeLabel()"/>
+        <style toggleStyle="NONE" expandedByDefault="true"/>
+      </groups>
+    </categories>
+  </extensions>
 </description:Group>

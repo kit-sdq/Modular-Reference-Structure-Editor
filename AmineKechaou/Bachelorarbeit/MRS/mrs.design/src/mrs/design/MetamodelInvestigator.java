@@ -2,8 +2,9 @@ package mrs.design;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
@@ -16,26 +17,26 @@ import mrs.Metamodel;
 
 public class MetamodelInvestigator {
 	private Metamodel metamodel;
-	private Set<Metamodel> referencedMetamodels;
+	private Map<Metamodel, Set<EClassifier>> dependencies;
 	private Collection<Metamodel> metamodels;
 	
 	public MetamodelInvestigator(Metamodel metamodel) {
 		this.metamodel = metamodel;
-		this.referencedMetamodels = new HashSet<Metamodel>();
 		this.metamodels = Services.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
+		this.dependencies = new HashMap<Metamodel, Set<EClassifier>>();
 	}
 	
-	public Set<Metamodel> getReferencedMetamodels() {
+	public void computeDependencies() {
 		for (EClassifier c : getEAllClassifiers(metamodel.getMainPackage())) {
 			if (!(c instanceof EClass)) //e.g. c is EDataType or EEnum... Only EClass can depend on other elements
 				continue;
 			
 			EClass eClass = (EClass) c;
 			
-			eClass.getESuperTypes().forEach(x -> markAsReferenced(x.getEPackage()));
+			eClass.getESuperTypes().forEach(x -> addDependency(x));
 			
 			eClass.getEReferences().forEach(x -> {
-				markAsReferenced(x.getEType().getEPackage());
+				addDependency(x.getEType());
 				visitGenericRef(x.getEGenericType());
 			});
 			
@@ -44,10 +45,10 @@ public class MetamodelInvestigator {
 			eClass.getEGenericSuperTypes().forEach(x -> visitGenericSuperType(x));
 			
 			eClass.getEOperations().forEach(x -> {
-				markAsReferenced(x.getEType().getEPackage());
+				addDependency(x.getEType());
 				
 				x.getEParameters().forEach(y -> {
-					markAsReferenced(y.getEType().getEPackage());
+					addDependency(y.getEType());
 					visitGenericType(y.getEGenericType());
 				});
 
@@ -57,33 +58,43 @@ public class MetamodelInvestigator {
 				
 			});
 		}
-		return referencedMetamodels;
 	}
 	
-	/**
-	 * Adds the metamodel containing <code>mainPackage</code> to <code>refrencedMetamodels</code>
-	 * @param ePackage the referenced package
-	 * @param currentMetamodel metamodel being currently visited
-	 * @param metamodels list of all metamodels in the modular reference structure
-	 * @param referencedMetamodels list of metamodels that are already referenced 
-	 */
-	private void markAsReferenced(EPackage ePackage) {
-		//System.out.println("Parent of " + ePackage.getName() + ": " + ePackage.getESuperPackage());
-		EPackage mainPackage = Services.getTopMostPackage(ePackage);
+	public Set<Metamodel> getReferencedMetamodels() {
+		return dependencies.keySet();
+	}
+	public Set<EClassifier> getReferencedEClassifiers(Metamodel metamodel) {
+		return dependencies.get(metamodel);
+	}
+	
+	private void addDependency(EClassifier eClassifier) {
+		
+		EPackage mainPackage = Services.getTopMostPackage(eClassifier.getEPackage());
 		
 		//if the referenced metamodel is the current metamodel itself, do nothing
 		if (mainPackage == metamodel.getMainPackage())
 			return;
 		
-		//if the metamodel containing the mainPackage hasn't already been marked 
-		if (referencedMetamodels.stream().noneMatch(x -> x.getMainPackage().equals(mainPackage))) {
-			Optional<Metamodel> refrencedMetamodel = metamodels.stream().filter(x -> x.getMainPackage().equals(mainPackage)).findAny();
-			//Get the metamodel containing the mainPackage from the list of all metamodels and add it to the result
-			if (refrencedMetamodel.isPresent())
-				referencedMetamodels.add(refrencedMetamodel.get());
+		Metamodel dependency = getCorrespondingMetamodel(mainPackage);
+		
+		if (dependencies.containsKey(dependency)) {
+			dependencies.get(dependency).add(eClassifier);
+		}
+		else {
+			Set<EClassifier> eClassifiers = new HashSet<EClassifier>();
+			eClassifiers.add(eClassifier);
+			dependencies.put(dependency, eClassifiers);
+			
 		}
 	}
-
+	
+	private Metamodel getCorrespondingMetamodel (EPackage mainPackage) {
+		for (Metamodel m : metamodels) {
+			if (m.getMainPackage() == mainPackage)
+				return m;
+		}
+		return null;
+	}
     private void visitTypeParam(ETypeParameter typeParam) {
         typeParam.getEBounds().forEach(bound -> visitGenericType(bound));
     }
@@ -104,7 +115,7 @@ public class MetamodelInvestigator {
 
         EClassifier eClassifier = genericType.getEClassifier();
         if (eClassifier != null) {
-            markAsReferenced(Services.getTopMostPackage(eClassifier.getEPackage()));
+            addDependency(eClassifier);
         }
 
         visitGenericType(genericType.getEUpperBound());
