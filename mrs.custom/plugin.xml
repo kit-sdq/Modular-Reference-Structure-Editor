@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="mrs.custom.externaljavaactions.LoadMetamodel"
+            id="LoadMetamodel">
+      </javaActions>
+      <javaActions
+            actionClass="mrs.custom.externaljavaactions.CreateMetamodel"
+            id="CreateMetamodel">
+      </javaActions>
+   </extension>
+
+</plugin>
