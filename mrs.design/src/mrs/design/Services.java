@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.diagram.DEdge;
@@ -23,7 +24,14 @@ import mrs.ModularReferenceStructure;
 public class Services {	
 	public Set<Metamodel> getReferencedMetamodels(Metamodel metamodel) {
 		MetamodelInvestigator investigator = new MetamodelInvestigator(metamodel);
+		investigator.computeDependencies();
 		return investigator.getReferencedMetamodels();
+	}
+	
+	public Set<EClassifier> getReferencedEClassifiers(Metamodel sourceMetamodel, Metamodel targetMetamodel) {
+		MetamodelInvestigator investigator = new MetamodelInvestigator(sourceMetamodel);
+		investigator.computeDependencies();
+		return investigator.getReferencedEClassifiers(targetMetamodel);
 	}
 	
 	public static Collection<Metamodel> getAllMetamodels(ModularReferenceStructure mrs) {
@@ -111,4 +119,18 @@ public class Services {
     	return eObject;
     }
     
+    public String getEdgeLabel(DEdge edge) {
+		Metamodel source = (Metamodel) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
+		Metamodel target = (Metamodel) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
+		System.out.println("Source: " + source + " ; Target: " + target);
+		Set<EClassifier> eClassifiers = getReferencedEClassifiers(source, target);
+		
+		String result = "";
+		
+		for (EClassifier eClassifier : eClassifiers) {
+			result = result + eClassifier.getName() + ", ";
+		}		
+		return result.substring(0, result.length() - 2);
+    	
+    }
 }
