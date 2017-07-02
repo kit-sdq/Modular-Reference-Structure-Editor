@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MRS Custom
+Bundle-SymbolicName: mrs.custom;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: mrs.custom.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.emf.transaction;bundle-version="1.9.0",
+ mrs,
+ org.eclipse.emf.ecoretools.design.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.ui.wizards.newresource
