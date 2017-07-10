@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edit.ui,
  org.eclipse.emf.transaction;bundle-version="1.9.0",
  mrs,
- org.eclipse.emf.ecoretools.design.ui
+ org.eclipse.emf.ecoretools.design.ui,
+ org.eclipse.sirius.ui;bundle-version="5.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.ui.wizards.newresource
