@@ -15,18 +15,18 @@ import org.eclipse.emf.ecore.ETypeParameter;
 
 import mrs.Metamodel;
 
-public class MetamodelInvestigator {
+public class MetamodelVisitor {
 	private Metamodel metamodel;
 	private Map<Metamodel, Set<EClassifier>> dependencies;
 	private Collection<Metamodel> metamodels;
 	
-	public MetamodelInvestigator(Metamodel metamodel) {
+	public MetamodelVisitor(Metamodel metamodel) {
 		this.metamodel = metamodel;
 		this.metamodels = Services.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
 		this.dependencies = new HashMap<Metamodel, Set<EClassifier>>();
 	}
 	
-	public void computeDependencies() {
+	private void computeDependencies() {
 		for (EClassifier c : getEAllClassifiers(metamodel.getMainPackage())) {
 			if (!(c instanceof EClass)) //e.g. c is EDataType or EEnum... Only EClass can depend on other elements
 				continue;
@@ -61,9 +61,11 @@ public class MetamodelInvestigator {
 	}
 	
 	public Set<Metamodel> getReferencedMetamodels() {
+	    computeDependencies();
 		return dependencies.keySet();
 	}
 	public Set<EClassifier> getReferencedEClassifiers(Metamodel metamodel) {
+	    computeDependencies();
 		return dependencies.get(metamodel);
 	}
 	

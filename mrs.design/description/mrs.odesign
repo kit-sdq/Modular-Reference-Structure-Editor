@@ -33,7 +33,7 @@
         <containerMappings name="ModularReferenceStructure" semanticCandidatesExpression="var:self" domainClass="mrs.ModularReferenceStructure" childrenPresentation="VerticalStack">
           <subContainerMappings name="Layer" semanticCandidatesExpression="feature:layers" domainClass="mrs.Layer" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20into%20layer']">
             <subContainerMappings name="Metamodel" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel']" semanticCandidatesExpression="feature:metamodels" domainClass="mrs.Metamodel" childrenPresentation="VerticalStack">
-              <subContainerMappings name="Main Package" semanticCandidatesExpression="feature:mainPackage" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']">
+              <subContainerMappings name="Main Package" semanticCandidatesExpression="feature:mainPackage" doubleClickDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']">
                 <subNodeMappings name="EClassifier" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier']" semanticCandidatesExpression="aql:self.eClassifiers->intersection(containerView.oclAsType(diagram::DNodeContainer).getContainingMetamodel().visibleEClassifiers)" domainClass="ecore.EClassifier">
                   <style xsi:type="style:SquareDescription" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -41,7 +41,7 @@
                     <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                   </style>
                 </subNodeMappings>
-                <subContainerMappings name="EPackage" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackage']" semanticCandidatesExpression="aql:self.getVisibleSubPackages(containerView.oclAsType(diagram::DNodeContainer))" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']" reusedNodeMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']" reusedContainerMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
+                <subContainerMappings name="EPackage" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackage']" semanticCandidatesExpression="aql:self.getVisibleSubPackages(containerView.oclAsType(diagram::DNodeContainer))" doubleClickDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']" reusedNodeMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']" reusedContainerMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
                   <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -203,18 +203,35 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Open representation" mappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Open Representation" id="OpenRepresentation">
+                  <parameters name="Viewpoint" value="Design"/>
+                  <parameters name="element" value="var:element"/>
+                  <parameters name="RepresentationDescription" value="Entities"/>
+                  <parameters name="Diagram name" value="aql:element.name + ' diagram'"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="mrs.design.Services"/>
+    <ownedJavaExtensions qualifiedClassName="mrs.design.MDSDProfilesServices"/>
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" name="Properties of dependency">
     <categories name="Default Category">
       <pages name="Referenced EClassifiers" labelExpression="Referenced EClassifiers" domainClass="mrs.Metamodel" semanticCandidateExpression="var:self" preconditionExpression="aql:input.context().semanticDecorator().oclIsTypeOf(diagram::DEdge)" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <pages name="MDSD Profiles" labelExpression="StereoType Applications" domainClass="mrs.Metamodel" semanticCandidateExpression="var:self" preconditionExpression="aql:self.mainPackage.getStereotypeApplications() &lt;> null and self.mainPackage.getStereotypeApplications()->isEmpty() = false" groups="//@extensions.0/@categories.0/@groups.1"/>
       <groups name="EClassifiers" labelExpression="List of referenced EClassifiers" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:LabelDescription" name="Label" labelExpression="Referenced EClassifiers:" valueExpression="aql:input.context().semanticDecorator().oclAsType(diagram::DEdge).getEdgeLabel()"/>
         <style toggleStyle="NONE" expandedByDefault="true"/>
       </groups>
+      <groups name="StereoType Applications" labelExpression="Group" domainClass="mrs.Metamodel" semanticCandidateExpression="var:self"/>
     </categories>
   </extensions>
 </description:Group>
