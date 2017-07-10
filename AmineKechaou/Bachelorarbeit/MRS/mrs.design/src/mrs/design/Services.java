@@ -23,15 +23,13 @@ import mrs.ModularReferenceStructure;
 
 public class Services {	
 	public Set<Metamodel> getReferencedMetamodels(Metamodel metamodel) {
-		MetamodelInvestigator investigator = new MetamodelInvestigator(metamodel);
-		investigator.computeDependencies();
-		return investigator.getReferencedMetamodels();
+		MetamodelVisitor visitor = new MetamodelVisitor(metamodel);
+		return visitor.getReferencedMetamodels();
 	}
 	
 	public Set<EClassifier> getReferencedEClassifiers(Metamodel sourceMetamodel, Metamodel targetMetamodel) {
-		MetamodelInvestigator investigator = new MetamodelInvestigator(sourceMetamodel);
-		investigator.computeDependencies();
-		return investigator.getReferencedEClassifiers(targetMetamodel);
+		MetamodelVisitor visitor = new MetamodelVisitor(sourceMetamodel);
+		return visitor.getReferencedEClassifiers(targetMetamodel);
 	}
 	
 	public static Collection<Metamodel> getAllMetamodels(ModularReferenceStructure mrs) {
@@ -122,7 +120,7 @@ public class Services {
     public String getEdgeLabel(DEdge edge) {
 		Metamodel source = (Metamodel) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
 		Metamodel target = (Metamodel) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
-		System.out.println("Source: " + source + " ; Target: " + target);
+		
 		Set<EClassifier> eClassifiers = getReferencedEClassifiers(source, target);
 		
 		String result = "";
@@ -130,7 +128,7 @@ public class Services {
 		for (EClassifier eClassifier : eClassifiers) {
 			result = result + eClassifier.getName() + ", ";
 		}		
-		return result.substring(0, result.length() - 2);
+		return result.isEmpty() ? result : result.substring(0, result.length() - 2);
     	
     }
 }
