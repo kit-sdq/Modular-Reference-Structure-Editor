@@ -16,101 +16,153 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import mrs.Metamodel;
 
 public class MetamodelInspector {
-	private Metamodel metamodel;
-	private Map<Metamodel, Set<EClassifier>> dependencies;
-	private Collection<Metamodel> metamodels;
-	
-	public MetamodelInspector(Metamodel metamodel) {
-		this.metamodel = metamodel;
-		this.metamodels = Services.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
-		this.dependencies = new HashMap<Metamodel, Set<EClassifier>>();
-	}
-	
-	private void computeDependencies() {
-		for (EClassifier c : getEAllClassifiers(metamodel.getMainPackage())) {
-			if (!(c instanceof EClass)) //e.g. c is EDataType or EEnum... Only EClass can depend on other elements
-				continue;
-			
-			EClass eClass = (EClass) c;
-			
-			eClass.getESuperTypes().forEach(x -> addDependency(x));
-			
-			eClass.getEReferences().forEach(x -> {
-				addDependency(x.getEType());
-				visitGenericRef(x.getEGenericType());
-			});
-			
-			eClass.getETypeParameters().forEach(x -> visitTypeParam(x));
-			
-			eClass.getEGenericSuperTypes().forEach(x -> visitGenericSuperType(x));
-			
-			eClass.getEOperations().forEach(x -> {
-				addDependency(x.getEType());
-				
-				x.getEParameters().forEach(y -> {
-					addDependency(y.getEType());
-					visitGenericType(y.getEGenericType());
-				});
+    private Metamodel metamodel;
+    private Map<Metamodel, Set<EClassifier>> dependencies;
+    private Collection<Metamodel> metamodels;
 
-				visitGenericType(x.getEGenericType());
-				
-				x.getETypeParameters().forEach(y -> visitTypeParam(y));
-				
-			});
-		}
-	}
-	
-	public Set<Metamodel> getReferencedMetamodels() {
-	    computeDependencies();
-		return dependencies.keySet();
-	}
-	public Set<EClassifier> getReferencedEClassifiers(Metamodel metamodel) {
-	    computeDependencies();
-		return dependencies.get(metamodel);
-	}
-	
-	private void addDependency(EClassifier eClassifier) {
-		
-		EPackage mainPackage = Services.getTopMostPackage(eClassifier.getEPackage());
-		
-		//if the referenced metamodel is the current metamodel itself, do nothing
-		if (mainPackage == metamodel.getMainPackage())
-			return;
-		
-		Metamodel dependency = getCorrespondingMetamodel(mainPackage);
-		
-		if (dependencies.containsKey(dependency)) {
-			dependencies.get(dependency).add(eClassifier);
-		}
-		else {
-			Set<EClassifier> eClassifiers = new HashSet<EClassifier>();
-			eClassifiers.add(eClassifier);
-			dependencies.put(dependency, eClassifiers);
-			
-		}
-	}
-	
-	private Metamodel getCorrespondingMetamodel (EPackage mainPackage) {
-		for (Metamodel m : metamodels) {
-			if (m.getMainPackage() == mainPackage)
-				return m;
-		}
-		return null;
-	}
+    public MetamodelInspector(Metamodel metamodel) {
+        this.metamodel = metamodel;
+        this.metamodels = Services.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
+        this.dependencies = new HashMap<Metamodel, Set<EClassifier>>();
+    }
+
+    /**
+     * Inspects each EClass in metamodel on the basis of their dependencies (ESuperType, EReference,
+     * EOperations, ETypeParameters...)
+     */
+    private void computeDependencies() {
+        for (EClassifier c : getEAllClassifiers(metamodel.getMainPackage())) {
+            if (!(c instanceof EClass)) // e.g. c is EDataType or EEnum... Only EClass can depend on
+                                        // other elements
+                continue;
+
+            EClass eClass = (EClass) c;
+
+            eClass.getESuperTypes().forEach(x -> addDependency(x));
+
+            eClass.getEReferences().forEach(x -> {
+                addDependency(x.getEType());
+                visitGenericRef(x.getEGenericType());
+            });
+
+            eClass.getETypeParameters().forEach(x -> visitTypeParam(x));
+
+            eClass.getEGenericSuperTypes().forEach(x -> visitGenericSuperType(x));
+
+            eClass.getEOperations().forEach(x -> {
+                addDependency(x.getEType());
+
+                x.getEParameters().forEach(y -> {
+                    addDependency(y.getEType());
+                    visitGenericType(y.getEGenericType());
+                });
+
+                visitGenericType(x.getEGenericType());
+
+                x.getETypeParameters().forEach(y -> visitTypeParam(y));
+
+            });
+        }
+    }
+
+    /**
+     * Computes the dependencies of metamodel and returns the metamodels, on which metamodel
+     * depends.
+     * 
+     * @return a set of all metamodels in the current MRS, on which metamodel depends
+     */
+    public Set<Metamodel> getReferencedMetamodels() {
+        computeDependencies();
+        return dependencies.keySet();
+    }
+
+    /**
+     * Computes the dependencies of the base metamodel and returns the EClassifiers in the parameter
+     * metamodel on which the base metamodel depends.
+     * 
+     * @param metamodel
+     * @return the set of the EClassfiers
+     */
+    public Set<EClassifier> getReferencedEClassifiers(Metamodel metamodel) {
+        computeDependencies();
+        return dependencies.get(metamodel);
+    }
+
+    /**
+     * Adds the eClassifier to the dependencies hashmap. If its containing metamodel isn't already
+     * in the hashmap, a new entry is created
+     * 
+     * @param eClassifier
+     */
+    private void addDependency(EClassifier eClassifier) {
+
+        EPackage mainPackage = Services.getTopMostPackage(eClassifier.getEPackage());
+
+        // if the referenced metamodel is the current metamodel itself, do nothing
+        if (mainPackage == metamodel.getMainPackage())
+            return;
+
+        Metamodel dependency = getCorrespondingMetamodel(mainPackage);
+
+        if (dependencies.containsKey(dependency)) {
+            dependencies.get(dependency).add(eClassifier);
+        } else {
+            Set<EClassifier> eClassifiers = new HashSet<EClassifier>();
+            eClassifiers.add(eClassifier);
+            dependencies.put(dependency, eClassifiers);
+
+        }
+    }
+
+    /**
+     * Gets the metamodel whose main package is mainPackage
+     * 
+     * @param mainPackage
+     * @return the found metamodel
+     */
+    private Metamodel getCorrespondingMetamodel(EPackage mainPackage) {
+        for (Metamodel m : metamodels) {
+            if (m.getMainPackage() == mainPackage)
+                return m;
+        }
+        return null;
+    }
+
+    /**
+     * visits all bounds of the typeParam
+     * 
+     * @param typeParam
+     */
     private void visitTypeParam(ETypeParameter typeParam) {
         typeParam.getEBounds().forEach(bound -> visitGenericType(bound));
     }
 
+    /**
+     * visits genericSuperType if it has type arguments
+     * 
+     * @param genericSuperType
+     */
     private void visitGenericSuperType(EGenericType genericSuperType) {
         if (genericSuperType.getETypeArguments().size() > 0)
             visitGenericType(genericSuperType);
     }
 
+    /**
+     * visits genericTypeOfRef if it has type arguments
+     * 
+     * @param genericTypeOfRef
+     */
     private void visitGenericRef(EGenericType genericTypeOfRef) {
         if (genericTypeOfRef.getETypeArguments().size() > 0)
             visitGenericType(genericTypeOfRef);
     }
-    
+
+    /**
+     * Makes a call to addDependency on the EClassifier of genericType and visits the upper and
+     * lower bounds as well as the type arguments and the type parameter
+     * 
+     * @param genericType
+     */
     private void visitGenericType(EGenericType genericType) {
         if (genericType == null)
             return;
@@ -129,11 +181,16 @@ public class MetamodelInspector {
             visitTypeParam(typeParam);
         }
     }
-	
-	private Collection<EClassifier> getEAllClassifiers(EPackage ePackage) {
-		Collection<EClassifier> result = new ArrayList<EClassifier>();
-		result.addAll(ePackage.getEClassifiers());
-		ePackage.getESubpackages().forEach(x -> result.addAll(getEAllClassifiers(x)));
-		return result;
-	}
+
+    /**
+     * Gets all EClassifiers inside an EPackage recursively. 
+     * @param ePackage
+     * @return a Collection containing the EClassfiers
+     */
+    private Collection<EClassifier> getEAllClassifiers(EPackage ePackage) {
+        Collection<EClassifier> result = new ArrayList<EClassifier>();
+        result.addAll(ePackage.getEClassifiers());
+        ePackage.getESubpackages().forEach(x -> result.addAll(getEAllClassifiers(x)));
+        return result;
+    }
 }
