@@ -13,10 +13,7 @@ Require-Bundle: org.eclipse.ui,
  mrs,
  org.eclipse.sirius.diagram,
  org.eclipse.emf.transaction,
- mrs.custom;bundle-version="1.0.0",
- org.palladiosimulator.mdsdprofiles;bundle-version="1.0.1",
- org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.1",
- org.palladiosimulator.editors.sirius.custom;bundle-version="1.0.1"
+ mrs.custom;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
