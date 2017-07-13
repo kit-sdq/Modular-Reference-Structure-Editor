@@ -11,6 +11,10 @@
             actionClass="mrs.custom.externaljavaactions.CreateMetamodel"
             id="CreateMetamodel">
       </javaActions>
+      <javaActions
+            actionClass="mrs.custom.externaljavaactions.OpenRepresentation"
+            id="OpenRepresentation">
+      </javaActions>
    </extension>
 
 </plugin>
