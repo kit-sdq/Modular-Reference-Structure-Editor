@@ -23,13 +23,13 @@ import mrs.ModularReferenceStructure;
 
 public class Services {	
 	public Set<Metamodel> getReferencedMetamodels(Metamodel metamodel) {
-		MetamodelVisitor visitor = new MetamodelVisitor(metamodel);
-		return visitor.getReferencedMetamodels();
+		MetamodelInspector inspector = new MetamodelInspector(metamodel);
+		return inspector.getReferencedMetamodels();
 	}
 	
 	public Set<EClassifier> getReferencedEClassifiers(Metamodel sourceMetamodel, Metamodel targetMetamodel) {
-		MetamodelVisitor visitor = new MetamodelVisitor(sourceMetamodel);
-		return visitor.getReferencedEClassifiers(targetMetamodel);
+		MetamodelInspector inspector = new MetamodelInspector(sourceMetamodel);
+		return inspector.getReferencedEClassifiers(targetMetamodel);
 	}
 	
 	public static Collection<Metamodel> getAllMetamodels(ModularReferenceStructure mrs) {
@@ -117,7 +117,7 @@ public class Services {
     	return eObject;
     }
     
-    public String getEdgeLabel(DEdge edge) {
+    public String getDependencies(DEdge edge) {
 		Metamodel source = (Metamodel) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
 		Metamodel target = (Metamodel) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
 		

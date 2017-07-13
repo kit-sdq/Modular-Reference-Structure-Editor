@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.ETypeParameter;
 
 import mrs.Metamodel;
 
-public class MetamodelVisitor {
+public class MetamodelInspector {
 	private Metamodel metamodel;
 	private Map<Metamodel, Set<EClassifier>> dependencies;
 	private Collection<Metamodel> metamodels;
 	
-	public MetamodelVisitor(Metamodel metamodel) {
+	public MetamodelInspector(Metamodel metamodel) {
 		this.metamodel = metamodel;
 		this.metamodels = Services.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
 		this.dependencies = new HashMap<Metamodel, Set<EClassifier>>();
