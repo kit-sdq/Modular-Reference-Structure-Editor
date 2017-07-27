@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.ETypeParameter;
 
 import mrs.Metamodel;
+import mrs.MrsFactory;
 
 public class MetamodelInspector {
     private Metamodel metamodel;
@@ -29,8 +30,9 @@ public class MetamodelInspector {
     /**
      * Inspects each EClass in metamodel on the basis of their dependencies (ESuperType, EReference,
      * EOperations, ETypeParameters...)
+     * @return the value of the field <code>dependencies</code>
      */
-    private void computeDependencies() {
+    private Map<Metamodel, Set<EClassifier>> computeDependencies() {
         for (EClassifier c : getEAllClassifiers(metamodel.getMainPackage())) {
             if (!(c instanceof EClass)) // e.g. c is EDataType or EEnum... Only EClass can depend on
                                         // other elements
@@ -63,6 +65,7 @@ public class MetamodelInspector {
 
             });
         }
+        return dependencies;
     }
 
     /**
@@ -72,8 +75,7 @@ public class MetamodelInspector {
      * @return a set of all metamodels in the current MRS, on which metamodel depends
      */
     public Set<Metamodel> getReferencedMetamodels() {
-        computeDependencies();
-        return dependencies.keySet();
+        return computeDependencies().keySet();
     }
 
     /**
@@ -84,8 +86,7 @@ public class MetamodelInspector {
      * @return the set of the EClassfiers
      */
     public Set<EClassifier> getReferencedEClassifiers(Metamodel metamodel) {
-        computeDependencies();
-        return dependencies.get(metamodel);
+        return computeDependencies().get(metamodel);
     }
 
     /**
@@ -102,14 +103,16 @@ public class MetamodelInspector {
         if (mainPackage == metamodel.getMainPackage())
             return;
 
-        Metamodel dependency = getCorrespondingMetamodel(mainPackage);
+        Metamodel referencedMetamodel = getCorrespondingMetamodel(mainPackage);
 
-        if (dependencies.containsKey(dependency)) {
-            dependencies.get(dependency).add(eClassifier);
+
+            
+        if (dependencies.containsKey(referencedMetamodel)) {
+            dependencies.get(referencedMetamodel).add(eClassifier);
         } else {
             Set<EClassifier> eClassifiers = new HashSet<EClassifier>();
             eClassifiers.add(eClassifier);
-            dependencies.put(dependency, eClassifiers);
+            dependencies.put(referencedMetamodel, eClassifiers);
 
         }
     }
@@ -125,7 +128,22 @@ public class MetamodelInspector {
             if (m.getMainPackage() == mainPackage)
                 return m;
         }
-        return null;
+        
+        Metamodel importedMetamodel = importMetamodel(mainPackage);
+        
+        return importedMetamodel;
+    }
+
+    private Metamodel importMetamodel(EPackage mainPackage) {       
+        Metamodel importedMetamodel = MrsFactory.eINSTANCE.createMetamodel();
+        importedMetamodel.setMainPackage(mainPackage);
+        importedMetamodel.setLayer(metamodel.getLayer());
+        importedMetamodel.setName(mainPackage.getName());
+                
+        System.out.println(mainPackage.eResource().getURI());
+        metamodels.add(importedMetamodel);
+        
+        return importedMetamodel;
     }
 
     /**

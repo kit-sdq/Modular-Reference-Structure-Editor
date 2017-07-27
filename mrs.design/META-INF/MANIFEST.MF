@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.ui,
  mrs,
  org.eclipse.sirius.diagram,
  org.eclipse.emf.transaction,
- mrs.custom;bundle-version="1.0.0"
+ mrs.custom;bundle-version="1.0.0",
+ org.eclipse.emf.common
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
