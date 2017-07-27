@@ -14,47 +14,47 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface MrsFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+     * The singleton instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	MrsFactory eINSTANCE = mrs.impl.MrsFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Modular Reference Structure</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Modular Reference Structure</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Modular Reference Structure</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Modular Reference Structure</em>'.
+     * @generated
+     */
 	ModularReferenceStructure createModularReferenceStructure();
 
 	/**
-	 * Returns a new object of class '<em>Layer</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Layer</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Layer</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Layer</em>'.
+     * @generated
+     */
 	Layer createLayer();
 
 	/**
-	 * Returns a new object of class '<em>Metamodel</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns a new object of class '<em>Metamodel</em>'.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Metamodel</em>'.
-	 * @generated
-	 */
+     * @return a new object of class '<em>Metamodel</em>'.
+     * @generated
+     */
 	Metamodel createMetamodel();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+     * Returns the package supported by this factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+     * @return the package supported by this factory.
+     * @generated
+     */
 	MrsPackage getMrsPackage();
 
 } //MrsFactory

@@ -20,98 +20,98 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class MrsFactoryImpl extends EFactoryImpl implements MrsFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+     * Creates the default factory implementation.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static MrsFactory init() {
-		try {
-			MrsFactory theMrsFactory = (MrsFactory)EPackage.Registry.INSTANCE.getEFactory(MrsPackage.eNS_URI);
-			if (theMrsFactory != null) {
-				return theMrsFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new MrsFactoryImpl();
-	}
+        try {
+            MrsFactory theMrsFactory = (MrsFactory)EPackage.Registry.INSTANCE.getEFactory(MrsPackage.eNS_URI);
+            if (theMrsFactory != null) {
+                return theMrsFactory;
+            }
+        }
+        catch (Exception exception) {
+            EcorePlugin.INSTANCE.log(exception);
+        }
+        return new MrsFactoryImpl();
+    }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public MrsFactoryImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case MrsPackage.MODULAR_REFERENCE_STRUCTURE: return createModularReferenceStructure();
-			case MrsPackage.LAYER: return createLayer();
-			case MrsPackage.METAMODEL: return createMetamodel();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+        switch (eClass.getClassifierID()) {
+            case MrsPackage.MODULAR_REFERENCE_STRUCTURE: return createModularReferenceStructure();
+            case MrsPackage.LAYER: return createLayer();
+            case MrsPackage.METAMODEL: return createMetamodel();
+            default:
+                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+        }
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ModularReferenceStructure createModularReferenceStructure() {
-		ModularReferenceStructureImpl modularReferenceStructure = new ModularReferenceStructureImpl();
-		return modularReferenceStructure;
-	}
+        ModularReferenceStructureImpl modularReferenceStructure = new ModularReferenceStructureImpl();
+        return modularReferenceStructure;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Layer createLayer() {
-		LayerImpl layer = new LayerImpl();
-		return layer;
-	}
+        LayerImpl layer = new LayerImpl();
+        return layer;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Metamodel createMetamodel() {
-		MetamodelImpl metamodel = new MetamodelImpl();
-		return metamodel;
-	}
+        MetamodelImpl metamodel = new MetamodelImpl();
+        return metamodel;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public MrsPackage getMrsPackage() {
-		return (MrsPackage)getEPackage();
-	}
+        return (MrsPackage)getEPackage();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+     * @deprecated
+     * @generated
+     */
 	@Deprecated
 	public static MrsPackage getPackage() {
-		return MrsPackage.eINSTANCE;
-	}
+        return MrsPackage.eINSTANCE;
+    }
 
 } //MrsFactoryImpl
