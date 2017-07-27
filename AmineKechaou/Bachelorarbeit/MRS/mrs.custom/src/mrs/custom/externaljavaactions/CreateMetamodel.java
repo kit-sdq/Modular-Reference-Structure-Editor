@@ -59,6 +59,7 @@ public class CreateMetamodel implements IExternalJavaAction {
         EPackage mainPackage = Util.getMetamodel(uri, editingDomain);
         
         metamodel.setMainPackage(mainPackage);
+        metamodel.setName(mainPackage.getName());
 
 	}
 

@@ -42,6 +42,7 @@ public class LoadMetamodel implements IExternalJavaAction {
         // if the main EPackage was retrieved successfully and and there still isn't a metamodel with this mainPackage in the MRS
 		if (mainPackage != null && !metamodelAlreadyExists(mainPackage, (ModularReferenceStructure) layer.eContainer())) {
 	        metamodel.setMainPackage(mainPackage);
+	        metamodel.setName(mainPackage.getName());
 		}
 		
 		
