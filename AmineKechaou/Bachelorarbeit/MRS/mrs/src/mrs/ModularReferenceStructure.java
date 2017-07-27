@@ -24,21 +24,21 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ModularReferenceStructure extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Layers</b></em>' containment reference list.
-	 * The list contents are of type {@link mrs.Layer}.
-	 * It is bidirectional and its opposite is '{@link mrs.Layer#getModularReferenceStructure <em>Modular Reference Structure</em>}'.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Layers</b></em>' containment reference list.
+     * The list contents are of type {@link mrs.Layer}.
+     * It is bidirectional and its opposite is '{@link mrs.Layer#getModularReferenceStructure <em>Modular Reference Structure</em>}'.
+     * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Layers</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Layers</em>' containment reference list.
-	 * @see mrs.MrsPackage#getModularReferenceStructure_Layers()
-	 * @see mrs.Layer#getModularReferenceStructure
-	 * @model opposite="modularReferenceStructure" containment="true" required="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Layers</em>' containment reference list.
+     * @see mrs.MrsPackage#getModularReferenceStructure_Layers()
+     * @see mrs.Layer#getModularReferenceStructure
+     * @model opposite="modularReferenceStructure" containment="true" required="true"
+     * @generated
+     */
 	EList<Layer> getLayers();
 
 } // ModularReferenceStructure

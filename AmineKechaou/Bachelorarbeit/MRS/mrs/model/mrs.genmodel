@@ -12,13 +12,15 @@
     <genClasses ecoreClass="mrs.ecore#//Layer">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mrs.ecore#//Layer/name"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//Layer/metamodels"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//Layer/modularreferencestructure"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference mrs.ecore#//Layer/modularReferenceStructure"/>
     </genClasses>
     <genClasses ecoreClass="mrs.ecore#//Metamodel">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//Metamodel/mainPackage"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//Metamodel/visibleEClassifiers"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//Metamodel/visibleEPackages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//Metamodel/layer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mrs.ecore#//Metamodel/editable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mrs.ecore#//Metamodel/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
