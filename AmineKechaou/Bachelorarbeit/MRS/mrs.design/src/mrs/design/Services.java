@@ -3,6 +3,7 @@ package mrs.design;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import mrs.Layer;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
+import mrs.MrsPackage;
 
 public class Services {
     
@@ -153,22 +155,6 @@ public class Services {
     }
 
     /**
-     * This method returns the currently visible subpackages inside the ePackage
-     * 
-     * @param ePackage
-     *            the EPackage, whose visible subpackages are going to be retrieved
-     * @param containerView
-     *            the graphical element corresponding to ePackage
-     * @return a Collection containing all visible subpackages of ePackage
-     */
-    public Collection<EPackage> getVisibleSubPackages(EPackage ePackage, DNodeContainer containerView) {
-        Metamodel metamodel = getContainingMetamodel(containerView);
-        Collection<EPackage> visibleEPackages = metamodel.getVisibleEPackages();
-        return ePackage.getESubpackages().stream().filter(x -> visibleEPackages.contains(x))
-                .collect(Collectors.toList());
-    }
-
-    /**
      * Gets all subpackages of ePackage recursively
      * 
      * @param ePackage
@@ -212,5 +198,94 @@ public class Services {
         }
         return result.isEmpty() ? result : result.substring(0, result.length() - 2);
 
+    }
+    
+    /**
+     * Computes the EClassifiers that should be visible and removes all invalid references in the visibleEClassifiers list
+     * @param ePackage the packaged being inspected
+     * @param metamodel the metamodel containing the EClassifiers
+     * @return a list of the EClassifiers that should be visible inside the metamodel
+     */
+    public Collection<EClassifier> getVisibleEClassifiers(EPackage ePackage, Metamodel metamodel) {
+        Collection<EClassifier> eClassifiers = ePackage.getEClassifiers();
+        Collection<EClassifier> eAllClassifiers = getEAllClassifiers(metamodel.getMainPackage());
+        Collection<EClassifier> visibleEClassifiers = metamodel.getVisibleEClassifiers();
+        
+        Collection<EClassifier> result = new ArrayList<EClassifier>();
+        Collection<EClassifier> ghostEClassifiers = new ArrayList<EClassifier>();
+        
+        for (EClassifier visibleEClassifier : visibleEClassifiers) {
+            if(!eAllClassifiers.contains(visibleEClassifier))
+                ghostEClassifiers.add(visibleEClassifier);
+            if(eClassifiers.contains(visibleEClassifier))
+                result.add(visibleEClassifier);
+        }
+        
+        visibleEClassifiers.removeAll(ghostEClassifiers);
+        
+        return result;
+    }
+    
+    
+    /**
+     * This method returns the currently visible subpackages inside the ePackage
+     * 
+     * @param ePackage
+     *            the EPackage, whose visible subpackages are going to be retrieved
+     * @param containerView
+     *            the graphical element corresponding to ePackage
+     * @return a Collection containing all visible subpackages of ePackage
+     */
+    public Collection<EPackage> getVisibleSubPackages(EPackage ePackage, DNodeContainer containerView) {
+        Metamodel metamodel = getContainingMetamodel(containerView);
+        
+        Collection<EPackage> visibleEPackages = metamodel.getVisibleEPackages();
+        Collection<EPackage> eAllSubPackages = getEAllSubPackages(metamodel.getMainPackage());
+        Collection<EPackage> eSubPackages = ePackage.getESubpackages();
+        
+        Collection<EPackage> result = new ArrayList<EPackage>();
+        Collection<EPackage> ghostEClassifiers = new ArrayList<EPackage>();
+        
+        for (EPackage visibleEPackage : visibleEPackages) {
+            if(!eAllSubPackages.contains(visibleEPackage))
+                ghostEClassifiers.add(visibleEPackage);
+            if(eSubPackages.contains(visibleEPackage))
+                result.add(visibleEPackage);
+        }
+        
+        visibleEPackages.removeAll(ghostEClassifiers);
+        
+        return result;
+    }
+    
+    
+    /**
+     * Gets all EClassifiers inside an EPackage recursively. 
+     * @param ePackage
+     * @return a List containing the EClassfiers
+     */
+    public static  List<EClassifier> getEAllClassifiers(EPackage ePackage) {
+        List<EClassifier> result = new ArrayList<EClassifier>();
+        result.addAll(ePackage.getEClassifiers());
+        ePackage.getESubpackages().forEach(x -> result.addAll(getEAllClassifiers(x)));
+        return result;
+    }
+    
+    /**
+     * Returns the reference id of the EReference visibleEClassfiers
+     * @param eObject
+     * @return the reference id
+     */
+    public int getVisibleEClassifiersReferenceId(EObject eObject) {
+        return MrsPackage.METAMODEL__VISIBLE_ECLASSIFIERS;
+    }
+    
+    /**
+     * Returns the reference id of the EReference visibleEPackages
+     * @param eObject
+     * @return the reference id
+     */
+    public int getVisibleEPackagesReferenceId(EObject eObject) {
+        return MrsPackage.METAMODEL__VISIBLE_EPACKAGES;
     }
 }
