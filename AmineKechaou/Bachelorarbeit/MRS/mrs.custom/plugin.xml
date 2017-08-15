@@ -15,6 +15,14 @@
             actionClass="mrs.custom.externaljavaactions.OpenRepresentation"
             id="OpenRepresentation">
       </javaActions>
+      <javaActions
+            actionClass="mrs.custom.externaljavaactions.SelectVisibleItems"
+            id="SelectVisibleItems">
+      </javaActions>
+      <javaActions
+            actionClass="mrs.custom.ExternalJavaAction1"
+            id="mrs.custom.javaActions1">
+      </javaActions>
    </extension>
 
 </plugin>
