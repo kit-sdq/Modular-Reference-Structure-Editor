@@ -1,6 +1,5 @@
 package mrs.design;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -33,7 +32,7 @@ public class MetamodelInspector {
      * @return the value of the field <code>dependencies</code>
      */
     private Map<Metamodel, Set<EClassifier>> computeDependencies() {
-        for (EClassifier c : getEAllClassifiers(metamodel.getMainPackage())) {
+        for (EClassifier c : Services.getEAllClassifiers(metamodel.getMainPackage())) {
             if (!(c instanceof EClass)) // e.g. c is EDataType or EEnum... Only EClass can depend on
                                         // other elements
                 continue;
@@ -200,15 +199,4 @@ public class MetamodelInspector {
         }
     }
 
-    /**
-     * Gets all EClassifiers inside an EPackage recursively. 
-     * @param ePackage
-     * @return a Collection containing the EClassfiers
-     */
-    private Collection<EClassifier> getEAllClassifiers(EPackage ePackage) {
-        Collection<EClassifier> result = new ArrayList<EClassifier>();
-        result.addAll(ePackage.getEClassifiers());
-        ePackage.getESubpackages().forEach(x -> result.addAll(getEAllClassifiers(x)));
-        return result;
-    }
 }
