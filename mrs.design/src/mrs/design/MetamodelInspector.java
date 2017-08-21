@@ -13,22 +13,21 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.ETypeParameter;
 
 import mrs.Metamodel;
-import mrs.MrsFactory;
+import mrs.custom.util.Util;
 
 public class MetamodelInspector {
     private Metamodel metamodel;
     private Map<Metamodel, Set<EClassifier>> dependencies;
-    private Collection<Metamodel> metamodels;
 
     public MetamodelInspector(Metamodel metamodel) {
         this.metamodel = metamodel;
-        this.metamodels = Services.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
         this.dependencies = new HashMap<Metamodel, Set<EClassifier>>();
     }
 
     /**
      * Inspects each EClass in metamodel on the basis of their dependencies (ESuperType, EReference,
      * EOperations, ETypeParameters...)
+     * 
      * @return the value of the field <code>dependencies</code>
      */
     private Map<Metamodel, Set<EClassifier>> computeDependencies() {
@@ -96,7 +95,7 @@ public class MetamodelInspector {
      */
     private void addDependency(EClassifier eClassifier) {
 
-        EPackage mainPackage = Services.getTopMostPackage(eClassifier.getEPackage());
+        EPackage mainPackage = Util.getTopMostPackage(eClassifier.getEPackage());
 
         // if the referenced metamodel is the current metamodel itself, do nothing
         if (mainPackage == metamodel.getMainPackage())
@@ -104,8 +103,6 @@ public class MetamodelInspector {
 
         Metamodel referencedMetamodel = getCorrespondingMetamodel(mainPackage);
 
-
-            
         if (dependencies.containsKey(referencedMetamodel)) {
             dependencies.get(referencedMetamodel).add(eClassifier);
         } else {
@@ -117,32 +114,18 @@ public class MetamodelInspector {
     }
 
     /**
-     * Gets the metamodel whose main package is mainPackage
+     * Gets the metamodel whose main package is mainPackage.
      * 
      * @param mainPackage
      * @return the found metamodel
      */
     private Metamodel getCorrespondingMetamodel(EPackage mainPackage) {
-        for (Metamodel m : metamodels) {
-            if (m.getMainPackage() == mainPackage)
-                return m;
-        }
-        
-        Metamodel importedMetamodel = importMetamodel(mainPackage);
-        
-        return importedMetamodel;
-    }
+        Collection<Metamodel> metamodels = Util.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
+        Metamodel correspondingMetamodel = Util.getCorrespondingMetamodel(mainPackage, metamodels);
+        if (correspondingMetamodel == null) // If no such metamodel is loaded, import it
+            correspondingMetamodel = Util.createMetamodel(mainPackage, metamodel.getLayer());
 
-    private Metamodel importMetamodel(EPackage mainPackage) {       
-        Metamodel importedMetamodel = MrsFactory.eINSTANCE.createMetamodel();
-        importedMetamodel.setMainPackage(mainPackage);
-        importedMetamodel.setLayer(metamodel.getLayer());
-        importedMetamodel.setName(mainPackage.getName());
-                
-        System.out.println(mainPackage.eResource().getURI());
-        metamodels.add(importedMetamodel);
-        
-        return importedMetamodel;
+        return correspondingMetamodel;
     }
 
     /**

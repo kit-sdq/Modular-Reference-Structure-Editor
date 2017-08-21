@@ -5,18 +5,19 @@
       <metamodel href="http://www.example.org/mrs#/"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="Dependency" sourceMapping="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetMapping="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetFinderExpression="aql:self.getReferencedMetamodels()">
+        <edgeMappings name="Dependency" sourceMapping="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetMapping="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetFinderExpression="aql:self.getReferencedMetamodels()->concat(self.getExtendedMetamodels())">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:view.printStereotypes()">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="aql:view.oclAsType(diagram::DEdge).edgeIsPointingDownwards()">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
-              <centerLabelStyleDescription>
+              <centerLabelStyleDescription showIcon="false" labelExpression="aql:view.printStereotypes()">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
@@ -24,7 +25,7 @@
           <conditionnalStyles predicateExpression="aql:view.oclAsType(diagram::DEdge).edgeIsPartOfCycle()">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-              <centerLabelStyleDescription>
+              <centerLabelStyleDescription showIcon="false" labelExpression="aql:view.printStereotypes()">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
@@ -147,6 +148,15 @@
                     <subModelOperations xsi:type="tool_1:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Load Profile" containerMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Profile" id="LoadProfile"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
