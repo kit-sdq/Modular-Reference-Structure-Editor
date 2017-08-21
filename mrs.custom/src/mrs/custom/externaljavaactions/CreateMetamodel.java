@@ -56,7 +56,7 @@ public class CreateMetamodel implements IExternalJavaAction {
 		
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(layer);
 		
-        EPackage mainPackage = Util.getMetamodel(uri, editingDomain);
+        EPackage mainPackage = Util.getMainPackageByURI(uri, editingDomain);
         
         metamodel.setMainPackage(mainPackage);
         metamodel.setName(mainPackage.getName());

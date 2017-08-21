@@ -15,7 +15,6 @@ import org.eclipse.ui.PlatformUI;
 import mrs.Layer;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
-import mrs.custom.util.LoadResourceFromWorkspaceDialog;
 import mrs.custom.util.Util;
 
 
@@ -28,7 +27,7 @@ public class LoadMetamodel implements IExternalJavaAction {
 		Layer layer = (Layer) selections.iterator().next();
 		
 		Metamodel metamodel = (Metamodel) parameters.get("metamodel");
-		String uriText = getURIText();
+		String uriText = Util.openLoadResourceFromWorkspaceDialog(SHELL);
 		if (uriText == null || uriText.isEmpty()) //e.g. on cancel
 			return;
 
@@ -37,7 +36,7 @@ public class LoadMetamodel implements IExternalJavaAction {
 
 
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(layer);
-        EPackage mainPackage = Util.getMetamodel(uri, editingDomain);
+        EPackage mainPackage = Util.getMainPackageByURI(uri, editingDomain);
         
         // if the main EPackage was retrieved successfully and and there still isn't a metamodel with this mainPackage in the MRS
 		if (mainPackage != null && !metamodelAlreadyExists(mainPackage, (ModularReferenceStructure) layer.eContainer())) {
@@ -48,13 +47,6 @@ public class LoadMetamodel implements IExternalJavaAction {
 		
 		
 		
-	}
-	
-	private String getURIText() {
-		LoadResourceFromWorkspaceDialog dialog = new LoadResourceFromWorkspaceDialog(SHELL);
-		dialog.open();
-		String uriText = dialog.getURIText();
-		return uriText;
 	}
 	
 	private boolean metamodelAlreadyExists(EPackage mainPackage, ModularReferenceStructure mrs) {
