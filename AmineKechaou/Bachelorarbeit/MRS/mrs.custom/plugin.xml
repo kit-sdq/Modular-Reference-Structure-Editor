@@ -20,8 +20,8 @@
             id="SelectVisibleItems">
       </javaActions>
       <javaActions
-            actionClass="mrs.custom.ExternalJavaAction1"
-            id="mrs.custom.javaActions1">
+            actionClass="mrs.custom.externaljavaactions.LoadProfile"
+            id="LoadProfile">
       </javaActions>
    </extension>
 
