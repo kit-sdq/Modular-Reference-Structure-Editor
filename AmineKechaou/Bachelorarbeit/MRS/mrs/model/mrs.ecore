@@ -4,6 +4,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ModularReferenceStructure">
     <eStructuralFeatures xsi:type="ecore:EReference" name="layers" lowerBound="1"
         upperBound="-1" eType="#//Layer" containment="true" eOpposite="#//Layer/modularReferenceStructure"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="loadedProfiles" upperBound="-1"
+        eType="ecore:EClass ../../org.modelversioning.emfprofile/model/emfprofiles.ecore#//Profile"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Layer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>

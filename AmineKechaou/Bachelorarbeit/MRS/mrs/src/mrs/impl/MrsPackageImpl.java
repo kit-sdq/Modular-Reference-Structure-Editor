@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.modelversioning.emfprofile.EMFProfilePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,6 +93,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 
         // Initialize simple dependencies
         EcorePackage.eINSTANCE.eClass();
+        EMFProfilePackage.eINSTANCE.eClass();
 
         // Create package meta-data objects
         theMrsPackage.createPackageContents();
@@ -127,6 +129,15 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getModularReferenceStructure_LoadedProfiles() {
+        return (EReference)modularReferenceStructureEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -246,6 +257,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
         // Create classes and their features
         modularReferenceStructureEClass = createEClass(MODULAR_REFERENCE_STRUCTURE);
         createEReference(modularReferenceStructureEClass, MODULAR_REFERENCE_STRUCTURE__LAYERS);
+        createEReference(modularReferenceStructureEClass, MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES);
 
         layerEClass = createEClass(LAYER);
         createEAttribute(layerEClass, LAYER__NAME);
@@ -284,6 +296,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
         setNsURI(eNS_URI);
 
         // Obtain other dependent packages
+        EMFProfilePackage theEMFProfilePackage = (EMFProfilePackage)EPackage.Registry.INSTANCE.getEPackage(EMFProfilePackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
         // Create type parameters
@@ -295,6 +308,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
         // Initialize classes, features, and operations; add parameters
         initEClass(modularReferenceStructureEClass, ModularReferenceStructure.class, "ModularReferenceStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getModularReferenceStructure_Layers(), this.getLayer(), this.getLayer_ModularReferenceStructure(), "layers", null, 1, -1, ModularReferenceStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getModularReferenceStructure_LoadedProfiles(), theEMFProfilePackage.getProfile(), null, "loadedProfiles", null, 0, -1, ModularReferenceStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(layerEClass, Layer.class, "Layer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getLayer_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

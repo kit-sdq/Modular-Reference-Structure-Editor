@@ -76,13 +76,22 @@ public interface MrsPackage extends EPackage {
 	int MODULAR_REFERENCE_STRUCTURE__LAYERS = 0;
 
 	/**
+     * The feature id for the '<em><b>Loaded Profiles</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES = 1;
+
+    /**
      * The number of structural features of the '<em>Modular Reference Structure</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int MODULAR_REFERENCE_STRUCTURE_FEATURE_COUNT = 1;
+	int MODULAR_REFERENCE_STRUCTURE_FEATURE_COUNT = 2;
 
 	/**
      * The number of operations of the '<em>Modular Reference Structure</em>' class.
@@ -244,6 +253,17 @@ public interface MrsPackage extends EPackage {
 	EReference getModularReferenceStructure_Layers();
 
 	/**
+     * Returns the meta object for the reference list '{@link mrs.ModularReferenceStructure#getLoadedProfiles <em>Loaded Profiles</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Loaded Profiles</em>'.
+     * @see mrs.ModularReferenceStructure#getLoadedProfiles()
+     * @see #getModularReferenceStructure()
+     * @generated
+     */
+    EReference getModularReferenceStructure_LoadedProfiles();
+
+    /**
      * Returns the meta object for class '{@link mrs.Layer <em>Layer</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -393,6 +413,14 @@ public interface MrsPackage extends EPackage {
 		EReference MODULAR_REFERENCE_STRUCTURE__LAYERS = eINSTANCE.getModularReferenceStructure_Layers();
 
 		/**
+         * The meta object literal for the '<em><b>Loaded Profiles</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES = eINSTANCE.getModularReferenceStructure_LoadedProfiles();
+
+        /**
          * The meta object literal for the '{@link mrs.impl.LayerImpl <em>Layer</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
