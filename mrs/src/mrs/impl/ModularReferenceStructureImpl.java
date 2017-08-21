@@ -7,17 +7,17 @@ import java.util.Collection;
 import mrs.Layer;
 import mrs.ModularReferenceStructure;
 import mrs.MrsPackage;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.modelversioning.emfprofile.Profile;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link mrs.impl.ModularReferenceStructureImpl#getLayers <em>Layers</em>}</li>
+ *   <li>{@link mrs.impl.ModularReferenceStructureImpl#getLoadedProfiles <em>Loaded Profiles</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,6 +45,16 @@ public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container 
 	protected EList<Layer> layers;
 
 	/**
+     * The cached value of the '{@link #getLoadedProfiles() <em>Loaded Profiles</em>}' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getLoadedProfiles()
+     * @generated
+     * @ordered
+     */
+    protected EList<Profile> loadedProfiles;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -75,6 +86,18 @@ public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container 
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EList<Profile> getLoadedProfiles() {
+        if (loadedProfiles == null) {
+            loadedProfiles = new EObjectResolvingEList<Profile>(Profile.class, this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES);
+        }
+        return loadedProfiles;
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -113,6 +136,8 @@ public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container 
         switch (featureID) {
             case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
                 return getLayers();
+            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
+                return getLoadedProfiles();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -130,6 +155,10 @@ public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container 
                 getLayers().clear();
                 getLayers().addAll((Collection<? extends Layer>)newValue);
                 return;
+            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
+                getLoadedProfiles().clear();
+                getLoadedProfiles().addAll((Collection<? extends Profile>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -145,6 +174,9 @@ public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container 
             case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
                 getLayers().clear();
                 return;
+            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
+                getLoadedProfiles().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -159,6 +191,8 @@ public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container 
         switch (featureID) {
             case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
                 return layers != null && !layers.isEmpty();
+            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
+                return loadedProfiles != null && !loadedProfiles.isEmpty();
         }
         return super.eIsSet(featureID);
     }

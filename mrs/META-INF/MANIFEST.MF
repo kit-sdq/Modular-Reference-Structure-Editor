@@ -11,5 +11,6 @@ Export-Package: mrs,
  mrs.impl,
  mrs.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.modelversioning.emfprofile;visibility:=reexport
 Bundle-ActivationPolicy: lazy
