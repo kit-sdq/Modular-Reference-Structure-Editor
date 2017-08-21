@@ -12,15 +12,18 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.modelversioning.emfprofile.Stereotype;
 
 import mrs.Layer;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
 import mrs.MrsPackage;
+import mrs.custom.util.Util;
 
 public class Services {
     
@@ -49,6 +52,34 @@ public class Services {
         MetamodelInspector inspector = new MetamodelInspector(sourceMetamodel);
         return inspector.getReferencedEClassifiers(targetMetamodel);
     }
+    
+    
+    public Set<Metamodel> getExtendedMetamodels(Metamodel metamodel) {
+        ProfileInspector inspector = new ProfileInspector(metamodel);
+        return inspector.getExtensions().keySet();
+    }
+    
+    public Set<Stereotype> getExtendingStereotypes(Metamodel extendingMetamodel, Metamodel extendedMetamodel) {
+        ProfileInspector inspector = new ProfileInspector(extendingMetamodel);
+        return inspector.getExtensions().get(extendedMetamodel);
+    }
+    
+    public String printStereotypes(DDiagramElement view) {
+        DEdge edge = (DEdge) view;
+        Metamodel source = (Metamodel) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
+        Metamodel target = (Metamodel) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
+        
+        Set<Stereotype> stereotypes = getExtendingStereotypes(source, target);
+        
+        String result = "";
+        
+        if (stereotypes != null) {
+            for (Stereotype stereotype : stereotypes) {
+                result += "<<" + stereotype.getProfile().getName() + "." + stereotype.getName() + ">>\n";
+            }  
+        }
+        return result;
+    }
 
     /**
      * Returns all metamodels present in the ModularReferenceStructure
@@ -58,11 +89,7 @@ public class Services {
      * @return a Collection containing the metamodels
      */
     public static Collection<Metamodel> getAllMetamodels(ModularReferenceStructure mrs) {
-        Collection<Metamodel> result = new ArrayList<Metamodel>();
-        for (Layer l : mrs.getLayers()) {
-            result.addAll(l.getMetamodels());
-        }
-        return result;
+        return Util.getAllMetamodels(mrs);
     }
 
     /**
@@ -73,10 +100,7 @@ public class Services {
      *         package of ePackage
      */
     public static EPackage getTopMostPackage(EPackage ePackage) {
-        if (ePackage.getESuperPackage() == null)
-            return ePackage;
-        else
-            return getTopMostPackage(ePackage.getESuperPackage());
+        return Util.getTopMostPackage(ePackage);
     }
 
     /**
@@ -192,10 +216,12 @@ public class Services {
         Set<EClassifier> eClassifiers = getReferencedEClassifiers(source, target);
 
         String result = "";
-
-        for (EClassifier eClassifier : eClassifiers) {
-            result = result + eClassifier.getName() + ", ";
+        if (eClassifiers != null) {
+            for (EClassifier eClassifier : eClassifiers) {
+                result = result + eClassifier.getName() + ", ";
+            } 
         }
+        
         return result.isEmpty() ? result : result.substring(0, result.length() - 2);
 
     }
@@ -222,7 +248,6 @@ public class Services {
         }
         
         visibleEClassifiers.removeAll(ghostEClassifiers);
-        
         return result;
     }
     
