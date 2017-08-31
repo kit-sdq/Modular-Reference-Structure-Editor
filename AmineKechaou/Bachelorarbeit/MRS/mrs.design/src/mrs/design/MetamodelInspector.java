@@ -183,7 +183,7 @@ public class MetamodelInspector {
 
         ETypeParameter typeParam = genericType.getETypeParameter();
         if (typeParam != null) {
-            visitTypeParam(typeParam, null);
+            visitTypeParam(typeParam, source);
         }
     }
 
