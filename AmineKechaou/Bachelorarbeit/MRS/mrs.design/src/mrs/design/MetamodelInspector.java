@@ -14,14 +14,15 @@ import org.eclipse.emf.ecore.ETypeParameter;
 
 import mrs.Metamodel;
 import mrs.custom.util.Util;
+import mrs.design.Dependency.DependencyType;
 
 public class MetamodelInspector {
     private Metamodel metamodel;
-    private Map<Metamodel, Set<EClassifier>> dependencies;
+    private Map<Metamodel, Set<Dependency>>dependencies;
 
     public MetamodelInspector(Metamodel metamodel) {
         this.metamodel = metamodel;
-        this.dependencies = new HashMap<Metamodel, Set<EClassifier>>();
+        this.dependencies = new HashMap<Metamodel, Set<Dependency>>();
     }
 
     /**
@@ -30,7 +31,7 @@ public class MetamodelInspector {
      * 
      * @return the value of the field <code>dependencies</code>
      */
-    private Map<Metamodel, Set<EClassifier>> computeDependencies() {
+    private Map<Metamodel, Set<Dependency>> computeDependencies() {
         for (EClassifier c : Services.getEAllClassifiers(metamodel.getMainPackage())) {
             if (!(c instanceof EClass)) // e.g. c is EDataType or EEnum... Only EClass can depend on
                                         // other elements
@@ -38,28 +39,28 @@ public class MetamodelInspector {
 
             EClass eClass = (EClass) c;
 
-            eClass.getESuperTypes().forEach(x -> addDependency(x));
+            eClass.getESuperTypes().forEach(x -> addDependency(new Dependency(eClass, x, DependencyType.E_SUPER_TYPE)));
 
             eClass.getEReferences().forEach(x -> {
-                addDependency(x.getEType());
-                visitGenericRef(x.getEGenericType());
+                addDependency(new Dependency(eClass, x.getEType(), DependencyType.E_REFERENCE));
+                visitGenericRef(x.getEGenericType(), eClass);
             });
 
-            eClass.getETypeParameters().forEach(x -> visitTypeParam(x));
+            eClass.getETypeParameters().forEach(x -> visitTypeParam(x, eClass));
 
-            eClass.getEGenericSuperTypes().forEach(x -> visitGenericSuperType(x));
+            eClass.getEGenericSuperTypes().forEach(x -> visitGenericSuperType(x, eClass));
 
             eClass.getEOperations().forEach(x -> {
-                addDependency(x.getEType());
+                addDependency(new Dependency(eClass, x.getEType(), DependencyType.E_OPERATION_RETURN_TYPE));
 
                 x.getEParameters().forEach(y -> {
-                    addDependency(y.getEType());
-                    visitGenericType(y.getEGenericType());
+                    addDependency(new Dependency(eClass, y.getEType(), DependencyType.E_OPERATION_PARAMETER));
+                    visitGenericType(y.getEGenericType(), eClass);
                 });
 
-                visitGenericType(x.getEGenericType());
+                visitGenericType(x.getEGenericType(), eClass);
 
-                x.getETypeParameters().forEach(y -> visitTypeParam(y));
+                x.getETypeParameters().forEach(y -> visitTypeParam(y, eClass));
 
             });
         }
@@ -83,7 +84,7 @@ public class MetamodelInspector {
      * @param metamodel
      * @return the set of the EClassfiers
      */
-    public Set<EClassifier> getReferencedEClassifiers(Metamodel metamodel) {
+    public Set<Dependency> getReferencedEClassifiers(Metamodel metamodel) {
         return computeDependencies().get(metamodel);
     }
 
@@ -93,8 +94,8 @@ public class MetamodelInspector {
      * 
      * @param eClassifier
      */
-    private void addDependency(EClassifier eClassifier) {
-
+    private void addDependency(Dependency dependency) {
+        EClassifier eClassifier = dependency.getTarget();
         EPackage mainPackage = Util.getTopMostPackage(eClassifier.getEPackage());
 
         // if the referenced metamodel is the current metamodel itself, do nothing
@@ -104,11 +105,11 @@ public class MetamodelInspector {
         Metamodel referencedMetamodel = getCorrespondingMetamodel(mainPackage);
 
         if (dependencies.containsKey(referencedMetamodel)) {
-            dependencies.get(referencedMetamodel).add(eClassifier);
+            dependencies.get(referencedMetamodel).add(dependency);
         } else {
-            Set<EClassifier> eClassifiers = new HashSet<EClassifier>();
-            eClassifiers.add(eClassifier);
-            dependencies.put(referencedMetamodel, eClassifiers);
+            Set<Dependency> metamodelDependencies = new HashSet<Dependency>();
+            metamodelDependencies.add(dependency);
+            dependencies.put(referencedMetamodel, metamodelDependencies);
 
         }
     }
@@ -132,29 +133,32 @@ public class MetamodelInspector {
      * visits all bounds of the typeParam
      * 
      * @param typeParam
+     * @param source dependency's origin
      */
-    private void visitTypeParam(ETypeParameter typeParam) {
-        typeParam.getEBounds().forEach(bound -> visitGenericType(bound));
+    private void visitTypeParam(ETypeParameter typeParam, EClassifier source) {
+        typeParam.getEBounds().forEach(bound -> visitGenericType(bound, source));
     }
 
     /**
      * visits genericSuperType if it has type arguments
      * 
      * @param genericSuperType
+     * @param source dependency's origin
      */
-    private void visitGenericSuperType(EGenericType genericSuperType) {
+    private void visitGenericSuperType(EGenericType genericSuperType, EClassifier source) {
         if (genericSuperType.getETypeArguments().size() > 0)
-            visitGenericType(genericSuperType);
+            visitGenericType(genericSuperType, source);
     }
 
     /**
      * visits genericTypeOfRef if it has type arguments
      * 
      * @param genericTypeOfRef
+     * @param source dependency's origin
      */
-    private void visitGenericRef(EGenericType genericTypeOfRef) {
+    private void visitGenericRef(EGenericType genericTypeOfRef, EClassifier source) {
         if (genericTypeOfRef.getETypeArguments().size() > 0)
-            visitGenericType(genericTypeOfRef);
+            visitGenericType(genericTypeOfRef, source);
     }
 
     /**
@@ -162,23 +166,24 @@ public class MetamodelInspector {
      * lower bounds as well as the type arguments and the type parameter
      * 
      * @param genericType
+     * @param source dependency's origin
      */
-    private void visitGenericType(EGenericType genericType) {
+    private void visitGenericType(EGenericType genericType, EClassifier source) {
         if (genericType == null)
             return;
 
         EClassifier eClassifier = genericType.getEClassifier();
         if (eClassifier != null) {
-            addDependency(eClassifier);
+            addDependency(new Dependency(source, eClassifier, DependencyType.E_GENERIC_TYPE));
         }
 
-        visitGenericType(genericType.getEUpperBound());
-        visitGenericType(genericType.getELowerBound());
-        genericType.getETypeArguments().forEach(t -> visitGenericType(t));
+        visitGenericType(genericType.getEUpperBound(), source);
+        visitGenericType(genericType.getELowerBound(), source);
+        genericType.getETypeArguments().forEach(t -> visitGenericType(t, source));
 
         ETypeParameter typeParam = genericType.getETypeParameter();
         if (typeParam != null) {
-            visitTypeParam(typeParam);
+            visitTypeParam(typeParam, null);
         }
     }
 

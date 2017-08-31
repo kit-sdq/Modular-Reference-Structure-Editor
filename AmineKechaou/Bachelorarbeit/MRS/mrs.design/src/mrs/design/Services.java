@@ -41,18 +41,17 @@ public class Services {
     }
 
     /**
-     * Gets all EClassfiers in the targetMetamodel, on which some EClassifier in the sourceMetamodel
-     * depend.
+     * Gets all dependencies from sourceMetamodel to targetMetamodel
      * 
      * @param sourceMetamodel
      * @param targetMetamodel
-     * @return the set of the EClassfiers
+     * @return the set of the dependencies
      */
-    public Set<EClassifier> getReferencedEClassifiers(Metamodel sourceMetamodel, Metamodel targetMetamodel) {
+    private Set<Dependency> getDependencies(Metamodel sourceMetamodel, Metamodel targetMetamodel) {
         MetamodelInspector inspector = new MetamodelInspector(sourceMetamodel);
         return inspector.getReferencedEClassifiers(targetMetamodel);
     }
-    
+
     
     public Set<Metamodel> getExtendedMetamodels(Metamodel metamodel) {
         ProfileInspector inspector = new ProfileInspector(metamodel);
@@ -209,16 +208,16 @@ public class Services {
      * @param edge
      * @return String representation of the dependencies
      */
-    public String getDependencies(DEdge edge) {
+    public String printDependencies(DEdge edge) {
         Metamodel source = (Metamodel) ((DSemanticDecorator) edge.getSourceNode()).getTarget();
         Metamodel target = (Metamodel) ((DSemanticDecorator) edge.getTargetNode()).getTarget();
 
-        Set<EClassifier> eClassifiers = getReferencedEClassifiers(source, target);
+        Set<Dependency> dependencies = getDependencies(source, target);
 
         String result = "";
-        if (eClassifiers != null) {
-            for (EClassifier eClassifier : eClassifiers) {
-                result = result + eClassifier.getName() + ", ";
+        if (dependencies != null) {
+            for (Dependency dependency : dependencies) {
+                result = result + dependency.getTarget().getName() + " (" + dependency.getType() + " in " + dependency.getSource().getName() + ") \n";
             } 
         }
         
