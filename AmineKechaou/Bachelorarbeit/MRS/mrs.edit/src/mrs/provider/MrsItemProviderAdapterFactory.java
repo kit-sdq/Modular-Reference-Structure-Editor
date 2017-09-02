@@ -33,37 +33,37 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * @generated
  */
 public class MrsItemProviderAdapterFactory extends MrsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-	/**
+    /**
      * This keeps track of the root adapter factory that delegates to this adapter factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected ComposedAdapterFactory parentAdapterFactory;
+    protected ComposedAdapterFactory parentAdapterFactory;
 
-	/**
+    /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected IChangeNotifier changeNotifier = new ChangeNotifier();
+    protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-	/**
+    /**
      * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected Collection<Object> supportedTypes = new ArrayList<Object>();
+    protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-	/**
+    /**
      * This constructs an instance.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public MrsItemProviderAdapterFactory() {
+    public MrsItemProviderAdapterFactory() {
         supportedTypes.add(IEditingDomainItemProvider.class);
         supportedTypes.add(IStructuredItemContentProvider.class);
         supportedTypes.add(ITreeItemContentProvider.class);
@@ -71,22 +71,22 @@ public class MrsItemProviderAdapterFactory extends MrsAdapterFactory implements 
         supportedTypes.add(IItemPropertySource.class);
     }
 
-	/**
+    /**
      * This keeps track of the one adapter used for all {@link mrs.ModularReferenceStructure} instances.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected ModularReferenceStructureItemProvider modularReferenceStructureItemProvider;
+    protected ModularReferenceStructureItemProvider modularReferenceStructureItemProvider;
 
-	/**
+    /**
      * This creates an adapter for a {@link mrs.ModularReferenceStructure}.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Adapter createModularReferenceStructureAdapter() {
+    @Override
+    public Adapter createModularReferenceStructureAdapter() {
         if (modularReferenceStructureItemProvider == null) {
             modularReferenceStructureItemProvider = new ModularReferenceStructureItemProvider(this);
         }
@@ -94,22 +94,22 @@ public class MrsItemProviderAdapterFactory extends MrsAdapterFactory implements 
         return modularReferenceStructureItemProvider;
     }
 
-	/**
+    /**
      * This keeps track of the one adapter used for all {@link mrs.Layer} instances.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected LayerItemProvider layerItemProvider;
+    protected LayerItemProvider layerItemProvider;
 
-	/**
+    /**
      * This creates an adapter for a {@link mrs.Layer}.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Adapter createLayerAdapter() {
+    @Override
+    public Adapter createLayerAdapter() {
         if (layerItemProvider == null) {
             layerItemProvider = new LayerItemProvider(this);
         }
@@ -117,22 +117,22 @@ public class MrsItemProviderAdapterFactory extends MrsAdapterFactory implements 
         return layerItemProvider;
     }
 
-	/**
+    /**
      * This keeps track of the one adapter used for all {@link mrs.Metamodel} instances.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	protected MetamodelItemProvider metamodelItemProvider;
+    protected MetamodelItemProvider metamodelItemProvider;
 
-	/**
+    /**
      * This creates an adapter for a {@link mrs.Metamodel}.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Adapter createMetamodelAdapter() {
+    @Override
+    public Adapter createMetamodelAdapter() {
         if (metamodelItemProvider == null) {
             metamodelItemProvider = new MetamodelItemProvider(this);
         }
@@ -140,54 +140,54 @@ public class MrsItemProviderAdapterFactory extends MrsAdapterFactory implements 
         return metamodelItemProvider;
     }
 
-	/**
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public ComposeableAdapterFactory getRootAdapterFactory() {
+    public ComposeableAdapterFactory getRootAdapterFactory() {
         return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
     }
 
-	/**
+    /**
      * This sets the composed adapter factory that contains this factory.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+    public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
         this.parentAdapterFactory = parentAdapterFactory;
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public boolean isFactoryForType(Object type) {
+    @Override
+    public boolean isFactoryForType(Object type) {
         return supportedTypes.contains(type) || super.isFactoryForType(type);
     }
 
-	/**
+    /**
      * This implementation substitutes the factory itself as the key for the adapter.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Adapter adapt(Notifier notifier, Object type) {
+    @Override
+    public Adapter adapt(Notifier notifier, Object type) {
         return super.adapt(notifier, this);
     }
 
-	/**
+    /**
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	@Override
-	public Object adapt(Object object, Object type) {
+    @Override
+    public Object adapt(Object object, Object type) {
         if (isFactoryForType(type)) {
             Object adapter = super.adapt(object, type);
             if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
@@ -198,33 +198,33 @@ public class MrsItemProviderAdapterFactory extends MrsAdapterFactory implements 
         return null;
     }
 
-	/**
+    /**
      * This adds a listener.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void addListener(INotifyChangedListener notifyChangedListener) {
+    public void addListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.addListener(notifyChangedListener);
     }
 
-	/**
+    /**
      * This removes a listener.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void removeListener(INotifyChangedListener notifyChangedListener) {
+    public void removeListener(INotifyChangedListener notifyChangedListener) {
         changeNotifier.removeListener(notifyChangedListener);
     }
 
-	/**
+    /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void fireNotifyChanged(Notification notification) {
+    public void fireNotifyChanged(Notification notification) {
         changeNotifier.fireNotifyChanged(notification);
 
         if (parentAdapterFactory != null) {
@@ -232,13 +232,13 @@ public class MrsItemProviderAdapterFactory extends MrsAdapterFactory implements 
         }
     }
 
-	/**
+    /**
      * This disposes all of the item providers created by this factory. 
      * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-	public void dispose() {
+    public void dispose() {
         if (modularReferenceStructureItemProvider != null) modularReferenceStructureItemProvider.dispose();
         if (layerItemProvider != null) layerItemProvider.dispose();
         if (metamodelItemProvider != null) metamodelItemProvider.dispose();
