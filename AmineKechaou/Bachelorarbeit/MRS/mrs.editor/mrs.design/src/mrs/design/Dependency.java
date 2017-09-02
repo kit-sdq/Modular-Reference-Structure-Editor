@@ -1,0 +1,66 @@
+package mrs.design;
+
+import org.eclipse.emf.ecore.EClassifier;
+
+public class Dependency {
+    private EClassifier source;
+    private EClassifier target;
+    private DependencyType type;
+    
+    
+    public Dependency(EClassifier source, EClassifier target, DependencyType type) {
+        this.source = source;
+        this.target = target;
+        this.type = type;
+    }
+
+
+    public EClassifier getSource() {
+        return source;
+    }
+
+
+    public void setSource(EClassifier source) {
+        this.source = source;
+    }
+
+
+    public EClassifier getTarget() {
+        return target;
+    }
+
+
+    public void setTarget(EClassifier target) {
+        this.target = target;
+    }
+
+
+    public DependencyType getType() {
+        return type;
+    }
+
+
+    public void setType(DependencyType type) {
+        this.type = type;
+    }
+
+
+    public enum DependencyType {
+        E_SUPER_TYPE ("Supertype"), 
+        E_REFERENCE ("EReference"), 
+        E_OPERATION_RETURN_TYPE ("Return type of EOperation"), 
+        E_OPERATION_PARAMETER ("Parameter type of EOperation"), 
+        E_GENERIC_TYPE ("EGenericType");
+        
+        private final String stringRepresentation;
+        
+        private DependencyType(String stringReprensentation) {
+            this.stringRepresentation = stringReprensentation;
+        }
+        
+        @Override
+        public String toString() {
+            return stringRepresentation;
+        }
+    }
+}
