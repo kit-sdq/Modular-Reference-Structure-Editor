@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated mrs -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="mrs.presentation.MrsModelWizardID"
+            name="%_UI_MrsModelWizard_label"
+            class="mrs.presentation.MrsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MrsModelFile.gif">
+         <description>%_UI_MrsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated mrs -->
+      <editor
+            id="mrs.presentation.MrsEditorID"
+            name="%_UI_MrsEditor_label"
+            icon="icons/full/obj16/MrsModelFile.gif"
+            extensions="mrs"
+            class="mrs.presentation.MrsEditor"
+            contributorClass="mrs.presentation.MrsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
