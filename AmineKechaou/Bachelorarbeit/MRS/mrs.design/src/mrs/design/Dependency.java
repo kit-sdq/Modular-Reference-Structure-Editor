@@ -19,31 +19,13 @@ public class Dependency {
         return source;
     }
 
-
-    public void setSource(EClassifier source) {
-        this.source = source;
-    }
-
-
     public EClassifier getTarget() {
         return target;
     }
 
-
-    public void setTarget(EClassifier target) {
-        this.target = target;
-    }
-
-
     public DependencyType getType() {
         return type;
     }
-
-
-    public void setType(DependencyType type) {
-        this.type = type;
-    }
-
 
     public enum DependencyType {
         E_SUPER_TYPE ("Supertype"), 
