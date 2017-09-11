@@ -164,7 +164,7 @@ public class Services {
     }
 
     /**
-     * This method returns the metamodel containing the semantic elemenet of the container view
+     * This method returns the metamodel containing the semantic element of the container view
      * 
      * @param containerView
      *            a graphical element in the diagram. Must be inside a Metamodel
@@ -191,17 +191,6 @@ public class Services {
     }
 
     /**
-     * Prints the EClass of eObject and eObject.toString(). Exclusively for debugging purposes
-     * 
-     * @param eObject
-     * @return the eObject parameter
-     */
-    public EObject print(EObject eObject) {
-        System.out.println(eObject.getClass() + " " + eObject);
-        return eObject;
-    }
-
-    /**
      * Returns a String of all EClassifiers in the target metamodel, on which some EClass in the
      * source metamodel depends. EClassifiers are separated by a comma
      * 
@@ -222,31 +211,40 @@ public class Services {
         }
         
         return result.isEmpty() ? result : result.substring(0, result.length() - 2);
-
     }
     
     /**
      * Computes the EClassifiers that should be visible and removes all invalid references in the visibleEClassifiers list
-     * @param ePackage the packaged being inspected
+     * @param ePackage the package being inspected. Can be a main package or a subpackage
      * @param metamodel the metamodel containing the EClassifiers
-     * @return a list of the EClassifiers that should be visible inside the metamodel
+     * @return a list of the EClassifiers that should be visible inside ePackage
      */
     public Collection<EClassifier> getVisibleEClassifiers(EPackage ePackage, Metamodel metamodel) {
-        Collection<EClassifier> eClassifiers = ePackage.getEClassifiers();
+        // get the direct EClassifiers of ePackage
+        Collection<EClassifier> eClassifiers = ePackage.getEClassifiers(); 
+         
+        //get all EClassifiers of the metamodel
         Collection<EClassifier> eAllClassifiers = getEAllClassifiers(metamodel.getMainPackage());
-        Collection<EClassifier> visibleEClassifiers = metamodel.getVisibleEClassifiers();
+        
+        //get the list of the EClassifiers that should be visible inside the metamodel
+        Collection<EClassifier> visibleEClassifiers = metamodel.getVisibleEClassifiers(); 
         
         Collection<EClassifier> result = new ArrayList<EClassifier>();
         Collection<EClassifier> ghostEClassifiers = new ArrayList<EClassifier>();
         
         for (EClassifier visibleEClassifier : visibleEClassifiers) {
+            //Mark invalid EClassifiers from the visibleEClassifiers list
             if(!eAllClassifiers.contains(visibleEClassifier))
                 ghostEClassifiers.add(visibleEClassifier);
+            
+            //Mark EClassifiers that should be displayed inside ePackage
             if(eClassifiers.contains(visibleEClassifier))
                 result.add(visibleEClassifier);
         }
         
+        //Delete dangling references
         visibleEClassifiers.removeAll(ghostEClassifiers);
+        
         return result;
     }
     
