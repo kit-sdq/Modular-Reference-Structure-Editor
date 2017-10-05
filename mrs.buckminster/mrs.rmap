@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rm:rmap xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
+  <rm:locator pattern="^mrs*" searchPathRef="MRS"/>
+  <rm:locator pattern="^org\.eclipse\.sirius*" searchPathRef="SiriusRuntime"/>
+  <rm:locator pattern="^org\.modelversioning\.emfprofile*" searchPathRef="EMFProfiles"/>
+  <rm:searchPath name="MRS">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="" source="true">
+      <rm:property key="git.remote.uri" value="https://github.com/kit-sdq/MRS-Editor"/>      
+      <rm:property key="git.auto.fetch" value="true"/>
+    </rm:provider>
+  </rm:searchPath>
+  <rm:searchPath name="SiriusRuntime">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="http://download.eclipse.org/sirius/updates/releases/5.0.2/oxygen/"/>
+    </rm:provider>
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="http://download.eclipse.org/sirius/updates/releases/5.0.2/neon/"/>
+    </rm:provider>
+  </rm:searchPath>
+  <rm:searchPath name="EMFProfiles">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="http://www.modelversioning.org/emf-profiles-updatesite/"/>
+    </rm:provider>
+  </rm:searchPath>
+</rm:rmap>

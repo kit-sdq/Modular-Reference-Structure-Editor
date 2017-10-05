@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="mrs.buckminster"
+      label="MRS Buckminster"
+      version="1.0.0.qualifier">
+
+   <description url="http://www.example.com/description">
+      This feature contains the buckminster build structure for the
+MRS graphical editor.
+   </description>
+
+   <includes
+         id="mrs.feature"
+         version="0.0.0"/>
+
+</feature>
