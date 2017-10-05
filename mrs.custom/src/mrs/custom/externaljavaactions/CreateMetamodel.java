@@ -22,7 +22,7 @@ import org.eclipse.ui.PlatformUI;
 
 import mrs.Layer;
 import mrs.Metamodel;
-import mrs.custom.util.Util;
+import mrs.custom.util.MRSUtil;
 
 public class CreateMetamodel implements IExternalJavaAction {
 
@@ -56,7 +56,7 @@ public class CreateMetamodel implements IExternalJavaAction {
 		
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(layer);
 		
-        EPackage mainPackage = Util.getMainPackageByURI(uri, editingDomain);
+        EPackage mainPackage = MRSUtil.getMainPackageByURI(uri, editingDomain);
         
         metamodel.setMainPackage(mainPackage);
         metamodel.setName(mainPackage.getName());

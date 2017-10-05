@@ -32,7 +32,7 @@
           </conditionnalStyles>
         </edgeMappings>
         <containerMappings name="ModularReferenceStructure" semanticCandidatesExpression="var:self" domainClass="mrs.ModularReferenceStructure" childrenPresentation="VerticalStack">
-          <subContainerMappings name="Layer" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:layers" domainClass="mrs.Layer" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20into%20layer']">
+          <subContainerMappings name="Layer" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:layers" domainClass="mrs.Layer" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20into%20layer'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20from%20Explorer%20into%20Layer']">
             <subContainerMappings name="Metamodel" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel']" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:metamodels" domainClass="mrs.Metamodel" childrenPresentation="VerticalStack">
               <subContainerMappings name="Main Package" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:mainPackage" doubleClickDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']">
                 <subNodeMappings name="EClassifier" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier']" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="aql:self.getVisibleEClassifiers(containerView.oclAsType(diagram::DNodeContainer).getContainingMetamodel())" domainClass="ecore.EClassifier">
@@ -139,15 +139,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mrs.Metamodel" referenceName="metamodels"/>
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Metamodel Action" id="LoadMetamodel">
-                  <parameters name="metamodel" value="var:instance"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.mainPackage == null">
-                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
-                  </subModelOperations>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Metamodel Action" id="LoadMetamodel"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -198,6 +190,29 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="metamodels"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Metamodel from Explorer into Layer" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.oclIsTypeOf(ecore::EPackage)">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.getTopMostPackage().metamodelAlreadyExists(newSemanticContainer.oclAsType(mrs::Layer).modularReferenceStructure) == false">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mrs::Metamodel" referenceName="metamodels">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="mainPackage" valueExpression="aql:element.getTopMostPackage()"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.mainPackage.name"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.oclIsTypeOf(ecore::EPackage) == false">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Drop Metamodels" id="DropMetamodels">
+                    <parameters name="element" value="var:element"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

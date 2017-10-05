@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.ETypeParameter;
 
 import mrs.Metamodel;
-import mrs.custom.util.Util;
+import mrs.custom.util.MRSUtil;
 import mrs.design.Dependency.DependencyType;
 
 public class MetamodelInspector {
@@ -96,7 +96,7 @@ public class MetamodelInspector {
      */
     private void addDependency(Dependency dependency) {
         EClassifier eClassifier = dependency.getTarget();
-        EPackage mainPackage = Util.getTopMostPackage(eClassifier.getEPackage());
+        EPackage mainPackage = MRSUtil.getTopMostPackage(eClassifier.getEPackage());
 
         // if the referenced metamodel is the current metamodel itself, do nothing
         if (mainPackage == metamodel.getMainPackage())
@@ -121,10 +121,10 @@ public class MetamodelInspector {
      * @return the found metamodel
      */
     private Metamodel getCorrespondingMetamodel(EPackage mainPackage) {
-        Collection<Metamodel> metamodels = Util.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
-        Metamodel correspondingMetamodel = Util.getCorrespondingMetamodel(mainPackage, metamodels);
+        Collection<Metamodel> metamodels = MRSUtil.getAllMetamodels(metamodel.getLayer().getModularReferenceStructure());
+        Metamodel correspondingMetamodel = MRSUtil.getCorrespondingMetamodel(mainPackage, metamodels);
         if (correspondingMetamodel == null) // If no such metamodel is loaded, import it
-            correspondingMetamodel = Util.createMetamodel(mainPackage, metamodel.getLayer());
+            correspondingMetamodel = MRSUtil.createMetamodel(mainPackage, metamodel.getLayer());
 
         return correspondingMetamodel;
     }

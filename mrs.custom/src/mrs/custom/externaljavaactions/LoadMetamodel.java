@@ -1,6 +1,7 @@
 package mrs.custom.externaljavaactions;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -13,9 +14,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
 import mrs.Layer;
-import mrs.Metamodel;
-import mrs.ModularReferenceStructure;
-import mrs.custom.util.Util;
+import mrs.custom.util.MRSUtil;
 
 
 public class LoadMetamodel implements IExternalJavaAction {
@@ -26,38 +25,23 @@ public class LoadMetamodel implements IExternalJavaAction {
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		Layer layer = (Layer) selections.iterator().next();
 		
-		Metamodel metamodel = (Metamodel) parameters.get("metamodel");
-		String uriText = Util.openLoadResourceFromWorkspaceDialog(SHELL);
-		if (uriText == null || uriText.isEmpty()) //e.g. on cancel
+		List<URI> uris = MRSUtil.openLoadResourceFromWorkspaceDialog(SHELL);
+		if (uris == null || uris.isEmpty()) //e.g. on cancel
 			return;
 
-		
-        URI uri = URI.createURI(uriText);
-
-
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(layer);
-        EPackage mainPackage = Util.getMainPackageByURI(uri, editingDomain);
+		
+		for(URI uri : uris) {
+			EPackage mainPackage = MRSUtil.getMainPackageByURI(uri, editingDomain);
         
-        // if the main EPackage was retrieved successfully and and there still isn't a metamodel with this mainPackage in the MRS
-		if (mainPackage != null && !metamodelAlreadyExists(mainPackage, (ModularReferenceStructure) layer.eContainer())) {
-	        metamodel.setMainPackage(mainPackage);
-	        metamodel.setName(mainPackage.getName());
+	        // if the main EPackage was retrieved successfully and there still isn't a metamodel with this mainPackage in the MRS
+			if (mainPackage != null && !MRSUtil.metamodelAlreadyExists(mainPackage, layer.getModularReferenceStructure())) {
+				MRSUtil.createMetamodel(mainPackage, layer);
+			}			
 		}
-		
-		
-		
 		
 	}
 	
-	private boolean metamodelAlreadyExists(EPackage mainPackage, ModularReferenceStructure mrs) {
-		for (Layer layer : mrs.getLayers()) {
-			for (Metamodel metamodel : layer.getMetamodels()) {
-				if (mainPackage.equals(metamodel.getMainPackage()))
-					return true;
-			}
-		}
-		return false;
-	}
 	
 	@Override
 	public boolean canExecute(Collection<? extends EObject> selections) {

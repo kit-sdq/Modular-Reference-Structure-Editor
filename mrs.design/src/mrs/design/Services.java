@@ -23,7 +23,7 @@ import mrs.Layer;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
 import mrs.MrsPackage;
-import mrs.custom.util.Util;
+import mrs.custom.util.MRSUtil;
 
 public class Services {
     
@@ -88,7 +88,7 @@ public class Services {
      * @return a Collection containing the metamodels
      */
     public static Collection<Metamodel> getAllMetamodels(ModularReferenceStructure mrs) {
-        return Util.getAllMetamodels(mrs);
+        return MRSUtil.getAllMetamodels(mrs);
     }
 
     /**
@@ -99,7 +99,7 @@ public class Services {
      *         package of ePackage
      */
     public static EPackage getTopMostPackage(EPackage ePackage) {
-        return Util.getTopMostPackage(ePackage);
+        return MRSUtil.getTopMostPackage(ePackage);
     }
 
     /**
@@ -128,7 +128,7 @@ public class Services {
 
     /**
      * Checks whether there is a cycle containing the edge by running a variant of Breadth First
-     * Search starting from the target of the edge and checking if the edge's souurce can be reached
+     * Search starting from the target of the edge and checking if the edge's source can be reached
      * 
      * @param edge
      * @return true if a cycle containing edge is discovered
@@ -291,6 +291,14 @@ public class Services {
         result.addAll(ePackage.getEClassifiers());
         ePackage.getESubpackages().forEach(x -> result.addAll(getEAllClassifiers(x)));
         return result;
+    }
+    
+    public Metamodel getCorrespondingMetamodel(EPackage mainPackage, ModularReferenceStructure mrs) {
+    	return MRSUtil.getCorrespondingMetamodel(mainPackage, MRSUtil.getAllMetamodels(mrs));
+    }
+    
+    public boolean metamodelAlreadyExists(EPackage mainPackage, ModularReferenceStructure mrs) {
+    	return MRSUtil.metamodelAlreadyExists(mainPackage, mrs);
     }
     
     /**

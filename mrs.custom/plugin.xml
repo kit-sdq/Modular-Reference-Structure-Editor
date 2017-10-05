@@ -23,6 +23,10 @@
             actionClass="mrs.custom.externaljavaactions.LoadProfile"
             id="LoadProfile">
       </javaActions>
+      <javaActions
+            actionClass="mrs.custom.externaljavaactions.DropMetamodels"
+            id="DropMetamodels">
+      </javaActions>
    </extension>
 
 </plugin>
