@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rm:rmap xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
 
-<rm:property key="eclipse.download.prefix" value="http://download.eclipse.org"/>
-
   <rm:locator pattern="^mrs*" searchPathRef="MRS"/>
   <rm:locator pattern="^org\.eclipse\.sirius*" searchPathRef="SiriusRuntime"/>
   <rm:locator pattern="^org\.modelversioning\.emfprofile*" searchPathRef="EMFProfiles"/>
@@ -52,27 +50,21 @@
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="{0}/eclipse/updates/4.7/">
-        <bc:propertyRef key="eclipse.download.prefix"/>
-      </rm:uri>
+      <rm:uri format="http://download.eclipse.org/eclipse/updates/4.7/"/>
     </rm:provider>
   </rm:searchPath>
   <rm:searchPath name="oxygen">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="{0}/releases/oxygen">
-        <bc:propertyRef key="eclipse.download.prefix"/>
-      </rm:uri>
+      <rm:uri format="http://download.eclipse.org/releases/oxygen"/>
     </rm:provider>
   </rm:searchPath>
   <rm:searchPath name="orbit">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="{0}/tools/orbit/downloads/drops/R20170516192513/repository">
-        <bc:propertyRef key="eclipse.download.prefix"/>
-      </rm:uri>
+      <rm:uri format="http://download.eclipse.org/tools/orbit/downloads/drops/R20170516192513/repository"/>
     </rm:provider>
   </rm:searchPath>
   
