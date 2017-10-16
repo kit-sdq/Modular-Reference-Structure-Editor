@@ -3,6 +3,10 @@
   <rm:locator pattern="^mrs*" searchPathRef="MRS"/>
   <rm:locator pattern="^org\.eclipse\.sirius*" searchPathRef="SiriusRuntime"/>
   <rm:locator pattern="^org\.modelversioning\.emfprofile*" searchPathRef="EMFProfiles"/>
+  <rm:locator searchPathRef="oxygen.p2" failOnError="false"/>
+  <rm:locator searchPathRef="orbit"/>
+  
+  
   <rm:searchPath name="MRS">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="" source="true">
       <rm:property key="git.remote.uri" value="https://github.com/kit-sdq/MRS-Editor"/>      
@@ -28,4 +32,23 @@
       <rm:uri format="http://www.modelversioning.org/emf-profiles-updatesite/"/>
     </rm:provider>
   </rm:searchPath>
+  
+  
+<rm:searchPath name="oxygen.p2">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="http://download.eclipse.org/releases/oxygen/"/>
+    </rm:provider>
+  </rm:searchPath>
+  
+  
+  <rm:searchPath name="orbit">
+    <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="{0}/tools/orbit/downloads/drops/R20170516192513/repository"/>
+    </rm:provider>
+  </rm:searchPath>
+  
 </rm:rmap>
