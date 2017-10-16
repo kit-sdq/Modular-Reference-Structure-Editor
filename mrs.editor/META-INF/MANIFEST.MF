@@ -5,6 +5,7 @@ Bundle-SymbolicName: mrs.editor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: mrs.presentation.MrsEditorPlugin$Implementation
+Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: mrs.presentation
