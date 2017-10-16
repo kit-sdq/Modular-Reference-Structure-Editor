@@ -5,7 +5,8 @@
   <rm:locator pattern="^org\.modelversioning\.emfprofile*" searchPathRef="EMFProfiles"/>
   <rm:locator searchPathRef="oxygen.p2" failOnError="false"/>
   <rm:locator searchPathRef="orbit"/>
-  
+  <rm:redirect pattern=".*"
+		href="https://raw.githubusercontent.com/PalladioSimulator/Palladio-Editors-Commons/master/org.palladiosimulator.editors.commons.buckminster/editors.rmap" />
   
   <rm:searchPath name="MRS">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="" source="true">
