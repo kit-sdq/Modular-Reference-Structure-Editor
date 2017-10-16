@@ -3,11 +3,12 @@
   <rm:locator pattern="^mrs*" searchPathRef="MRS"/>
   <rm:locator pattern="^org\.eclipse\.sirius*" searchPathRef="SiriusRuntime"/>
   <rm:locator pattern="^org\.modelversioning\.emfprofile*" searchPathRef="EMFProfiles"/>
-  <rm:locator pattern="^org\.eclipse(\..+)?" searchPathRef="oxygen.p2"/>
+  <rm:locator pattern="^org\.eclipse*" searchPathRef="oxygen" failOnError="false"/>
   <rm:locator searchPathRef="platform" failOnError="false"/>
-  <rm:locator searchPathRef="oxygen" failOnError="false"/>
   <rm:locator searchPathRef="orbit"/>
   <rm:redirect pattern=".*" href="https://raw.githubusercontent.com/PalladioSimulator/Palladio-Editors-Commons/master/org.palladiosimulator.editors.commons.buckminster/editors.rmap"/>
+  
+  
   <rm:searchPath name="MRS">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git">
       <rm:property key="git.remote.uri" value="https://github.com/kit-sdq/MRS-Editor"/>
@@ -18,6 +19,7 @@
       </rm:uri>
     </rm:provider>
   </rm:searchPath>
+  
   <rm:searchPath name="SiriusRuntime">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
@@ -30,6 +32,7 @@
       <rm:uri format="http://download.eclipse.org/sirius/updates/releases/5.0.2/neon/"/>
     </rm:provider>
   </rm:searchPath>
+  
   <rm:searchPath name="EMFProfiles">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
@@ -37,13 +40,7 @@
       <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles/releases/latest/"/>
     </rm:provider>
   </rm:searchPath>
-  <rm:searchPath name="oxygen.p2">
-    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
-      <rm:property key="buckminster.source" value="false"/>
-      <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="http://download.eclipse.org/releases/oxygen/"/>
-    </rm:provider>
-  </rm:searchPath>
+
   <rm:searchPath name="platform">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
@@ -51,6 +48,7 @@
       <rm:uri format="http://download.eclipse.org/eclipse/updates/4.7/"/>
     </rm:provider>
   </rm:searchPath>
+  
   <rm:searchPath name="oxygen">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
@@ -58,6 +56,7 @@
       <rm:uri format="http://download.eclipse.org/releases/oxygen"/>
     </rm:provider>
   </rm:searchPath>
+  
   <rm:searchPath name="orbit">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
