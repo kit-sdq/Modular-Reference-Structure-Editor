@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rm:rmap xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
-
+<rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
   <rm:locator pattern="^mrs*" searchPathRef="MRS"/>
   <rm:locator pattern="^org\.eclipse\.sirius*" searchPathRef="SiriusRuntime"/>
   <rm:locator pattern="^org\.modelversioning\.emfprofile*" searchPathRef="EMFProfiles"/>
-  
   <rm:locator pattern="^org\.eclipse(\..+)?" searchPathRef="oxygen.p2"/>
   <rm:locator searchPathRef="platform" failOnError="false"/>
   <rm:locator searchPathRef="oxygen" failOnError="false"/>
   <rm:locator searchPathRef="orbit"/>
-  
+  <rm:redirect pattern=".*" href="https://raw.githubusercontent.com/PalladioSimulator/Palladio-Editors-Commons/master/org.palladiosimulator.editors.commons.buckminster/editors.rmap"/>
   <rm:searchPath name="MRS">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git">
       <rm:property key="git.remote.uri" value="https://github.com/kit-sdq/MRS-Editor"/>
       <rm:property key="git.auto.fetch" value="true"/>
+      <rm:uri format="{0}/GIT,{1}">
+        <bc:propertyRef key="workspace.root"/>
+        <bc:propertyRef key="buckminster.component"/>
+      </rm:uri>
     </rm:provider>
   </rm:searchPath>
   <rm:searchPath name="SiriusRuntime">
@@ -35,10 +37,6 @@
       <rm:uri format="http://www.modelversioning.org/emf-profiles-updatesite/"/>
     </rm:provider>
   </rm:searchPath>
-  
-  
-  
-  
   <rm:searchPath name="oxygen.p2">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
@@ -67,6 +65,4 @@
       <rm:uri format="http://download.eclipse.org/tools/orbit/downloads/drops/R20170516192513/repository"/>
     </rm:provider>
   </rm:searchPath>
-  
-  
 </rm:rmap>
