@@ -15,7 +15,7 @@
       <import plugin="org.eclipse.emf.transaction" version="1.9.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecoretools.design.ui"/>
       <import plugin="org.eclipse.emf.codegen.ecore" version="2.13.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.emf.common" version="2.13" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import feature="org.eclipse.sirius.runtime" version="5.0.2.201709080927"/>
