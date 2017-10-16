@@ -15,13 +15,14 @@
       <import plugin="org.eclipse.emf.transaction" version="1.9.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecoretools.design.ui"/>
       <import plugin="org.eclipse.emf.codegen.ecore" version="2.13.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.common" version="2.13" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common" version="2.13.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import feature="org.eclipse.sirius.runtime" version="5.0.2.201709080927"/>
       <import feature="org.eclipse.sirius.runtime.acceleo" version="5.0.2.201709080927"/>
       <import feature="org.eclipse.sirius.runtime.aql" version="5.0.2.201709080927"/>
       <import feature="org.modelversioning.emfprofile.feature" version="1.0.0.201708100840"/>
+      <import feature="org.eclipse.emf.common.ui" version="2.12.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
