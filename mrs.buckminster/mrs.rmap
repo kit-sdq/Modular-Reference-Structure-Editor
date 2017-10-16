@@ -4,7 +4,10 @@
   <rm:locator pattern="^org\.eclipse\.sirius*" searchPathRef="SiriusRuntime"/>
   <rm:locator pattern="^org\.modelversioning\.emfprofile*" searchPathRef="EMFProfiles"/>
   <rm:locator searchPathRef="oxygen.p2" failOnError="false"/>
+  <rm:locator searchPathRef="oxygen" failOnError="false"/>
   <rm:locator searchPathRef="orbit"/>
+  <rm:locator searchPathRef="platform" failOnError="false"/>
+  
   <rm:redirect pattern=".*"
 		href="https://raw.githubusercontent.com/PalladioSimulator/Palladio-Editors-Commons/master/org.palladiosimulator.editors.commons.buckminster/editors.rmap" />
   
@@ -43,12 +46,32 @@
     </rm:provider>
   </rm:searchPath>
   
+  <rm:searchPath name="oxygen">
+    <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="{0}/releases/oxygen">
+        <bc:propertyRef key="eclipse.download.prefix"/>
+      </rm:uri>
+    </rm:provider>
+  </rm:searchPath>
+  
   
   <rm:searchPath name="orbit">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
       <rm:uri format="{0}/tools/orbit/downloads/drops/R20170516192513/repository"/>
+    </rm:provider>
+  </rm:searchPath>
+  
+  <rm:searchPath name="platform">
+    <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="{0}/eclipse/updates/4.7/">
+        <bc:propertyRef key="eclipse.download.prefix"/>
+      </rm:uri>
     </rm:provider>
   </rm:searchPath>
   
