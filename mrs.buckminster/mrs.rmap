@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
+  <rm:locator pattern="^org\.eclipse*" searchPathRef="platform" failOnError="false"/>
   <rm:locator pattern="^mrs*" searchPathRef="MRS"/>
   <rm:locator pattern="^org\.eclipse\.sirius*" searchPathRef="SiriusRuntime"/>
-  <rm:locator pattern="^org\.modelversioning\.emfprofile*" searchPathRef="EMFProfiles"/>
   <rm:locator pattern="^org\.eclipse*" searchPathRef="oxygen" failOnError="false"/>
-  <rm:locator searchPathRef="platform" failOnError="false"/>
   <rm:locator searchPathRef="orbit"/>
   <rm:redirect pattern=".*" href="https://raw.githubusercontent.com/PalladioSimulator/Palladio-Editors-Commons/master/org.palladiosimulator.editors.commons.buckminster/editors.rmap"/>
   
@@ -33,13 +32,7 @@
     </rm:provider>
   </rm:searchPath>
   
-  <rm:searchPath name="EMFProfiles">
-    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="p2" source="false" mutable="false">
-      <rm:property key="buckminster.source" value="false"/>
-      <rm:property key="buckminster.mutable" value="false"/>
-      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles/releases/latest/"/>
-    </rm:provider>
-  </rm:searchPath>
+  
 
   <rm:searchPath name="platform">
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
