@@ -15,6 +15,9 @@
         <target xmi:type="ecore:EPackage" href="mrs.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_QAN5sK6REeeCppeeVT0nxg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Generation']"/>
+    </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram xmi:id="_aqZd8JoYEeesbOYx6YDNgg" name="mrs class diagram">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_aqZd8ZoYEeesbOYx6YDNgg" source="DANNOTATION_CUSTOMIZATION_KEY">

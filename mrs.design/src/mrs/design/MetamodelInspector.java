@@ -45,6 +45,11 @@ public class MetamodelInspector {
                 addDependency(new Dependency(eClass, x.getEType(), DependencyType.E_REFERENCE));
                 visitGenericRef(x.getEGenericType(), eClass);
             });
+            
+            eClass.getEAttributes().forEach(x -> {
+                addDependency(new Dependency(eClass, x.getEType(), DependencyType.E_ATTRIBUTE));
+                visitGenericRef(x.getEGenericType(), eClass);
+            });
 
             eClass.getETypeParameters().forEach(x -> visitTypeParam(x, eClass));
 

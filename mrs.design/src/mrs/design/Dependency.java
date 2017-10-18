@@ -30,6 +30,7 @@ public class Dependency {
     public enum DependencyType {
         E_SUPER_TYPE ("Supertype"), 
         E_REFERENCE ("EReference"), 
+        E_ATTRIBUTE("EAttribute"),
         E_OPERATION_RETURN_TYPE ("Return type of EOperation"), 
         E_OPERATION_PARAMETER ("Parameter type of EOperation"), 
         E_GENERIC_TYPE ("EGenericType");
