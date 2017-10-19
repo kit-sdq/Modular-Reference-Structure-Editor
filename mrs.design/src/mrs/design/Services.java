@@ -213,72 +213,6 @@ public class Services {
         return result.isEmpty() ? result : result.substring(0, result.length() - 2);
     }
     
-    /**
-     * Computes the EClassifiers that should be visible and removes all invalid references in the visibleEClassifiers list
-     * @param ePackage the package being inspected. Can be a main package or a subpackage
-     * @param metamodel the metamodel containing the EClassifiers
-     * @return a list of the EClassifiers that should be visible inside ePackage
-     */
-    public Collection<EClassifier> getVisibleEClassifiers(EPackage ePackage, Metamodel metamodel) {
-        // get the direct EClassifiers of ePackage
-        Collection<EClassifier> eClassifiers = ePackage.getEClassifiers(); 
-         
-        //get all EClassifiers of the metamodel
-        Collection<EClassifier> eAllClassifiers = getEAllClassifiers(metamodel.getMainPackage());
-        
-        //get the list of the EClassifiers that should be visible inside the metamodel
-        Collection<EClassifier> visibleEClassifiers = metamodel.getVisibleEClassifiers(); 
-        
-        Collection<EClassifier> result = new ArrayList<EClassifier>();
-        Collection<EClassifier> ghostEClassifiers = new ArrayList<EClassifier>();
-        
-        for (EClassifier visibleEClassifier : visibleEClassifiers) {
-            //Mark invalid EClassifiers from the visibleEClassifiers list
-            if(!eAllClassifiers.contains(visibleEClassifier))
-                ghostEClassifiers.add(visibleEClassifier);
-            
-            //Mark EClassifiers that should be displayed inside ePackage
-            if(eClassifiers.contains(visibleEClassifier))
-                result.add(visibleEClassifier);
-        }
-        
-        //Delete dangling references
-        visibleEClassifiers.removeAll(ghostEClassifiers);
-        
-        return result;
-    }
-    
-    
-    /**
-     * This method returns the currently visible subpackages inside the ePackage
-     * 
-     * @param ePackage
-     *            the EPackage, whose visible subpackages are going to be retrieved
-     * @param containerView
-     *            the graphical element corresponding to ePackage
-     * @return a Collection containing all visible subpackages of ePackage
-     */
-    public Collection<EPackage> getVisibleSubPackages(EPackage ePackage, DNodeContainer containerView) {
-        Metamodel metamodel = getContainingMetamodel(containerView);
-        
-        Collection<EPackage> visibleEPackages = metamodel.getVisibleEPackages();
-        Collection<EPackage> eAllSubPackages = getEAllSubPackages(metamodel.getMainPackage());
-        Collection<EPackage> eSubPackages = ePackage.getESubpackages();
-        
-        Collection<EPackage> result = new ArrayList<EPackage>();
-        Collection<EPackage> ghostEClassifiers = new ArrayList<EPackage>();
-        
-        for (EPackage visibleEPackage : visibleEPackages) {
-            if(!eAllSubPackages.contains(visibleEPackage))
-                ghostEClassifiers.add(visibleEPackage);
-            if(eSubPackages.contains(visibleEPackage))
-                result.add(visibleEPackage);
-        }
-        
-        visibleEPackages.removeAll(ghostEClassifiers);
-        
-        return result;
-    }
     
     
     /**
@@ -301,21 +235,4 @@ public class Services {
     	return MRSUtil.metamodelAlreadyExists(mainPackage, mrs);
     }
     
-    /**
-     * Returns the reference id of the EReference visibleEClassfiers
-     * @param eObject
-     * @return the reference id
-     */
-    public int getVisibleEClassifiersReferenceId(EObject eObject) {
-        return MrsPackage.METAMODEL__VISIBLE_ECLASSIFIERS;
-    }
-    
-    /**
-     * Returns the reference id of the EReference visibleEPackages
-     * @param eObject
-     * @return the reference id
-     */
-    public int getVisibleEPackagesReferenceId(EObject eObject) {
-        return MrsPackage.METAMODEL__VISIBLE_EPACKAGES;
-    }
 }

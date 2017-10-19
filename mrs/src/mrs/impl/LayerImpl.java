@@ -40,271 +40,271 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	/**
-     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getName()
-     * @generated
-     * @ordered
-     */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String NAME_EDEFAULT = null;
 
 	/**
-     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getName()
-     * @generated
-     * @ordered
-     */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
 	protected String name = NAME_EDEFAULT;
 
 	/**
-     * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getMetamodels()
-     * @generated
-     * @ordered
-     */
+	 * @see #getMetamodels()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<Metamodel> metamodels;
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected LayerImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-        return MrsPackage.Literals.LAYER;
-    }
+		return MrsPackage.Literals.LAYER;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public String getName() {
-        return name;
-    }
+		return name;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public void setName(String newName) {
-        String oldName = name;
-        name = newName;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, MrsPackage.LAYER__NAME, oldName, name));
-    }
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MrsPackage.LAYER__NAME, oldName, name));
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EList<Metamodel> getMetamodels() {
-        if (metamodels == null) {
-            metamodels = new EObjectContainmentWithInverseEList<Metamodel>(Metamodel.class, this, MrsPackage.LAYER__METAMODELS, MrsPackage.METAMODEL__LAYER);
-        }
-        return metamodels;
-    }
+		if (metamodels == null) {
+			metamodels = new EObjectContainmentWithInverseEList<Metamodel>(Metamodel.class, this, MrsPackage.LAYER__METAMODELS, MrsPackage.METAMODEL__LAYER);
+		}
+		return metamodels;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public ModularReferenceStructure getModularReferenceStructure() {
-        if (eContainerFeatureID() != MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE) return null;
-        return (ModularReferenceStructure)eInternalContainer();
-    }
+		if (eContainerFeatureID() != MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE) return null;
+		return (ModularReferenceStructure)eInternalContainer();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public NotificationChain basicSetModularReferenceStructure(ModularReferenceStructure newModularReferenceStructure, NotificationChain msgs) {
-        msgs = eBasicSetContainer((InternalEObject)newModularReferenceStructure, MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE, msgs);
-        return msgs;
-    }
+		msgs = eBasicSetContainer((InternalEObject)newModularReferenceStructure, MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE, msgs);
+		return msgs;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public void setModularReferenceStructure(ModularReferenceStructure newModularReferenceStructure) {
-        if (newModularReferenceStructure != eInternalContainer() || (eContainerFeatureID() != MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE && newModularReferenceStructure != null)) {
-            if (EcoreUtil.isAncestor(this, newModularReferenceStructure))
-                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-            NotificationChain msgs = null;
-            if (eInternalContainer() != null)
-                msgs = eBasicRemoveFromContainer(msgs);
-            if (newModularReferenceStructure != null)
-                msgs = ((InternalEObject)newModularReferenceStructure).eInverseAdd(this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS, ModularReferenceStructure.class, msgs);
-            msgs = basicSetModularReferenceStructure(newModularReferenceStructure, msgs);
-            if (msgs != null) msgs.dispatch();
-        }
-        else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE, newModularReferenceStructure, newModularReferenceStructure));
-    }
+		if (newModularReferenceStructure != eInternalContainer() || (eContainerFeatureID() != MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE && newModularReferenceStructure != null)) {
+			if (EcoreUtil.isAncestor(this, newModularReferenceStructure))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newModularReferenceStructure != null)
+				msgs = ((InternalEObject)newModularReferenceStructure).eInverseAdd(this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS, ModularReferenceStructure.class, msgs);
+			msgs = basicSetModularReferenceStructure(newModularReferenceStructure, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE, newModularReferenceStructure, newModularReferenceStructure));
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case MrsPackage.LAYER__METAMODELS:
-                return ((InternalEList<InternalEObject>)(InternalEList<?>)getMetamodels()).basicAdd(otherEnd, msgs);
-            case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
-                if (eInternalContainer() != null)
-                    msgs = eBasicRemoveFromContainer(msgs);
-                return basicSetModularReferenceStructure((ModularReferenceStructure)otherEnd, msgs);
-        }
-        return super.eInverseAdd(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case MrsPackage.LAYER__METAMODELS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMetamodels()).basicAdd(otherEnd, msgs);
+			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetModularReferenceStructure((ModularReferenceStructure)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case MrsPackage.LAYER__METAMODELS:
-                return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
-            case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
-                return basicSetModularReferenceStructure(null, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case MrsPackage.LAYER__METAMODELS:
+				return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
+			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
+				return basicSetModularReferenceStructure(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-        switch (eContainerFeatureID()) {
-            case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
-                return eInternalContainer().eInverseRemove(this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS, ModularReferenceStructure.class, msgs);
-        }
-        return super.eBasicRemoveFromContainerFeature(msgs);
-    }
+		switch (eContainerFeatureID()) {
+			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
+				return eInternalContainer().eInverseRemove(this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS, ModularReferenceStructure.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case MrsPackage.LAYER__NAME:
-                return getName();
-            case MrsPackage.LAYER__METAMODELS:
-                return getMetamodels();
-            case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
-                return getModularReferenceStructure();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case MrsPackage.LAYER__NAME:
+				return getName();
+			case MrsPackage.LAYER__METAMODELS:
+				return getMetamodels();
+			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
+				return getModularReferenceStructure();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case MrsPackage.LAYER__NAME:
-                setName((String)newValue);
-                return;
-            case MrsPackage.LAYER__METAMODELS:
-                getMetamodels().clear();
-                getMetamodels().addAll((Collection<? extends Metamodel>)newValue);
-                return;
-            case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
-                setModularReferenceStructure((ModularReferenceStructure)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case MrsPackage.LAYER__NAME:
+				setName((String)newValue);
+				return;
+			case MrsPackage.LAYER__METAMODELS:
+				getMetamodels().clear();
+				getMetamodels().addAll((Collection<? extends Metamodel>)newValue);
+				return;
+			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
+				setModularReferenceStructure((ModularReferenceStructure)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-        switch (featureID) {
-            case MrsPackage.LAYER__NAME:
-                setName(NAME_EDEFAULT);
-                return;
-            case MrsPackage.LAYER__METAMODELS:
-                getMetamodels().clear();
-                return;
-            case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
-                setModularReferenceStructure((ModularReferenceStructure)null);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case MrsPackage.LAYER__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case MrsPackage.LAYER__METAMODELS:
+				getMetamodels().clear();
+				return;
+			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
+				setModularReferenceStructure((ModularReferenceStructure)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case MrsPackage.LAYER__NAME:
-                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-            case MrsPackage.LAYER__METAMODELS:
-                return metamodels != null && !metamodels.isEmpty();
-            case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
-                return getModularReferenceStructure() != null;
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case MrsPackage.LAYER__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case MrsPackage.LAYER__METAMODELS:
+				return metamodels != null && !metamodels.isEmpty();
+			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
+				return getModularReferenceStructure() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (name: ");
-        result.append(name);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
+	}
 
 } //LayerImpl
