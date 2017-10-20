@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="mrs" version="12.0.0.2017041100">
-  <ownedViewpoints name="MRS Viewpoint" modelFileExtension="mrs">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="MRS Diagram" initialisation="true" domainClass="mrs.ModularReferenceStructure" enablePopupBars="true">
+  <ownedViewpoints name="mrs.viewpoint" label="MRS Viewpoint" modelFileExtension="mrs">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="mrs.diagram" label="MRS Diagram" initialisation="true" domainClass="mrs.ModularReferenceStructure" enablePopupBars="true">
       <metamodel href="http://www.example.org/mrs#/"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="Dependency" sourceMapping="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetMapping="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetFinderExpression="aql:self.getExtendedMetamodels()->union(self.getReferencedMetamodels())">
+        <edgeMappings name="Dependency" sourceMapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetMapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetFinderExpression="aql:self.getExtendedMetamodels()->union(self.getReferencedMetamodels())">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:view.printStereotypes()">
@@ -32,17 +32,17 @@
           </conditionnalStyles>
         </edgeMappings>
         <containerMappings name="ModularReferenceStructure" semanticCandidatesExpression="var:self" domainClass="mrs.ModularReferenceStructure" childrenPresentation="VerticalStack">
-          <subContainerMappings name="Layer" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:layers" domainClass="mrs.Layer" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20into%20layer'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20from%20Explorer%20into%20Layer']">
-            <subContainerMappings name="Metamodel" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel']" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:metamodels" domainClass="mrs.Metamodel" childrenPresentation="VerticalStack">
-              <subContainerMappings name="Main Package" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:mainPackage" doubleClickDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']">
-                <subNodeMappings name="EClassifier" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier']" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" domainClass="ecore.EClassifier">
+          <subContainerMappings name="Layer" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:layers" domainClass="mrs.Layer" dropDescriptions="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20into%20layer'] //@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20from%20Explorer%20into%20Layer']">
+            <subContainerMappings name="Metamodel" deletionDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel']" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:metamodels" domainClass="mrs.Metamodel" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Main Package" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:mainPackage" doubleClickDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']">
+                <subNodeMappings name="EClassifier" deletionDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier']" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" domainClass="ecore.EClassifier">
                   <style xsi:type="style:SquareDescription" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                   </style>
                 </subNodeMappings>
-                <subContainerMappings name="EPackage" deletionDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackage']" labelDirectEdit="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" doubleClickDescription="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']" reusedNodeMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']" reusedContainerMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
+                <subContainerMappings name="EPackage" deletionDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackage']" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" doubleClickDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage']" reusedNodeMappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']" reusedContainerMappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
                   <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -95,7 +95,7 @@
           </style>
         </containerMappings>
         <toolSections name="General">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add layer" containerMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']" extraMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add layer" containerMappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']" extraMappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -117,7 +117,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create metamodel" containerMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create metamodel" containerMappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -134,7 +134,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Load metamodel" containerMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Load metamodel" containerMappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -143,7 +143,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Load Profile" containerMappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Load Profile" containerMappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -182,7 +182,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Metamodel into layer" mappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Metamodel into layer" mappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -216,7 +216,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="EClassifier in EPackage" precondition="aql:self.eContainer().oclAsType(ecore::EPackage).getTopMostPackage().eResource().getURI().isPlatformResource()" mappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="EClassifier in EPackage" precondition="aql:self.eContainer().oclAsType(ecore::EPackage).getTopMostPackage().eResource().getURI().isPlatformResource()" mappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -229,7 +229,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Subpackage in EPackage" precondition="aql:self.getTopMostPackage().eResource().getURI().isPlatformResource()" mappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Subpackage in EPackage" precondition="aql:self.getTopMostPackage().eResource().getURI().isPlatformResource()" mappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -242,7 +242,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Open representation" mappings="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package'] //@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Open representation" mappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package'] //@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -270,7 +270,7 @@
             <container name="container"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:For" expression="var:element">
-                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']" containerViewExpression="var:containerView"/>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']" containerViewExpression="var:containerView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -280,7 +280,7 @@
             <container name="container"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:For" expression="var:element">
-                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='MRS%20Viewpoint']/@ownedRepresentations[name='MRS%20Diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="var:containerView"/>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="var:containerView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
