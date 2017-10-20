@@ -16,10 +16,6 @@
             id="OpenRepresentation">
       </javaActions>
       <javaActions
-            actionClass="mrs.custom.externaljavaactions.SelectVisibleItems"
-            id="SelectVisibleItems">
-      </javaActions>
-      <javaActions
             actionClass="mrs.custom.externaljavaactions.LoadProfile"
             id="LoadProfile">
       </javaActions>

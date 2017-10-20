@@ -95,14 +95,6 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_bbuNNJoYEeesbOYx6YDNgg" fontName="Segoe UI" fontHeight="8" bold="true"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_bbuNNZoYEeesbOYx6YDNgg"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_bbu0QJoYEeesbOYx6YDNgg" type="3010" element="_bbSvYJoYEeesbOYx6YDNgg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_bbu0QZoYEeesbOYx6YDNgg" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_bbu0QpoYEeesbOYx6YDNgg"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_bbvbUJoYEeesbOYx6YDNgg" type="3010" element="_bbTWcJoYEeesbOYx6YDNgg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_bbvbUZoYEeesbOYx6YDNgg" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_bbvbUpoYEeesbOYx6YDNgg"/>
-            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_bbrJ4poYEeesbOYx6YDNgg"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_bbrJ45oYEeesbOYx6YDNgg"/>
           </children>
@@ -196,22 +188,6 @@
         <semanticElements xmi:type="ecore:EReference" href="mrs.ecore#//Metamodel/mainPackage"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_bbSIUJoYEeesbOYx6YDNgg" labelAlignment="LEFT" description="_ba_NYJoYEeesbOYx6YDNgg" color="114,159,207">
           <labelFormat>bold</labelFormat>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_bbSvYJoYEeesbOYx6YDNgg" name=" visibleEClassifiers : EClassifier" tooltipText="">
-        <target xmi:type="ecore:EReference" href="mrs.ecore#//Metamodel/visibleEClassifiers"/>
-        <semanticElements xmi:type="ecore:EReference" href="mrs.ecore#//Metamodel/visibleEClassifiers"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_bbSvYZoYEeesbOYx6YDNgg" labelAlignment="LEFT" color="114,159,207">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_bbTWcJoYEeesbOYx6YDNgg" name=" visibleEPackages : EPackage" tooltipText="">
-        <target xmi:type="ecore:EReference" href="mrs.ecore#//Metamodel/visibleEPackages"/>
-        <semanticElements xmi:type="ecore:EReference" href="mrs.ecore#//Metamodel/visibleEPackages"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_bbTWcZoYEeesbOYx6YDNgg" labelAlignment="LEFT" color="114,159,207">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>

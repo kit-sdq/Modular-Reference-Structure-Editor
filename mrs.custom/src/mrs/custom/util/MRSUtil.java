@@ -35,14 +35,13 @@ public class MRSUtil {
 
         Resource metamodelResource = resourceSet.getResource(uri, true);
 
-        if (metamodelResource == null) {
-            System.out.println("Could not load resource " + uri.toString());
+        if (metamodelResource == null || metamodelResource.getContents().size() != 1) {
+            System.out.println("Could not load resource with URI " + uri.toString());
             return null;
         }
-
-        EPackage metamodel = (EPackage) metamodelResource.getContents().get(0);
-
-        return metamodel;
+        else {
+        	return (EPackage) metamodelResource.getContents().get(0);
+        }
     }
     
     /**

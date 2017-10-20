@@ -35,166 +35,166 @@ import org.modelversioning.emfprofile.Profile;
  */
 public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container implements ModularReferenceStructure {
 	/**
-     * The cached value of the '{@link #getLayers() <em>Layers</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLayers() <em>Layers</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getLayers()
-     * @generated
-     * @ordered
-     */
+	 * @see #getLayers()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<Layer> layers;
 
 	/**
-     * The cached value of the '{@link #getLoadedProfiles() <em>Loaded Profiles</em>}' reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLoadedProfiles() <em>Loaded Profiles</em>}' reference list.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see #getLoadedProfiles()
-     * @generated
-     * @ordered
-     */
+	 * @see #getLoadedProfiles()
+	 * @generated
+	 * @ordered
+	 */
     protected EList<Profile> loadedProfiles;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected ModularReferenceStructureImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-        return MrsPackage.Literals.MODULAR_REFERENCE_STRUCTURE;
-    }
+		return MrsPackage.Literals.MODULAR_REFERENCE_STRUCTURE;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EList<Layer> getLayers() {
-        if (layers == null) {
-            layers = new EObjectContainmentWithInverseEList<Layer>(Layer.class, this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS, MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE);
-        }
-        return layers;
-    }
+		if (layers == null) {
+			layers = new EObjectContainmentWithInverseEList<Layer>(Layer.class, this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS, MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE);
+		}
+		return layers;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public EList<Profile> getLoadedProfiles() {
-        if (loadedProfiles == null) {
-            loadedProfiles = new EObjectResolvingEList<Profile>(Profile.class, this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES);
-        }
-        return loadedProfiles;
-    }
+		if (loadedProfiles == null) {
+			loadedProfiles = new EObjectResolvingEList<Profile>(Profile.class, this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES);
+		}
+		return loadedProfiles;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
-                return ((InternalEList<InternalEObject>)(InternalEList<?>)getLayers()).basicAdd(otherEnd, msgs);
-        }
-        return super.eInverseAdd(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLayers()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
-                return ((InternalEList<?>)getLayers()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
+				return ((InternalEList<?>)getLayers()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
-                return getLayers();
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
-                return getLoadedProfiles();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
+				return getLayers();
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
+				return getLoadedProfiles();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
-                getLayers().clear();
-                getLayers().addAll((Collection<? extends Layer>)newValue);
-                return;
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
-                getLoadedProfiles().clear();
-                getLoadedProfiles().addAll((Collection<? extends Profile>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
+				getLayers().clear();
+				getLayers().addAll((Collection<? extends Layer>)newValue);
+				return;
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
+				getLoadedProfiles().clear();
+				getLoadedProfiles().addAll((Collection<? extends Profile>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-        switch (featureID) {
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
-                getLayers().clear();
-                return;
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
-                getLoadedProfiles().clear();
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
+				getLayers().clear();
+				return;
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
+				getLoadedProfiles().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
-                return layers != null && !layers.isEmpty();
-            case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
-                return loadedProfiles != null && !loadedProfiles.isEmpty();
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS:
+				return layers != null && !layers.isEmpty();
+			case MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES:
+				return loadedProfiles != null && !loadedProfiles.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //ModularReferenceStructureImpl
