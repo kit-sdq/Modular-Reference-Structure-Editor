@@ -2,6 +2,7 @@ package mrs.design;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -22,7 +23,6 @@ import org.modelversioning.emfprofile.Stereotype;
 import mrs.Layer;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
-import mrs.MrsPackage;
 import mrs.custom.util.MRSUtil;
 
 public class Services {
@@ -189,6 +189,38 @@ public class Services {
         ePackage.getESubpackages().forEach(x -> result.addAll(getEAllSubPackages(x)));
         return result;
     }
+    
+    public Collection<EPackage> getAllPackages(EPackage ePackage) {
+        Collection<EPackage> result = new ArrayList<EPackage>();
+        result.add(ePackage);
+        result.addAll(getEAllSubPackages(ePackage));
+        return result;
+    }
+    
+    /**
+     * Computes the containment chain of the given EObject
+     * @param eObject The EObject whose containment chain is to be returned 
+     * @param topMostContainer the container on which the search should stop
+     * @return a stack containing all the containers of eObject recursively up to topMostContainer (not included) 
+     */
+    public List<EObject> getChainOfContainers(EObject eObject, EObject topMostContainer) {
+    	List<EObject> acc = new ArrayList<EObject>();
+    	List<EObject> result = getChainOfContainers(eObject, topMostContainer, acc);
+    	for(EObject o : result) {
+    		System.out.println(o);
+    	}
+    	Collections.reverse(result);
+    	return result;
+    }
+    private List<EObject> getChainOfContainers(EObject eObject, EObject topMostContainer, List<EObject> acc) {
+    	if (eObject.eContainer() == topMostContainer)
+    		return acc;
+    	else {
+    		acc.add(eObject.eContainer());
+    		return getChainOfContainers(eObject.eContainer(), topMostContainer, acc);
+    	}
+    			
+    }
 
     /**
      * Returns a String of all EClassifiers in the target metamodel, on which some EClass in the
@@ -234,5 +266,7 @@ public class Services {
     public boolean metamodelAlreadyExists(EPackage mainPackage, ModularReferenceStructure mrs) {
     	return MRSUtil.metamodelAlreadyExists(mainPackage, mrs);
     }
+       
+    
     
 }
