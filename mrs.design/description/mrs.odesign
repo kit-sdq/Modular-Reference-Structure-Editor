@@ -314,7 +314,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="Select Visible EClassifiers" precondition="aql:container.oclIsTypeOf(ecore::EPackage)" forceRefresh="true" message="Select the EClassifiers that should be visible inside this EPackage" candidatesExpression="aql:container.oclAsType(ecore::EPackage).getEAllClassifiers()->concat(container.oclAsType(ecore::EPackage).getAllPackages())" tree="true" rootExpression="aql:container.oclAsType(ecore::EPackage)" childrenExpression="aql:self.oclAsType(ecore::EPackage).eClassifiers->union(self.oclAsType(ecore::EPackage).eSubpackages->asSequence())" preSelectedCandidatesExpression="aql:containerView.eAllContents()->select(x | x.oclAsType(diagram::DDiagramElement).target.oclIsKindOf(ecore::EClassifier))->collect(x | x.oclAsType(diagram::DDiagramElement).target)">
+          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="Select Visible EClassifiers/EPackages" precondition="aql:container.oclIsTypeOf(ecore::EPackage)" forceRefresh="true" message="Select the EClassifiers that should be visible inside this EPackage" candidatesExpression="aql:container.oclAsType(ecore::EPackage).getEAllClassifiers()->concat(container.oclAsType(ecore::EPackage).getAllPackages())" tree="true" rootExpression="aql:container.oclAsType(ecore::EPackage)" childrenExpression="aql:self.oclAsType(ecore::EPackage).eClassifiers->union(self.oclAsType(ecore::EPackage).eSubpackages->asSequence())" preSelectedCandidatesExpression="aql:containerView.eAllContents()->select(x | x.oclAsType(diagram::DDiagramElement).target.oclIsKindOf(ecore::EClassifier))->collect(x | x.oclAsType(diagram::DDiagramElement).target)">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -334,31 +334,12 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']" containerViewExpression="var:packageView"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="Select Visible EPackages" precondition="aql:container.oclIsTypeOf(ecore::EPackage)" forceRefresh="true" message="Select the EPackages that should be visible inside this EPackage" candidatesExpression="aql:container.oclAsType(ecore::EPackage).getAllPackages()" tree="true" rootExpression="aql:container.oclAsType(ecore::EPackage)" childrenExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages" preSelectedCandidatesExpression="aql:containerView.eAllContents()->select(x | x.oclAsType(diagram::DDiagramElement).target.oclIsKindOf(ecore::EPackage))->collect(x | x.oclAsType(diagram::DDiagramElement).target)">
-            <element name="element"/>
-            <containerView name="containerView"/>
-            <container name="container"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:For" expression="var:element">
-                <subModelOperations xsi:type="tool_1:Let" variableName="containers" valueExpression="aql:i.getChainOfContainers(container)">
-                  <subModelOperations xsi:type="tool_1:Let" variableName="packageView" valueExpression="var:containerView">
-                    <subModelOperations xsi:type="tool_1:For" expression="var:containers" iteratorName="j">
-                      <subModelOperations xsi:type="tool_1:Let" variableName="existingPackageViews" valueExpression="aql:packageView.oclAsType(diagram::DNodeContainer).containers->select(x: diagram::DDiagramElementContainer | x.target == j)">
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:existingPackageViews->isEmpty() = false">
-                          <subModelOperations xsi:type="tool_1:Let" variableName="packageView" valueExpression="aql:existingPackageViews->first()"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:existingPackageViews->isEmpty()">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="var:packageView" variableName="packageView"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsKindOf(ecore::EClassifier)">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subNodeMappings[name='EClassifier']" containerViewExpression="var:packageView"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="var:packageView"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsTypeOf(ecore::EPackage)">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="var:packageView"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
