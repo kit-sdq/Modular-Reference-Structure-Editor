@@ -206,9 +206,6 @@ public class Services {
     public List<EObject> getChainOfContainers(EObject eObject, EObject topMostContainer) {
     	List<EObject> acc = new ArrayList<EObject>();
     	List<EObject> result = getChainOfContainers(eObject, topMostContainer, acc);
-    	for(EObject o : result) {
-    		System.out.println(o);
-    	}
     	Collections.reverse(result);
     	return result;
     }
@@ -268,5 +265,8 @@ public class Services {
     }
        
     
-    
+    /*public EObject print(EObject o) {
+    	System.out.println(o);
+    	return o;
+    }*/
 }
