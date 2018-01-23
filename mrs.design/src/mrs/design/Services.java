@@ -264,6 +264,42 @@ public class Services {
     	return MRSUtil.metamodelAlreadyExists(mainPackage, mrs);
     }
        
+    public boolean edgeIsNotTransitive(DEdge edge) {
+    	EdgeTarget sourceNode = edge.getSourceNode();
+        EdgeTarget targetNode = edge.getTargetNode();
+
+        // Initialize queue with the target node
+        Queue<EdgeTarget> queue = new LinkedList<EdgeTarget>();
+        Collection<EdgeTarget> sourceAdjacentNodes = sourceNode.getOutgoingEdges().stream().map(x -> x.getTargetNode())
+                .collect(Collectors.toList());
+        sourceAdjacentNodes.remove(targetNode);
+        queue.addAll(sourceAdjacentNodes);
+        
+        // Mark the target node
+        Collection<EdgeTarget> markedNodes = new ArrayList<EdgeTarget>();
+        markedNodes.add(sourceNode);
+        markedNodes.add(targetNode);
+        
+        // Run BFS. If the targetNode is reachable from the sourceNode via another path, then the edge source->target
+        // is transitive
+        while (!queue.isEmpty()) {
+            EdgeTarget current = queue.poll();
+            Collection<EdgeTarget> adjacentNodes = current.getOutgoingEdges().stream().map(x -> x.getTargetNode())
+                    .collect(Collectors.toList());
+
+            if (adjacentNodes.contains(targetNode))
+                return false;
+
+            Collection<EdgeTarget> unmarkedAdjacentNodes = adjacentNodes.stream().filter(x -> !markedNodes.contains(x))
+                    .collect(Collectors.toList());
+            queue.addAll(unmarkedAdjacentNodes);
+            markedNodes.addAll(unmarkedAdjacentNodes);
+        }
+        
+        
+        
+    	return true;
+    }
     
     /*public EObject print(EObject o) {
     	System.out.println(o);
