@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="mrs" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="mrs" version="12.0.0.2017041100">
   <ownedViewpoints name="mrs.viewpoint" label="MRS Viewpoint" modelFileExtension="mrs">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="mrs.diagram" label="MRS Diagram" initialisation="true" domainClass="mrs.ModularReferenceStructure" enablePopupBars="true">
       <metamodel href="http://www.example.org/mrs#/"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
-      <filters xsi:type="filter:CompositeFilterDescription" name="Hide dependencies">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@edgeMappings[name='Dependency']" viewConditionExpression="aql:self.edgeIsNotTransitive()"/>
-      </filters>
       <defaultLayer name="Default">
         <edgeMappings name="Dependency" sourceMapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetMapping="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetFinderExpression="aql:self.getExtendedMetamodels()->union(self.getReferencedMetamodels())">
           <style>
@@ -355,6 +352,12 @@
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:OperationAction" name="Hide transitive dependencies">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.hideTransitiveEdges(true)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

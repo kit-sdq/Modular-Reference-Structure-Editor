@@ -16,7 +16,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.modelversioning.emfprofile.Stereotype;
 
@@ -263,46 +265,73 @@ public class Services {
     public boolean metamodelAlreadyExists(EPackage mainPackage, ModularReferenceStructure mrs) {
     	return MRSUtil.metamodelAlreadyExists(mainPackage, mrs);
     }
-       
-    public boolean edgeIsNotTransitive(DEdge edge) {
+    
+    /**
+     * Hides all edges in the diagram that are transitive. An edge is considered transitive if there exists another path from its source to its target 
+     * @param diagram the MRS diagram
+     * @param excludeCyclicalDependencies if true, then edges that are part of cycles will not be hidden regardless of their being transitive or not
+     */
+    public void hideTransitiveEdges(DSemanticDiagram diagram, boolean excludeCyclicalDependencies) {
+    	EList<DEdge> edges = diagram.getEdges();
+    	Collection<DEdge> transitiveEdges = new ArrayList<DEdge>();
+    	for (DEdge edge : edges) {
+    		if (excludeCyclicalDependencies && edgeIsPartOfCycle(edge))
+    			continue;
+    		if (edgeIsTransitive(edge, transitiveEdges)) {
+    			transitiveEdges.add(edge);
+    		}
+    	}
+    	for (DEdge edge : transitiveEdges) {
+    		HideFilterHelper.INSTANCE.hide(edge);
+    	}
+    }
+    
+    private boolean edgeIsTransitive(DEdge edge, Collection<DEdge> transitiveEdges) {
     	EdgeTarget sourceNode = edge.getSourceNode();
         EdgeTarget targetNode = edge.getTargetNode();
-
+        
+        
         // Initialize queue with the target node
         Queue<EdgeTarget> queue = new LinkedList<EdgeTarget>();
-        Collection<EdgeTarget> sourceAdjacentNodes = sourceNode.getOutgoingEdges().stream().map(x -> x.getTargetNode())
-                .collect(Collectors.toList());
+        Collection<EdgeTarget> sourceAdjacentNodes = sourceNode.getOutgoingEdges().stream()
+        		.filter(e -> !transitiveEdges.contains(e)) // only consider edges that are not already marked as transitive
+        		.map(x -> x.getTargetNode()).collect(Collectors.toList());
         sourceAdjacentNodes.remove(targetNode);
-        queue.addAll(sourceAdjacentNodes);
         
-        // Mark the target node
+        queue.addAll(sourceAdjacentNodes); //add all nodes adjacent to the source to the queue, except for the target node
+        
+        
         Collection<EdgeTarget> markedNodes = new ArrayList<EdgeTarget>();
-        markedNodes.add(sourceNode);
-        markedNodes.add(targetNode);
+        markedNodes.addAll(queue); //mark all nodes already in the queue, i.e. all nodes adjacent to the source to the queue, except for the target node
+        markedNodes.add(sourceNode); // mark the source node to avoid it being revisited
         
-        // Run BFS. If the targetNode is reachable from the sourceNode via another path, then the edge source->target
-        // is transitive
+        // Run BFS. If the targetNode is reachable from the sourceNode via another path that does not contain an edge that is already marked as transitive, 
+        //then the edge source->target is transitive
         while (!queue.isEmpty()) {
             EdgeTarget current = queue.poll();
-            Collection<EdgeTarget> adjacentNodes = current.getOutgoingEdges().stream().map(x -> x.getTargetNode())
-                    .collect(Collectors.toList());
+            Collection<EdgeTarget> adjacentNodes = current.getOutgoingEdges().stream()
+            		.filter(e -> !transitiveEdges.contains(e)) // only consider edges that are not already marked as transitive
+            		.map(x -> x.getTargetNode()).collect(Collectors.toList());
 
-            if (adjacentNodes.contains(targetNode))
-                return false;
+            // if the target node is adjacent to the node currently being investigated, 
+            // then the considered edge is transitive
+            if (adjacentNodes.contains(targetNode)) {
+                return true; 
+            }
 
             Collection<EdgeTarget> unmarkedAdjacentNodes = adjacentNodes.stream().filter(x -> !markedNodes.contains(x))
-                    .collect(Collectors.toList());
-            queue.addAll(unmarkedAdjacentNodes);
-            markedNodes.addAll(unmarkedAdjacentNodes);
+                    .collect(Collectors.toList()); //get all unmarked adjacent nodes
+            queue.addAll(unmarkedAdjacentNodes); // add them to the queue
+            markedNodes.addAll(unmarkedAdjacentNodes); // mark them
         }
         
-        
-        
-    	return true;
+    	return false;
     }
     
     /*public EObject print(EObject o) {
     	System.out.println(o);
     	return o;
     }*/
+    
+    
 }
