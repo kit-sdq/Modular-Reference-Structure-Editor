@@ -4,7 +4,7 @@
       label="MRS Buckminster"
       version="1.0.0.qualifier">
 
-   <description url="http://www.example.com/description">
+   <description url="https://github.com/kit-sdq/MRS-Editor">
       This feature contains the buckminster build structure for the
 MRS graphical editor.
    </description>
