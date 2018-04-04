@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="mrs.buckminster"
-      label="MRS Buckminster"
+      label="Modular Reference Structure Graphical Editor"
       version="1.0.0.qualifier">
 
    <description url="https://github.com/kit-sdq/MRS-Editor">
