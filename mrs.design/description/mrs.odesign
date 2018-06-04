@@ -33,7 +33,7 @@
         </edgeMappings>
         <containerMappings name="ModularReferenceStructure" semanticCandidatesExpression="var:self" domainClass="mrs.ModularReferenceStructure" childrenPresentation="VerticalStack">
           <subContainerMappings name="Layer" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:layers" domainClass="mrs.Layer" dropDescriptions="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20into%20layer'] //@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20from%20Explorer%20into%20Layer']">
-            <subContainerMappings name="Metamodel" deletionDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel']" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:metamodels" domainClass="mrs.Metamodel" childrenPresentation="VerticalStack">
+            <subContainerMappings name="Metamodel" deletionDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel']" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="service:getMetamodels()" domainClass="mrs.Metamodel" childrenPresentation="VerticalStack">
               <subContainerMappings name="Main Package" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:mainPackage" doubleClickDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage'] //@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackage%20%20from%20Model'] //@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20from%20Model']">
                 <subContainerMappings name="EClassifier" deletionDescription="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier']" labelDirectEdit="//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:eClassifiers" createElements="false" domainClass="ecore::EClassifier">
                   <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" heightComputationExpression="1">
@@ -124,7 +124,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mrs.Metamodel" referenceName="metamodels"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mrs.Metamodel" referenceName="layerElements"/>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Create New Metamodel" id="CreateMetamodel">
                   <parameters name="metamodel" value="var:instance"/>
                 </subModelOperations>
@@ -160,7 +160,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target.oclAsType(mrs::Layer)">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="metamodels" elementExpression="var:element"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="layerElements" elementExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -191,7 +191,7 @@
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="metamodels"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="layerElements"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -204,7 +204,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.oclIsTypeOf(ecore::EPackage)">
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.getTopMostPackage().metamodelAlreadyExists(newSemanticContainer.oclAsType(mrs::Layer).modularReferenceStructure) == false">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mrs::Metamodel" referenceName="metamodels">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mrs::Metamodel" referenceName="layerElements">
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="mainPackage" valueExpression="aql:element.getTopMostPackage()"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.mainPackage.name"/>
                     </subModelOperations>

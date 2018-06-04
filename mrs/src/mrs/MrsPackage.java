@@ -122,22 +122,22 @@ public interface MrsPackage extends EPackage {
 	int LAYER__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metamodels</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LAYER__METAMODELS = 1;
-
-	/**
 	 * The feature id for the '<em><b>Modular Reference Structure</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LAYER__MODULAR_REFERENCE_STRUCTURE = 2;
+	int LAYER__MODULAR_REFERENCE_STRUCTURE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Layer Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAYER__LAYER_ELEMENTS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Layer</em>' class.
@@ -158,6 +158,43 @@ public interface MrsPackage extends EPackage {
 	int LAYER_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link mrs.impl.LayerElementImpl <em>Layer Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see mrs.impl.LayerElementImpl
+	 * @see mrs.impl.MrsPackageImpl#getLayerElement()
+	 * @generated
+	 */
+	int LAYER_ELEMENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Layer</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAYER_ELEMENT__LAYER = 0;
+
+	/**
+	 * The number of structural features of the '<em>Layer Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAYER_ELEMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Layer Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LAYER_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link mrs.impl.MetamodelImpl <em>Metamodel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,22 +205,22 @@ public interface MrsPackage extends EPackage {
 	int METAMODEL = 2;
 
 	/**
-	 * The feature id for the '<em><b>Main Package</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METAMODEL__MAIN_PACKAGE = 0;
-
-	/**
 	 * The feature id for the '<em><b>Layer</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METAMODEL__LAYER = 1;
+	int METAMODEL__LAYER = LAYER_ELEMENT__LAYER;
+
+	/**
+	 * The feature id for the '<em><b>Main Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METAMODEL__MAIN_PACKAGE = LAYER_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -192,7 +229,7 @@ public interface MrsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METAMODEL__NAME = 2;
+    int METAMODEL__NAME = LAYER_ELEMENT_FEATURE_COUNT + 1;
 
     /**
 	 * The number of structural features of the '<em>Metamodel</em>' class.
@@ -201,7 +238,7 @@ public interface MrsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METAMODEL_FEATURE_COUNT = 3;
+	int METAMODEL_FEATURE_COUNT = LAYER_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Metamodel</em>' class.
@@ -210,7 +247,7 @@ public interface MrsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METAMODEL_OPERATION_COUNT = 0;
+	int METAMODEL_OPERATION_COUNT = LAYER_ELEMENT_OPERATION_COUNT + 0;
 
 
 	/**
@@ -267,17 +304,6 @@ public interface MrsPackage extends EPackage {
 	EAttribute getLayer_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link mrs.Layer#getMetamodels <em>Metamodels</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Metamodels</em>'.
-	 * @see mrs.Layer#getMetamodels()
-	 * @see #getLayer()
-	 * @generated
-	 */
-	EReference getLayer_Metamodels();
-
-	/**
 	 * Returns the meta object for the container reference '{@link mrs.Layer#getModularReferenceStructure <em>Modular Reference Structure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -287,6 +313,17 @@ public interface MrsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getLayer_ModularReferenceStructure();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link mrs.Layer#getLayerElements <em>Layer Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Layer Elements</em>'.
+	 * @see mrs.Layer#getLayerElements()
+	 * @see #getLayer()
+	 * @generated
+	 */
+	EReference getLayer_LayerElements();
 
 	/**
 	 * Returns the meta object for class '{@link mrs.Metamodel <em>Metamodel</em>}'.
@@ -310,17 +347,6 @@ public interface MrsPackage extends EPackage {
 	EReference getMetamodel_MainPackage();
 
 	/**
-	 * Returns the meta object for the container reference '{@link mrs.Metamodel#getLayer <em>Layer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Layer</em>'.
-	 * @see mrs.Metamodel#getLayer()
-	 * @see #getMetamodel()
-	 * @generated
-	 */
-	EReference getMetamodel_Layer();
-
-	/**
 	 * Returns the meta object for the attribute '{@link mrs.Metamodel#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -332,6 +358,27 @@ public interface MrsPackage extends EPackage {
     EAttribute getMetamodel_Name();
 
     /**
+	 * Returns the meta object for class '{@link mrs.LayerElement <em>Layer Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Layer Element</em>'.
+	 * @see mrs.LayerElement
+	 * @generated
+	 */
+	EClass getLayerElement();
+
+	/**
+	 * Returns the meta object for the container reference '{@link mrs.LayerElement#getLayer <em>Layer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Layer</em>'.
+	 * @see mrs.LayerElement#getLayer()
+	 * @see #getLayerElement()
+	 * @generated
+	 */
+	EReference getLayerElement_Layer();
+
+				/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -399,20 +446,20 @@ public interface MrsPackage extends EPackage {
 		EAttribute LAYER__NAME = eINSTANCE.getLayer_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Metamodels</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference LAYER__METAMODELS = eINSTANCE.getLayer_Metamodels();
-
-		/**
 		 * The meta object literal for the '<em><b>Modular Reference Structure</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference LAYER__MODULAR_REFERENCE_STRUCTURE = eINSTANCE.getLayer_ModularReferenceStructure();
+
+		/**
+		 * The meta object literal for the '<em><b>Layer Elements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LAYER__LAYER_ELEMENTS = eINSTANCE.getLayer_LayerElements();
 
 		/**
 		 * The meta object literal for the '{@link mrs.impl.MetamodelImpl <em>Metamodel</em>}' class.
@@ -433,20 +480,30 @@ public interface MrsPackage extends EPackage {
 		EReference METAMODEL__MAIN_PACKAGE = eINSTANCE.getMetamodel_MainPackage();
 
 		/**
-		 * The meta object literal for the '<em><b>Layer</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference METAMODEL__LAYER = eINSTANCE.getMetamodel_Layer();
-
-        /**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
 		 * @generated
 		 */
         EAttribute METAMODEL__NAME = eINSTANCE.getMetamodel_Name();
+
+								/**
+		 * The meta object literal for the '{@link mrs.impl.LayerElementImpl <em>Layer Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see mrs.impl.LayerElementImpl
+		 * @see mrs.impl.MrsPackageImpl#getLayerElement()
+		 * @generated
+		 */
+		EClass LAYER_ELEMENT = eINSTANCE.getLayerElement();
+
+								/**
+		 * The meta object literal for the '<em><b>Layer</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LAYER_ELEMENT__LAYER = eINSTANCE.getLayerElement_Layer();
 
 	}
 

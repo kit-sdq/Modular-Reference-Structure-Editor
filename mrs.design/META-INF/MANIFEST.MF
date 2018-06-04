@@ -10,12 +10,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.sirius,
  org.eclipse.sirius.common.acceleo.aql,
- mrs,
  org.eclipse.sirius.diagram,
  org.eclipse.emf.transaction,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
- mrs.custom;bundle-version="1.0.0"
+ mrs.custom;bundle-version="1.0.0",
+ mrs;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: mrs.design

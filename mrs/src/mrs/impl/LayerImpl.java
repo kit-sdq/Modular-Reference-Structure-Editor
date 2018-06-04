@@ -5,7 +5,7 @@ package mrs.impl;
 import java.util.Collection;
 
 import mrs.Layer;
-import mrs.Metamodel;
+import mrs.LayerElement;
 import mrs.ModularReferenceStructure;
 import mrs.MrsPackage;
 
@@ -32,8 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link mrs.impl.LayerImpl#getName <em>Name</em>}</li>
- *   <li>{@link mrs.impl.LayerImpl#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link mrs.impl.LayerImpl#getModularReferenceStructure <em>Modular Reference Structure</em>}</li>
+ *   <li>{@link mrs.impl.LayerImpl#getLayerElements <em>Layer Elements</em>}</li>
  * </ul>
  *
  * @generated
@@ -60,14 +60,14 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
+	 * The cached value of the '{@link #getLayerElements() <em>Layer Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMetamodels()
+	 * @see #getLayerElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Metamodel> metamodels;
+	protected EList<LayerElement> layerElements;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -107,18 +107,6 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MrsPackage.LAYER__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Metamodel> getMetamodels() {
-		if (metamodels == null) {
-			metamodels = new EObjectContainmentWithInverseEList<Metamodel>(Metamodel.class, this, MrsPackage.LAYER__METAMODELS, MrsPackage.METAMODEL__LAYER);
-		}
-		return metamodels;
 	}
 
 	/**
@@ -167,16 +155,28 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LayerElement> getLayerElements() {
+		if (layerElements == null) {
+			layerElements = new EObjectContainmentWithInverseEList<LayerElement>(LayerElement.class, this, MrsPackage.LAYER__LAYER_ELEMENTS, MrsPackage.LAYER_ELEMENT__LAYER);
+		}
+		return layerElements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MrsPackage.LAYER__METAMODELS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMetamodels()).basicAdd(otherEnd, msgs);
 			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetModularReferenceStructure((ModularReferenceStructure)otherEnd, msgs);
+			case MrsPackage.LAYER__LAYER_ELEMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLayerElements()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -189,10 +189,10 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MrsPackage.LAYER__METAMODELS:
-				return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
 			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
 				return basicSetModularReferenceStructure(null, msgs);
+			case MrsPackage.LAYER__LAYER_ELEMENTS:
+				return ((InternalEList<?>)getLayerElements()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -221,10 +221,10 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 		switch (featureID) {
 			case MrsPackage.LAYER__NAME:
 				return getName();
-			case MrsPackage.LAYER__METAMODELS:
-				return getMetamodels();
 			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
 				return getModularReferenceStructure();
+			case MrsPackage.LAYER__LAYER_ELEMENTS:
+				return getLayerElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -241,12 +241,12 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 			case MrsPackage.LAYER__NAME:
 				setName((String)newValue);
 				return;
-			case MrsPackage.LAYER__METAMODELS:
-				getMetamodels().clear();
-				getMetamodels().addAll((Collection<? extends Metamodel>)newValue);
-				return;
 			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
 				setModularReferenceStructure((ModularReferenceStructure)newValue);
+				return;
+			case MrsPackage.LAYER__LAYER_ELEMENTS:
+				getLayerElements().clear();
+				getLayerElements().addAll((Collection<? extends LayerElement>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -263,11 +263,11 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 			case MrsPackage.LAYER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case MrsPackage.LAYER__METAMODELS:
-				getMetamodels().clear();
-				return;
 			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
 				setModularReferenceStructure((ModularReferenceStructure)null);
+				return;
+			case MrsPackage.LAYER__LAYER_ELEMENTS:
+				getLayerElements().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -283,10 +283,10 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 		switch (featureID) {
 			case MrsPackage.LAYER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case MrsPackage.LAYER__METAMODELS:
-				return metamodels != null && !metamodels.isEmpty();
 			case MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE:
 				return getModularReferenceStructure() != null;
+			case MrsPackage.LAYER__LAYER_ELEMENTS:
+				return layerElements != null && !layerElements.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

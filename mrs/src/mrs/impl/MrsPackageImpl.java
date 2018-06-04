@@ -3,6 +3,7 @@
 package mrs.impl;
 
 import mrs.Layer;
+import mrs.LayerElement;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
 import mrs.MrsFactory;
@@ -44,6 +45,13 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * @generated
 	 */
 	private EClass metamodelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass layerElementEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -160,7 +168,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLayer_Metamodels() {
+	public EReference getLayer_ModularReferenceStructure() {
 		return (EReference)layerEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -169,7 +177,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getLayer_ModularReferenceStructure() {
+	public EReference getLayer_LayerElements() {
 		return (EReference)layerEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -193,23 +201,32 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getMetamodel_Layer() {
-		return (EReference)metamodelEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
     public EAttribute getMetamodel_Name() {
-		return (EAttribute)metamodelEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)metamodelEClass.getEStructuralFeatures().get(1);
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLayerElement() {
+		return layerElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLayerElement_Layer() {
+		return (EReference)layerElementEClass.getEStructuralFeatures().get(0);
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -243,13 +260,15 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 
 		layerEClass = createEClass(LAYER);
 		createEAttribute(layerEClass, LAYER__NAME);
-		createEReference(layerEClass, LAYER__METAMODELS);
 		createEReference(layerEClass, LAYER__MODULAR_REFERENCE_STRUCTURE);
+		createEReference(layerEClass, LAYER__LAYER_ELEMENTS);
 
 		metamodelEClass = createEClass(METAMODEL);
 		createEReference(metamodelEClass, METAMODEL__MAIN_PACKAGE);
-		createEReference(metamodelEClass, METAMODEL__LAYER);
 		createEAttribute(metamodelEClass, METAMODEL__NAME);
+
+		layerElementEClass = createEClass(LAYER_ELEMENT);
+		createEReference(layerElementEClass, LAYER_ELEMENT__LAYER);
 	}
 
 	/**
@@ -284,6 +303,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		metamodelEClass.getESuperTypes().add(this.getLayerElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(modularReferenceStructureEClass, ModularReferenceStructure.class, "ModularReferenceStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -292,13 +312,15 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 
 		initEClass(layerEClass, Layer.class, "Layer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLayer_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLayer_Metamodels(), this.getMetamodel(), this.getMetamodel_Layer(), "metamodels", null, 0, -1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLayer_ModularReferenceStructure(), this.getModularReferenceStructure(), this.getModularReferenceStructure_Layers(), "modularReferenceStructure", null, 1, 1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLayer_LayerElements(), this.getLayerElement(), this.getLayerElement_Layer(), "layerElements", null, 0, -1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(metamodelEClass, Metamodel.class, "Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodel_MainPackage(), theEcorePackage.getEPackage(), null, "mainPackage", null, 1, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMetamodel_Layer(), this.getLayer(), this.getLayer_Metamodels(), "layer", null, 1, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMetamodel_Name(), theEcorePackage.getEString(), "name", "aMetamodel", 1, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(layerElementEClass, LayerElement.class, "LayerElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLayerElement_Layer(), this.getLayer(), this.getLayer_LayerElements(), "layer", null, 1, 1, LayerElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

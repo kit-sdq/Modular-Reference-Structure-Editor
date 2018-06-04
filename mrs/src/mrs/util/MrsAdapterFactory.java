@@ -80,6 +80,10 @@ public class MrsAdapterFactory extends AdapterFactoryImpl {
 				return createMetamodelAdapter();
 			}
 			@Override
+			public Adapter caseLayerElement(LayerElement object) {
+				return createLayerElementAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -138,6 +142,20 @@ public class MrsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMetamodelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link mrs.LayerElement <em>Layer Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see mrs.LayerElement
+	 * @generated
+	 */
+	public Adapter createLayerElementAdapter() {
 		return null;
 	}
 

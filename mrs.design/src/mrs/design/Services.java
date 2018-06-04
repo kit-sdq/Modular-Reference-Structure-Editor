@@ -328,6 +328,10 @@ public class Services {
     	return false;
     }
     
+    public Collection<Metamodel> getMetamodels(Layer layer) {
+    	return MRSUtil.getMetamodels(layer);
+    }
+    
     /*public EObject print(EObject o) {
     	System.out.println(o);
     	return o;

@@ -64,6 +64,7 @@ public class LayerItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addLayerElementsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -91,6 +92,28 @@ public class LayerItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Layer Elements feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLayerElementsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Layer_layerElements_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Layer_layerElements_feature", "_UI_Layer_type"),
+				 MrsPackage.Literals.LAYER__LAYER_ELEMENTS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -102,7 +125,7 @@ public class LayerItemProvider
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(MrsPackage.Literals.LAYER__METAMODELS);
+			childrenFeatures.add(MrsPackage.Literals.LAYER__LAYER_ELEMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -161,7 +184,7 @@ public class LayerItemProvider
 			case MrsPackage.LAYER__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case MrsPackage.LAYER__METAMODELS:
+			case MrsPackage.LAYER__LAYER_ELEMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -181,7 +204,7 @@ public class LayerItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(MrsPackage.Literals.LAYER__METAMODELS,
+				(MrsPackage.Literals.LAYER__LAYER_ELEMENTS,
 				 MrsFactory.eINSTANCE.createMetamodel()));
 	}
 

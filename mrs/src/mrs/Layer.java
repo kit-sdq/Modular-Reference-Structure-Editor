@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link mrs.Layer#getName <em>Name</em>}</li>
- *   <li>{@link mrs.Layer#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link mrs.Layer#getModularReferenceStructure <em>Modular Reference Structure</em>}</li>
+ *   <li>{@link mrs.Layer#getLayerElements <em>Layer Elements</em>}</li>
  * </ul>
  *
  * @see mrs.MrsPackage#getLayer()
@@ -52,24 +52,6 @@ public interface Layer extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Metamodels</b></em>' containment reference list.
-	 * The list contents are of type {@link mrs.Metamodel}.
-	 * It is bidirectional and its opposite is '{@link mrs.Metamodel#getLayer <em>Layer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Metamodels</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Metamodels</em>' containment reference list.
-	 * @see mrs.MrsPackage#getLayer_Metamodels()
-	 * @see mrs.Metamodel#getLayer
-	 * @model opposite="layer" containment="true"
-	 * @generated
-	 */
-	EList<Metamodel> getMetamodels();
-
-	/**
 	 * Returns the value of the '<em><b>Modular Reference Structure</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link mrs.ModularReferenceStructure#getLayers <em>Layers</em>}'.
 	 * <!-- begin-user-doc -->
@@ -96,5 +78,23 @@ public interface Layer extends EObject {
 	 * @generated
 	 */
 	void setModularReferenceStructure(ModularReferenceStructure value);
+
+	/**
+	 * Returns the value of the '<em><b>Layer Elements</b></em>' containment reference list.
+	 * The list contents are of type {@link mrs.LayerElement}.
+	 * It is bidirectional and its opposite is '{@link mrs.LayerElement#getLayer <em>Layer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Layer Elements</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Layer Elements</em>' containment reference list.
+	 * @see mrs.MrsPackage#getLayer_LayerElements()
+	 * @see mrs.LayerElement#getLayer
+	 * @model opposite="layer" containment="true"
+	 * @generated
+	 */
+	EList<LayerElement> getLayerElements();
 
 } // Layer

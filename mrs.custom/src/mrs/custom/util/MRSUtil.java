@@ -3,6 +3,7 @@ package mrs.custom.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
@@ -87,7 +88,7 @@ public class MRSUtil {
     
     public static boolean metamodelAlreadyExists(EPackage mainPackage, ModularReferenceStructure mrs) {
 		for (Layer layer : mrs.getLayers()) {
-			for (Metamodel metamodel : layer.getMetamodels()) {
+			for (Metamodel metamodel : getMetamodels(layer)) {
 				if (mainPackage.equals(metamodel.getMainPackage()))
 					return true;
 			}
@@ -105,7 +106,7 @@ public class MRSUtil {
     public static Collection<Metamodel> getAllMetamodels(ModularReferenceStructure mrs) {
         Collection<Metamodel> result = new ArrayList<Metamodel>();
         for (Layer l : mrs.getLayers()) {
-            result.addAll(l.getMetamodels());
+            result.addAll(getMetamodels(l));
         }
         return result;
     }
@@ -124,4 +125,7 @@ public class MRSUtil {
             return getTopMostPackage(ePackage.getESuperPackage());
     }
 
+    public static Collection<Metamodel> getMetamodels(Layer layer) {
+    	return layer.getLayerElements().stream().filter(e -> e instanceof Metamodel).map(e -> (Metamodel) e).collect(Collectors.toList());
+    }
 }
