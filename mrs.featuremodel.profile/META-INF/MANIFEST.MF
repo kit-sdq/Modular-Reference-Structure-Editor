@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MRSFeatureModel
+Bundle-SymbolicName: mrs.featuremodel.profile;singleton:="true"
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.modelversioning.emfprofile;bundle-version="1.1.0",
+ org.modelversioning.emfprofile.registry;bundle-version="1.0.0"

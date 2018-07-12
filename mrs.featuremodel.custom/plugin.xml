@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="mrs.featuremodel.custom.externaljavaactions.LoadFeatureDiagramIntoMRS"
+            id="LoadFeatureDiagramIntoMRS">
+      </javaActions>
+      <javaActions
+            actionClass="mrs.featuremodel.custom.externaljavaactions.LoadFeatureDiagramIntoLayer"
+            id="LoadFeatureDiagramIntoLayer">
+      </javaActions>
+      <javaActions
+            actionClass="mrs.featuremodel.custom.externaljavaactions.SetLoadedFeatures"
+            id="SetLoadedFeatures">
+      </javaActions>
+      <javaActions
+            actionClass="mrs.featuremodel.custom.externaljavaactions.SetPluginURL"
+            id="SetPluginURL">
+      </javaActions>
+   </extension>
+
+</plugin>

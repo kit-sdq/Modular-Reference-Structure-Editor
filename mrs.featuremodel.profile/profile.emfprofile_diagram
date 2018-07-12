@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:emfprofile="http://www.modelversioning.org/emfprofile/1.1" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <emfprofile:Profile xmi:id="_xtMksG__Eei8eZwJQy_kHA" name="MRSFeatureModel" nsURI="mrs.featuremodel" nsPrefix="myprofile">
+    <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_ca7rgHAAEei8eZwJQy_kHA" name="FeatureModelSupport">
+      <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
+      <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_hzWhsHAAEei8eZwJQy_kHA" name="featurediagram" upperBound="-1">
+        <eType xmi:type="ecore:EClass" href="http://www.example.org/featuremodel#//FeatureDiagram"/>
+      </eStructuralFeatures>
+      <extensions xmi:type="emfprofile:Extension" xmi:id="_gwD4sHAAEei8eZwJQy_kHA">
+        <target xmi:type="ecore:EClass" href="http://www.example.org/mrs#//ModularReferenceStructure"/>
+      </extensions>
+    </eClassifiers>
+    <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_rxzu4HAAEei8eZwJQy_kHA" name="LinkedFeatures">
+      <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
+      <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_xSPRkHAAEei8eZwJQy_kHA" name="features" upperBound="-1">
+        <eType xmi:type="ecore:EClass" href="http://www.example.org/featuremodel#//Feature"/>
+      </eStructuralFeatures>
+      <extensions xmi:type="emfprofile:Extension" xmi:id="_zFTxsHAAEei8eZwJQy_kHA">
+        <target xmi:type="ecore:EClass" href="http://www.example.org/mrs#//Layer"/>
+      </extensions>
+    </eClassifiers>
+    <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_2cGuYHAAEei8eZwJQy_kHA" name="IncludesRelation">
+      <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
+      <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_AdfTwHABEei8eZwJQy_kHA" name="metamodel" upperBound="-1">
+        <eType xmi:type="ecore:EClass" href="http://www.example.org/mrs#//Metamodel"/>
+      </eStructuralFeatures>
+      <extensions xmi:type="emfprofile:Extension" xmi:id="__jkCIHAAEei8eZwJQy_kHA">
+        <target xmi:type="ecore:EClass" href="http://www.example.org/featuremodel#//Feature"/>
+      </extensions>
+    </eClassifiers>
+    <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_86nZIH-GEeixpsGYoMKmkQ" name="PluginURL">
+      <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_DOSWoH-HEeixpsGYoMKmkQ" name="url">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <extensions xmi:type="emfprofile:Extension" xmi:id="_AH7CoH-HEeixpsGYoMKmkQ">
+        <target xmi:type="ecore:EClass" href="http://www.example.org/mrs#//Metamodel"/>
+      </extensions>
+    </eClassifiers>
+  </emfprofile:Profile>
+  <notation:Diagram xmi:id="_xtPoAG__Eei8eZwJQy_kHA" type="EMFProfile" element="_xtMksG__Eei8eZwJQy_kHA" name="profile.emfprofile_diagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_xtPoAW__Eei8eZwJQy_kHA"/>
+  </notation:Diagram>
+</xmi:XMI>

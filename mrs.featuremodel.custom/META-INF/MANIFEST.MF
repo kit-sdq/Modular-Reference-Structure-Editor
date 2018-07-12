@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MRS FeatureModel Extension (Custom)
+Bundle-SymbolicName: mrs.featuremodel.custom;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: mrs.featuremodel.custom.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius,
+ org.palladiosimulator.editors.commons.dialogs;bundle-version="2.1.1",
+ mrs;bundle-version="1.0.0",
+ featuremodel,
+ org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.1",
+ org.eclipse.equinox.p2.metadata;bundle-version="2.3.200",
+ org.eclipse.pde.ui;bundle-version="3.10.100"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: mrs.featuremodel.custom
+Bundle-ActivationPolicy: lazy
+Export-Package: mrs.featuremodel.custom.util
