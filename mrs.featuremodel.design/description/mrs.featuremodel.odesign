@@ -206,7 +206,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="featuremodel::Feature" referenceName="features">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Feature' + element.eContainer().oclAsType(featuremodel::FeatureDiagram).features->size()"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Feature' + instance.eContainer().oclAsType(featuremodel::FeatureDiagram).features->size()"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:container.oclAsType(mrs::Layer).addFeatureToLayer(instance)"/>
                 </subModelOperations>
@@ -226,6 +226,9 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <reusedTools xsi:type="tool_1:DeleteElementDescription" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Feature']"/>
+        </toolSections>
+        <toolSections name="Single Child Relations">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Add child feature">
             <tools xsi:type="tool:ToolDescription" name="Add mandatory child feature" precondition="aql:container.oclIsTypeOf(featuremodel::Feature)">
               <element name="element"/>
@@ -260,9 +263,6 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <reusedTools xsi:type="tool_1:DeleteElementDescription" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Feature']"/>
-        </toolSections>
-        <toolSections name="Single Child Relations">
           <reusedTools xsi:type="tool_1:EdgeCreationDescription" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Mandatory%20Relation']"/>
           <reusedTools xsi:type="tool_1:EdgeCreationDescription" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Optional%20Relation']"/>
         </toolSections>

@@ -41,7 +41,6 @@ public class Services {
 	}
 	
 	public void addFeatureToLayer(Layer layer, EObject feature) {
-		System.out.println("test");
 		Collection<Feature> features = new ArrayList<Feature>();
 		features.add((Feature) feature);
 		MRSFeatureModelUtil.loadFeatures(layer, features);
