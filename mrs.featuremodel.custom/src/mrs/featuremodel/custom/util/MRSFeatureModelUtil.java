@@ -203,4 +203,17 @@ public class MRSFeatureModelUtil {
 		
 		stereotypeApplication.eSet(metamodelReference, includedMetamodels);
 	}
+	
+	public static void removeMetamodelFromFeature(Metamodel metamodel, Feature feature) {
+		StereotypeApplication stereotypeApplication = getStereotypeApplicationFeatureMetamodel(feature);
+
+		List<EReference> refs = stereotypeApplication.getStereotype().getEReferences().stream().filter(r -> r.getEReferenceType().getInstanceClass().equals(Metamodel.class)).collect(Collectors.toList());
+		EReference metamodelReference = refs.get(0);
+		
+		EList<Metamodel> includedMetamodels = getIncludedMetamodels(feature);
+		
+		includedMetamodels.remove(metamodel);
+		
+		stereotypeApplication.eSet(metamodelReference, includedMetamodels);
+	}
 }

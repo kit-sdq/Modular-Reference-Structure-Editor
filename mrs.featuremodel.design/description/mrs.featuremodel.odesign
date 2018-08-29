@@ -5,7 +5,7 @@
       <metamodel href="http://www.example.org/featuremodel#/"/>
       <metamodel href="http://www.example.org/mrs#/"/>
       <layers name="FeatureModel" activeByDefault="true">
-        <edgeMappings name="Includes Relation" targetFinderExpression="service:getIncludedMetamodels()">
+        <edgeMappings name="Includes Relation" deletionDescription="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@toolSections.0/@ownedTools[name='Remove%20Metamodel%20from%20Feature']" targetFinderExpression="service:getIncludedMetamodels()">
           <sourceMapping xsi:type="description_1:ContainerMapping" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@containerMappings[name='Feature']"/>
           <targetMapping xsi:type="description_1:ContainerMapping" href="../../mrs.design/description/mrs.odesign#//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']"/>
           <style lineStyle="dash">
@@ -178,6 +178,14 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="metamodels"/>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Remove Metamodel from Feature">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.oclAsType(diagram::DEdge).targetNode.oclAsType(diagram::DNodeContainer).target.oclAsType(mrs::Metamodel).removeMetamodelFromFeature(element)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

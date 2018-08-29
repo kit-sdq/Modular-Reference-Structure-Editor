@@ -40,6 +40,10 @@ public class Services {
 		MRSFeatureModelUtil.includeMetamodelIntoFeature(metamodel, feature);
 	}
 	
+	public void removeMetamodelFromFeature(Metamodel metamodel, Feature feature) {
+		MRSFeatureModelUtil.removeMetamodelFromFeature(metamodel, feature);
+	}
+	
 	public void addFeatureToLayer(Layer layer, EObject feature) {
 		Collection<Feature> features = new ArrayList<Feature>();
 		features.add((Feature) feature);
