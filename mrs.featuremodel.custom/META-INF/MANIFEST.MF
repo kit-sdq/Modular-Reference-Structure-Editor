@@ -11,8 +11,14 @@ Require-Bundle: org.eclipse.ui,
  mrs;bundle-version="1.0.0",
  featuremodel,
  org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.1",
- org.eclipse.equinox.p2.metadata;bundle-version="2.3.200",
- org.eclipse.pde.ui
+ org.eclipse.pde.ui,
+ org.eclipse.equinox.p2.ui,
+ org.eclipse.equinox.p2.repository;bundle-version="2.3.301",
+ org.eclipse.equinox.p2.operations;bundle-version="2.4.300",
+ org.eclipse.equinox.p2.metadata.repository,
+ org.eclipse.equinox.p2.updatesite;bundle-version="1.0.601",
+ org.eclipse.equinox.p2.metadata,
+ org.eclipse.equinox.p2.core;bundle-version="2.4.101"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: mrs.featuremodel.custom
 Bundle-ActivationPolicy: lazy

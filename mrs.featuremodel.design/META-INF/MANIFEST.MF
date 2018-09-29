@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.1",
  mrs;bundle-version="1.0.0",
  featuremodel;bundle-version="0.1.0",
- mrs.featuremodel.custom;bundle-version="1.0.0"
+ mrs.featuremodel.custom;bundle-version="1.0.0",
+ org.eclipse.sirius.diagram
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

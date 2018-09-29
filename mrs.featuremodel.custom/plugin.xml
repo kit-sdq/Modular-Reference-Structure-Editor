@@ -19,6 +19,10 @@
             actionClass="mrs.featuremodel.custom.externaljavaactions.SetPluginURL"
             id="SetPluginURL">
       </javaActions>
+      <javaActions
+            actionClass="mrs.featuremodel.custom.externaljavaactions.OpenInstallationWizard"
+            id="OpenInstallationWizard">
+      </javaActions>
    </extension>
 
 </plugin>

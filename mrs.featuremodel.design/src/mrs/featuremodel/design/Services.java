@@ -4,6 +4,14 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 
 import featuremodel.Feature;
 import featuremodel.FeatureDiagram;
@@ -97,8 +105,37 @@ public class Services {
 		}
 	}
 	
+	public void markOrUnmarkAsReadyToInstall(DDiagramElement element) {
+		DDiagram diagram = element.getParentDiagram();
+		DAnnotation annotation = getMarkedToInstallDAnnotation(diagram);
+		if (annotation.getReferences().contains(element)) {
+			annotation.getReferences().remove(element);
+		} else {
+			annotation.getReferences().add(element);			
+		}
+		for (EObject o : annotation.getReferences()) {
+			System.out.println(o);
+		}
+	}
+	public boolean isMarked(DDiagramElement element) {
+		DAnnotation annotation = getMarkedToInstallDAnnotation(element.getParentDiagram());
+		return annotation.getReferences().contains(element);
+	}
+	
+	public DAnnotation getMarkedToInstallDAnnotation(DDiagram diagram) {
+		DAnnotation annotation = diagram.getDAnnotation("marked");
+		if (annotation == null) {
+			annotation = DescriptionFactory.eINSTANCE.createDAnnotation();
+			annotation.setSource("marked");
+			diagram.getEAnnotations().add(annotation);
+		}
+		return annotation;
+	}
+	
+	
 	public EObject print(EObject o) {
 		System.out.println(o);
+		System.out.println(o.getClass());
 		return o;
 	}
 }
