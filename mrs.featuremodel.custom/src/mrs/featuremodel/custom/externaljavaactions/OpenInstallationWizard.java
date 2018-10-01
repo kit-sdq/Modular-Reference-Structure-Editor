@@ -23,34 +23,54 @@ import org.eclipse.equinox.p2.query.QueryUtil;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepository;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepositoryManager;
 import org.eclipse.equinox.p2.ui.ProvisioningUI;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+
+import featuremodel.Feature;
+import mrs.Metamodel;
+import mrs.featuremodel.custom.util.MRSFeatureModelUtil;
+import mrs.featuremodel.custom.util.MetamodelURIUtil;
 
 public class OpenInstallationWizard implements IExternalJavaAction {
 	private ProvisioningUI provisioningUI;
 	private Set<URI> repositoryLocations;
+	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		provisioningUI = ProvisioningUI.getDefaultUI();
 		repositoryLocations = new HashSet<URI>();
-		URI uri = null;
-		try {
-			uri = new URI("https://sdqweb.ipd.kit.edu/eclipse/emf-profiles-sirius-editor/nightly/");
-		} catch (URISyntaxException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		URI[] uris = {uri};
-		repositoryLocations.add(uri);
+		Collection<Feature> features = (Collection<Feature>) parameters.get("features");
+		Set<Metamodel> metamodels = MRSFeatureModelUtil.getIncludedMetamodels(features);
+		Collection<String> uriStrings = new ArrayList<String>();
+		metamodels.stream().forEach(m -> uriStrings.add(MetamodelURIUtil.getURI(m)));
+		Collection<URI> uriList = new ArrayList<URI>();
+		uriStrings.forEach(s -> {
+			try {
+				uriList.add(new URI(s));
+			} catch (URISyntaxException e) {
+
+				MessageDialog.openError(SHELL, "Parsing error", "An error occured while trying to parse " + s + " into a URI: \n" + e.getMessage());
+				e.printStackTrace();
+				return;
+			}
+		});
+		URI[] uris = new URI[uriList.size()];
+		uris = uriList.toArray(uris);
+		repositoryLocations.addAll(uriList);
+		
 		try {
 			Collection<IInstallableUnit> ius = computeInstallableUnits();
 			final InstallOperation installOperation = provisioningUI.getInstallOperation(ius, uris);
 			installOperation.resolveModal(new NullProgressMonitor());
 			provisioningUI.openInstallWizard(ius, installOperation, null);
 		} catch (ProvisionException | OperationCanceledException e) {
-			// TODO Auto-generated catch block
+			MessageDialog.openError(SHELL, "Error while opening the installation wizard", "An error occured while trying to open the installation wizard: \n" + e.getMessage());
 			e.printStackTrace();
 		}
 	}
+
 
 	private Collection<IInstallableUnit> computeInstallableUnits() throws ProvisionException, OperationCanceledException {
 		List<IMetadataRepository> repositories = addRepositories();

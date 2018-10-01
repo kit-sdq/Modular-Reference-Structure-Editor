@@ -96,14 +96,14 @@
             </subContainerMappings>
             <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Metamodel Import" labelDirectEdit="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@toolSections.0/@ownedTools[name='Edit%20metamodel%20label']" semanticCandidatesExpression="feature:metamodels" childrenPresentation="VerticalStack">
               <reusedContainerMappings href="../../mrs.design/description/mrs.odesign#//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']"/>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.getMetamodelName()">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" tooltipExpression="aql:self.getMetamodelURI()">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
               <conditionnalStyles predicateExpression="aql:self.mainPackage.eResource().getURI().isPlatformResource() == false">
-                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.getMetamodelName()" backgroundStyle="Liquid">
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" backgroundStyle="Liquid">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -170,11 +170,11 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Set Plug-in URL" precondition="aql:container.oclIsTypeOf(mrs::Metamodel)">
+          <ownedTools xsi:type="tool:ToolDescription" name="Set Plug-in URI" precondition="aql:container.oclIsTypeOf(mrs::Metamodel)">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="SetPluginURL" id="SetPluginURL"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="SetPluginURI" id="SetPluginURI"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit metamodel label" inputLabelExpression="aql:self.name">
@@ -208,10 +208,12 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Installation Wizard" id="OpenInstallationWizard"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Installation Wizard" id="OpenInstallationWizard">
+                <parameters name="features" value="aql:diagram.getReadyToInstallFeatures()"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:OperationAction" name="Mark / unmark as ready to install">
+          <ownedTools xsi:type="tool:OperationAction" name="Mark / unmark as ready to install" precondition="aql:self.oclIsTypeOf(featuremodel::Feature)">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(diagram::DDiagramElement).markOrUnmarkAsReadyToInstall()"/>

@@ -3,13 +3,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 
@@ -19,7 +16,7 @@ import mrs.Layer;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
 import mrs.featuremodel.custom.util.MRSFeatureModelUtil;
-import mrs.featuremodel.custom.util.MetamodelURLUtil;
+import mrs.featuremodel.custom.util.MetamodelURIUtil;
 
 public class Services {
 		
@@ -94,18 +91,20 @@ public class Services {
 		}
 		return result;
 	}
+
 	
-	public String getMetamodelName(Metamodel metamodel) {
-		String url = MetamodelURLUtil.getURL(metamodel);
-		if (url.isEmpty()) {
-			return metamodel.getName();
-		}
-		else {
-			return metamodel.getName() + "\nplugin:" + url;
-		}
+	public String getMetamodelURI(Metamodel metamodel) {
+		return MetamodelURIUtil.getURI(metamodel);
+	}
+	
+	public Collection<Feature> getReadyToInstallFeatures(DDiagram diagram) {
+		DAnnotation annotation = getMarkedToInstallDAnnotation(diagram);
+		return annotation.getReferences().stream().map(o -> ((DDiagramElement) o).getTarget()).filter(o -> o instanceof Feature).map(o -> (Feature) o).collect(Collectors.toList());
 	}
 	
 	public void markOrUnmarkAsReadyToInstall(DDiagramElement element) {
+		if (!(element.getTarget() instanceof Feature))
+			return;
 		DDiagram diagram = element.getParentDiagram();
 		DAnnotation annotation = getMarkedToInstallDAnnotation(diagram);
 		if (annotation.getReferences().contains(element)) {

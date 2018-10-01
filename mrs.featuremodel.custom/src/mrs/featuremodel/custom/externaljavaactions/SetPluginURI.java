@@ -10,20 +10,20 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
 import mrs.Metamodel;
-import mrs.featuremodel.custom.util.MetamodelURLUtil;
+import mrs.featuremodel.custom.util.MetamodelURIUtil;
 
-public class SetPluginURL implements IExternalJavaAction {
+public class SetPluginURI implements IExternalJavaAction {
 
 	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		Metamodel metamodel = (Metamodel) selections.iterator().next();
-		String initialValue = MetamodelURLUtil.getURL(metamodel);
-		InputDialog inputDialog = new InputDialog(SHELL, "Set Plug-in URL", "Enter the URL of the plug-in containing this metamodel", initialValue, null);
+		String initialValue = MetamodelURIUtil.getURI(metamodel);
+		InputDialog inputDialog = new InputDialog(SHELL, "Set Plug-in URI", "Enter the URI of the plug-in containing this metamodel", initialValue, null);
 		inputDialog.open();
-		String url = inputDialog.getValue();
-		MetamodelURLUtil.setURL(metamodel, url);
+		String uri = inputDialog.getValue();
+		MetamodelURIUtil.setURI(metamodel, uri);
 	}
 
 	@Override

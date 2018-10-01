@@ -1,8 +1,10 @@
 package mrs.featuremodel.custom.util;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -183,6 +185,11 @@ public class MRSFeatureModelUtil {
 		return result;
 	}
 	
+	public static Set<Metamodel> getIncludedMetamodels(Collection<Feature> features) {
+		Set<Metamodel> result = new HashSet<Metamodel>();
+		features.stream().forEach(f -> result.addAll(getIncludedMetamodels(f)));
+		return result;
+	}
 	public static void includeMetamodelIntoFeature(Metamodel metamodel, Feature feature) {
 		FeatureDiagram featureDiagram = (FeatureDiagram) feature.eContainer();
 		if (!isProfileApplied(featureDiagram.eResource()))

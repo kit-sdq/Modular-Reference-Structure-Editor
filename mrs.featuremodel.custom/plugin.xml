@@ -16,8 +16,8 @@
             id="SetLoadedFeatures">
       </javaActions>
       <javaActions
-            actionClass="mrs.featuremodel.custom.externaljavaactions.SetPluginURL"
-            id="SetPluginURL">
+            actionClass="mrs.featuremodel.custom.externaljavaactions.SetPluginURI"
+            id="SetPluginURI">
       </javaActions>
       <javaActions
             actionClass="mrs.featuremodel.custom.externaljavaactions.OpenInstallationWizard"
