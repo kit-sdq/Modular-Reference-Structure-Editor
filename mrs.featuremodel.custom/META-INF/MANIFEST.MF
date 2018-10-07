@@ -6,7 +6,6 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: mrs.featuremodel.custom.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.sirius,
  org.palladiosimulator.editors.commons.dialogs;bundle-version="2.1.1",
  mrs;bundle-version="1.0.0",
  featuremodel,
@@ -18,7 +17,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.equinox.p2.metadata.repository,
  org.eclipse.equinox.p2.updatesite;bundle-version="1.0.601",
  org.eclipse.equinox.p2.metadata,
- org.eclipse.equinox.p2.core;bundle-version="2.4.101"
+ org.eclipse.equinox.p2.core;bundle-version="2.4.101",
+ org.eclipse.swt,
+ org.eclipse.sirius;bundle-version="5.1.3"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: mrs.featuremodel.custom
 Bundle-ActivationPolicy: lazy

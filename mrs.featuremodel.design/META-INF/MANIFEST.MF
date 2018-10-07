@@ -15,7 +15,9 @@ Require-Bundle: org.eclipse.ui,
  mrs;bundle-version="1.0.0",
  featuremodel;bundle-version="0.1.0",
  mrs.featuremodel.custom;bundle-version="1.0.0",
- org.eclipse.sirius.diagram
+ org.eclipse.sirius.diagram,
+ featuremodel.design,
+ mrs.custom
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

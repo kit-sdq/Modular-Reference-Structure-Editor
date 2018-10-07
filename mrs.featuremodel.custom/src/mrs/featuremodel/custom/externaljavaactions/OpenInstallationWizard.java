@@ -41,6 +41,7 @@ public class OpenInstallationWizard implements IExternalJavaAction {
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		provisioningUI = ProvisioningUI.getDefaultUI();
 		repositoryLocations = new HashSet<URI>();
+				
 		Collection<Feature> features = (Collection<Feature>) parameters.get("features");
 		Set<Metamodel> metamodels = MRSFeatureModelUtil.getIncludedMetamodels(features);
 		Collection<String> uriStrings = new ArrayList<String>();
@@ -69,6 +70,7 @@ public class OpenInstallationWizard implements IExternalJavaAction {
 			MessageDialog.openError(SHELL, "Error while opening the installation wizard", "An error occured while trying to open the installation wizard: \n" + e.getMessage());
 			e.printStackTrace();
 		}
+		
 	}
 
 

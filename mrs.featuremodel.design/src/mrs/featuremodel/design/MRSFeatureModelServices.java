@@ -1,24 +1,28 @@
 package mrs.featuremodel.design;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 
 import featuremodel.Feature;
 import featuremodel.FeatureDiagram;
+import featuremodel.design.FeatureModelServices;
 import mrs.Layer;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
 import mrs.featuremodel.custom.util.MRSFeatureModelUtil;
 import mrs.featuremodel.custom.util.MetamodelURIUtil;
 
-public class Services {
+public class MRSFeatureModelServices {
 		
 	public Collection<FeatureDiagram> getFeatureDiagrams(ModularReferenceStructure mrs) {
 		return MRSFeatureModelUtil.getLoadedFeatureDiagrams(mrs);
@@ -97,28 +101,79 @@ public class Services {
 		return MetamodelURIUtil.getURI(metamodel);
 	}
 	
-	public Collection<Feature> getReadyToInstallFeatures(DDiagram diagram) {
-		DAnnotation annotation = getMarkedToInstallDAnnotation(diagram);
-		return annotation.getReferences().stream().map(o -> ((DDiagramElement) o).getTarget()).filter(o -> o instanceof Feature).map(o -> (Feature) o).collect(Collectors.toList());
+	
+	public Collection<Feature> getNeededFeatures(Feature feature) {
+		Set<Feature> neededFeatures = new HashSet<Feature>();
+		neededFeatures.add(feature);
+		return getNeededFeaturesRec(feature, neededFeatures);
 	}
 	
-	public void markOrUnmarkAsReadyToInstall(DDiagramElement element) {
+	private Collection<Feature> getNeededFeaturesRec(Feature feature, Set<Feature> acc) {
+		Set<Feature> toVisit = new HashSet<Feature>();
+		Set<Feature> neededFeatures = acc;
+		
+		Collection<Feature> directMandatoryChildren = FeatureModelServices.getDirectMandatoryChildren(feature);
+		Collection<Feature> directlyRequiredFeatures = FeatureModelServices.getDirectlyRequiredFeatures(feature);
+		Collection<Feature> featureParents = FeatureModelServices.getFeatureParents(feature);
+		
+		directlyRequiredFeatures.stream().forEach(f -> {
+			if (!neededFeatures.contains(f))
+				toVisit.add(f);
+		});
+		
+		directMandatoryChildren.stream().forEach(f -> {
+			if (!neededFeatures.contains(f))
+				toVisit.add(f);
+		});
+		
+		featureParents.stream().forEach(f -> {
+			if (!neededFeatures.contains(f))
+				toVisit.add(f);
+		});
+		
+		neededFeatures.addAll(toVisit);
+		
+		toVisit.stream().forEach(f -> neededFeatures.addAll(getNeededFeaturesRec(f, neededFeatures)));
+		
+		return neededFeatures;		
+	}
+	
+	public Collection<Feature> getReadyToInstallFeatures(DDiagram diagram) {
+		DAnnotation annotation = getMarkedToInstallDAnnotation(diagram);
+		return annotation.getReferences().stream().map(o -> (Feature) o).collect(Collectors.toList());
+	}
+	
+	public void markAsReadyToInstall(DDiagramElement element) {
 		if (!(element.getTarget() instanceof Feature))
 			return;
 		DDiagram diagram = element.getParentDiagram();
 		DAnnotation annotation = getMarkedToInstallDAnnotation(diagram);
-		if (annotation.getReferences().contains(element)) {
-			annotation.getReferences().remove(element);
-		} else {
-			annotation.getReferences().add(element);			
+		Feature feature = (Feature) element.getTarget();
+		
+		Collection<Feature> neededFeatures = getNeededFeatures(feature);
+		
+		for (Feature neededFeature : neededFeatures) {
+			if (!annotation.getReferences().contains(neededFeature)) {
+				annotation.getReferences().add(neededFeature);
+			}
 		}
-		for (EObject o : annotation.getReferences()) {
-			System.out.println(o);
-		}
+		
+	}
+		
+	public void unmarkAsReadyToInstall(DDiagramElement element) {
+		if (!(element.getTarget() instanceof Feature))
+			return;
+		DDiagram diagram = element.getParentDiagram();
+		DAnnotation annotation = getMarkedToInstallDAnnotation(diagram);
+		Feature feature = (Feature) element.getTarget();
+		
+		if (annotation.getReferences().contains(feature)) {
+			annotation.getReferences().remove(feature);
+		} 
 	}
 	public boolean isMarked(DDiagramElement element) {
 		DAnnotation annotation = getMarkedToInstallDAnnotation(element.getParentDiagram());
-		return annotation.getReferences().contains(element);
+		return annotation.getReferences().contains(element.getTarget());
 	}
 	
 	public DAnnotation getMarkedToInstallDAnnotation(DDiagram diagram) {
@@ -131,10 +186,19 @@ public class Services {
 		return annotation;
 	}
 	
+	public void hideAllMetamodels(DDiagram diagram) {
+		TreeIterator<EObject> it = diagram.eAllContents();
+		while (it.hasNext()) {
+			EObject obj = it.next();
+			if ((obj instanceof DDiagramElement) && (((DDiagramElement) obj).getTarget()) instanceof Metamodel) {
+				HideFilterHelper.INSTANCE.hide((DDiagramElement) obj);
+			}
+		}
+	}
+	
 	
 	public EObject print(EObject o) {
 		System.out.println(o);
-		System.out.println(o.getClass());
 		return o;
 	}
 }

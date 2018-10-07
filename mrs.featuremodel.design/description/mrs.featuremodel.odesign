@@ -213,10 +213,22 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:OperationAction" name="Mark / unmark as ready to install" precondition="aql:self.oclIsTypeOf(featuremodel::Feature)">
+          <ownedTools xsi:type="tool:OperationAction" name="Mark as ready to install" precondition="aql:self.oclIsTypeOf(featuremodel::Feature)">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(diagram::DDiagramElement).markOrUnmarkAsReadyToInstall()"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(diagram::DDiagramElement).markAsReadyToInstall()"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:OperationAction" name="Unmark as ready to install" precondition="aql:self.oclIsTypeOf(featuremodel::Feature)">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(diagram::DDiagramElement).unmarkAsReadyToInstall()"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:OperationAction" name="Hide all metamodels">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.hideAllMetamodels()"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -317,6 +329,6 @@
         </toolSections>
       </layers>
     </ownedRepresentationExtensions>
-    <ownedJavaExtensions qualifiedClassName="mrs.featuremodel.design.Services"/>
+    <ownedJavaExtensions qualifiedClassName="mrs.featuremodel.design.MRSFeatureModelServices"/>
   </ownedViewpoints>
 </description:Group>
