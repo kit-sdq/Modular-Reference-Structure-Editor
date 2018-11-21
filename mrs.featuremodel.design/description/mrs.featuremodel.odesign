@@ -15,50 +15,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Multiple Children Relation" targetMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetFinderExpression="aql:self.children">
-          <sourceMapping xsi:type="description_1:NodeMapping" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@containerMappings[name='Feature']/@borderedNodeMappings[name='Or%20Docking%20site']"/>
-          <sourceMapping xsi:type="description_1:NodeMapping" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@containerMappings[name='Feature']/@borderedNodeMappings[name='Alternative%20Docking%20site']"/>
-          <style targetArrow="NoDecoration">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Mandatory" sourceMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetFinderExpression="aql:self.child" sourceFinderExpression="aql:self.parent" domainClass="featuremodel::MandatoryRelation" useDomainElement="true">
-          <style targetArrow="OutputFillClosedArrow">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Optional" sourceMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetFinderExpression="aql:self.child" sourceFinderExpression="aql:self.parent" domainClass="featuremodel::OptionalRelation" useDomainElement="true">
-          <style targetArrow="OutputClosedArrow">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Requires Constraint" sourceMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="featuremodel::RequiresConstraint" useDomainElement="true">
-          <style>
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;requires>>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Excludes Constraint" sourceMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetMapping="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" targetFinderExpression="aql:self.target" sourceFinderExpression="aql:self.source" domainClass="featuremodel::ExcludesConstraint" useDomainElement="true">
-          <style sourceArrow="InputArrow">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;excludes>>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="MRS Import" semanticCandidatesExpression="var:self" childrenPresentation="VerticalStack">
-          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Layer Import" deletionDescription="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@toolSections.0/@ownedTools[name='Delete%20Layer']" semanticCandidatesExpression="feature:layers" dropDescriptions="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@toolSections.0/@ownedTools[name='Feature%20to%20Layer'] //@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@toolSections.0/@ownedTools[name='Metamodel%20into%20layer']">
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Layer Import" deletionDescription="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@toolSections.0/@ownedTools[name='Delete%20Layer']" semanticCandidatesExpression="feature:layers" dropDescriptions="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@toolSections.0/@ownedTools[name='Feature%20to%20Layer']">
             <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Feature Import" semanticCandidatesExpression="aql:self.getFeatures()">
               <reusedBorderedNodeMappings href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@containerMappings[name='Feature']/@borderedNodeMappings[name='Alternative%20Docking%20site']"/>
               <reusedBorderedNodeMappings href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@containerMappings[name='Feature']/@borderedNodeMappings[name='Or%20Docking%20site']"/>
@@ -94,28 +52,16 @@
               </conditionnalStyles>
               <importedMapping href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@containerMappings[name='Feature']"/>
             </subContainerMappings>
-            <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Metamodel Import" labelDirectEdit="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@toolSections.0/@ownedTools[name='Edit%20metamodel%20label']" semanticCandidatesExpression="feature:metamodels" childrenPresentation="VerticalStack">
-              <reusedContainerMappings href="../../mrs.design/description/mrs.odesign#//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']"/>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" tooltipExpression="aql:self.getMetamodelURI()">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              </style>
-              <conditionnalStyles predicateExpression="aql:self.mainPackage.eResource().getURI().isPlatformResource() == false">
-                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name" backgroundStyle="Liquid">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-                </style>
-              </conditionnalStyles>
-              <importedMapping href="../../mrs.design/description/mrs.odesign#//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']"/>
-            </subContainerMappings>
+            <reusedContainerMappings href="../../mrs.design/description/mrs.odesign#//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']"/>
             <importedMapping href="../../mrs.design/description/mrs.odesign#//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']"/>
           </subContainerMappings>
           <importedMapping href="../../mrs.design/description/mrs.odesign#//@ownedViewpoints[name='mrs.viewpoint']/@ownedRepresentations[name='mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']"/>
         </containerMappings>
+        <reusedMappings xsi:type="description_1:EdgeMapping" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@edgeMappings[name='Excludes%20Constraint']"/>
+        <reusedMappings xsi:type="description_1:EdgeMapping" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@edgeMappings[name='Mandatory']"/>
+        <reusedMappings xsi:type="description_1:EdgeMapping" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@edgeMappings[name='Multiple%20Children%20Relation']"/>
+        <reusedMappings xsi:type="description_1:EdgeMapping" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@edgeMappings[name='Optional']"/>
+        <reusedMappings xsi:type="description_1:EdgeMapping" href="../../featuremodel.design/description/featuremodel.odesign#//@ownedViewpoints[name='featuremodel.viewpoint']/@ownedRepresentations[name='featuremodel.diagram']/@defaultLayer/@edgeMappings[name='Requires%20Constraint']"/>
         <toolSections name="MRS - FeatureModel">
           <ownedTools xsi:type="tool:ToolDescription" name="Load FeatureDiagram" precondition="aql:self.oclIsTypeOf(mrs::ModularReferenceStructure) or self.oclIsTypeOf(mrs::Layer)">
             <element name="element"/>
@@ -149,15 +95,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Include Metamodel into Feature" edgeMappings="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@edgeMappings[name='Includes%20Relation']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:target.includeMetamodelIntoFeature(source)"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Feature to Layer" precondition="aql:self.oclIsTypeOf(featuremodel::Feature)" mappings="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Feature%20Import']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
@@ -170,30 +107,13 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Set Plug-in URI" precondition="aql:container.oclIsTypeOf(mrs::Metamodel)">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Include Metamodel into Feature" edgeMappings="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@edgeMappings[name='Includes%20Relation']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="SetPluginURI" id="SetPluginURI"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit metamodel label" inputLabelExpression="aql:self.name">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:0"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Metamodel into layer" mappings="//@ownedViewpoints[name='mrs.featuremodel.viewpoint']/@ownedRepresentationExtensions[name='mrs.featuremodel.diagram']/@layers[name='FeatureModel']/@containerMappings[name='MRS%20Import']/@subContainerMappings[name='Layer%20Import']/@subContainerMappings[name='Metamodel%20Import']">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="metamodels"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:target.includeMetamodelIntoFeature(source)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Remove Metamodel from Feature">
@@ -204,13 +124,17 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:elementView.oclAsType(diagram::DEdge).targetNode.oclAsType(diagram::DNodeContainer).target.oclAsType(mrs::Metamodel).removeMetamodelFromFeature(element)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Install">
+          <ownedTools xsi:type="tool:ToolDescription" name="Set Plug-in URI" precondition="aql:container.oclIsTypeOf(mrs::Metamodel)">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Installation Wizard" id="OpenInstallationWizard">
-                <parameters name="features" value="aql:diagram.getReadyToInstallFeatures()"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="SetPluginURI" id="SetPluginURI"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:OperationAction" name="Hide all metamodels">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.hideAllMetamodels()"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:OperationAction" name="Mark as ready to install" precondition="aql:self.oclIsTypeOf(featuremodel::Feature)">
@@ -225,10 +149,13 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:views.oclAsType(diagram::DDiagramElement).unmarkAsReadyToInstall()"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:OperationAction" name="Hide all metamodels">
-            <view name="views"/>
+          <ownedTools xsi:type="tool:ToolDescription" name="Install">
+            <element name="element"/>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.hideAllMetamodels()"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Installation Wizard" id="OpenInstallationWizard">
+                <parameters name="features" value="aql:diagram.getReadyToInstallFeatures()"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
