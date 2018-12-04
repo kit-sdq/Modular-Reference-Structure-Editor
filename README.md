@@ -1,2 +1,3 @@
 # MRS-Editor
-https://sdqweb.ipd.kit.edu/eclipse/mrs-editor/nightly/
+For installation instructions and the update site, please visit:
+https://sdqweb.ipd.kit.edu/wiki/Modular_EMF_Designer
