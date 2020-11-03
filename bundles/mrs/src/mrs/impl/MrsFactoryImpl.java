@@ -5,6 +5,7 @@ package mrs.impl;
 import mrs.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -69,6 +70,37 @@ public class MrsFactoryImpl extends EFactoryImpl implements MrsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case MrsPackage.CLASSIFICATION:
+				return createClassificationFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case MrsPackage.CLASSIFICATION:
+				return convertClassificationToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ModularReferenceStructure createModularReferenceStructure() {
 		ModularReferenceStructureImpl modularReferenceStructure = new ModularReferenceStructureImpl();
 		return modularReferenceStructure;
@@ -79,6 +111,7 @@ public class MrsFactoryImpl extends EFactoryImpl implements MrsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Layer createLayer() {
 		LayerImpl layer = new LayerImpl();
 		return layer;
@@ -89,6 +122,7 @@ public class MrsFactoryImpl extends EFactoryImpl implements MrsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Metamodel createMetamodel() {
 		MetamodelImpl metamodel = new MetamodelImpl();
 		return metamodel;
@@ -99,6 +133,27 @@ public class MrsFactoryImpl extends EFactoryImpl implements MrsFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Classification createClassificationFromString(EDataType eDataType, String initialValue) {
+		Classification result = Classification.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertClassificationToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public MrsPackage getMrsPackage() {
 		return (MrsPackage)getEPackage();
 	}

@@ -93,6 +93,7 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -102,6 +103,7 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -114,6 +116,7 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Metamodel> getMetamodels() {
 		if (metamodels == null) {
 			metamodels = new EObjectContainmentWithInverseEList<Metamodel>(Metamodel.class, this, MrsPackage.LAYER__METAMODELS, MrsPackage.METAMODEL__LAYER);
@@ -126,6 +129,7 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModularReferenceStructure getModularReferenceStructure() {
 		if (eContainerFeatureID() != MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE) return null;
 		return (ModularReferenceStructure)eInternalContainer();
@@ -146,6 +150,7 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setModularReferenceStructure(ModularReferenceStructure newModularReferenceStructure) {
 		if (newModularReferenceStructure != eInternalContainer() || (eContainerFeatureID() != MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE && newModularReferenceStructure != null)) {
 			if (EcoreUtil.isAncestor(this, newModularReferenceStructure))
@@ -300,7 +305,7 @@ public class LayerImpl extends MinimalEObjectImpl.Container implements Layer {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(')');

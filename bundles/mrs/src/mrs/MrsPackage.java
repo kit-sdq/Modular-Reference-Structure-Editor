@@ -4,6 +4,7 @@ package mrs;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -195,13 +196,22 @@ public interface MrsPackage extends EPackage {
     int METAMODEL__NAME = 2;
 
     /**
+	 * The feature id for the '<em><b>Classification</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METAMODEL__CLASSIFICATION = 3;
+
+				/**
 	 * The number of structural features of the '<em>Metamodel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METAMODEL_FEATURE_COUNT = 3;
+	int METAMODEL_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Metamodel</em>' class.
@@ -211,6 +221,17 @@ public interface MrsPackage extends EPackage {
 	 * @ordered
 	 */
 	int METAMODEL_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link mrs.Classification <em>Classification</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see mrs.Classification
+	 * @see mrs.impl.MrsPackageImpl#getClassification()
+	 * @generated
+	 */
+	int CLASSIFICATION = 3;
 
 
 	/**
@@ -332,6 +353,27 @@ public interface MrsPackage extends EPackage {
     EAttribute getMetamodel_Name();
 
     /**
+	 * Returns the meta object for the attribute '{@link mrs.Metamodel#getClassification <em>Classification</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Classification</em>'.
+	 * @see mrs.Metamodel#getClassification()
+	 * @see #getMetamodel()
+	 * @generated
+	 */
+	EAttribute getMetamodel_Classification();
+
+	/**
+	 * Returns the meta object for enum '{@link mrs.Classification <em>Classification</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Classification</em>'.
+	 * @see mrs.Classification
+	 * @generated
+	 */
+	EEnum getClassification();
+
+				/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -447,6 +489,24 @@ public interface MrsPackage extends EPackage {
 		 * @generated
 		 */
         EAttribute METAMODEL__NAME = eINSTANCE.getMetamodel_Name();
+
+								/**
+		 * The meta object literal for the '<em><b>Classification</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute METAMODEL__CLASSIFICATION = eINSTANCE.getMetamodel_Classification();
+
+								/**
+		 * The meta object literal for the '{@link mrs.Classification <em>Classification</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see mrs.Classification
+		 * @see mrs.impl.MrsPackageImpl#getClassification()
+		 * @generated
+		 */
+		EEnum CLASSIFICATION = eINSTANCE.getClassification();
 
 	}
 

@@ -68,7 +68,7 @@
                   </style>
                 </conditionnalStyles>
               </subContainerMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" showIcon="false">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" showIcon="false" labelExpression="aql:self.name + ' [' + self.classification + ']'">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -359,6 +359,33 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.hideTransitiveEdges(true)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="Select EClassifiers/EPackages to export to another metamodel" precondition="aql:container.oclIsTypeOf(mrs::Layer)" forceRefresh="true" message="Select the EClassifiers that will be exported to another metamodel" candidatesExpression="aql:container.getAllClassifiersFromLayer()->concat(container.getAllPackagesFromLayer())" tree="true" rootExpression="aql:container.getAllMainPackagesFromLayer()" childrenExpression="aql:self.oclAsType(ecore::EPackage).eClassifiers->union(self.oclAsType(ecore::EPackage).eSubpackages->asSequence())">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mrs.Metamodel" referenceName="metamodels"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Create New Metamodel" id="CreateMetamodel">
+                  <parameters name="metamodel" value="var:instance"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.mainPackage == null">
+                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:Let" variableName="instanceMainPackage" valueExpression="aql:instance.mainPackage"/>
+                <subModelOperations xsi:type="tool_1:For" expression="var:element">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsKindOf(ecore::EClassifier)">
+                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:instanceMainPackage" featureName="eClassifiers"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsTypeOf(ecore::EPackage)">
+                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:instanceMainPackage" featureName="eSubpackages"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

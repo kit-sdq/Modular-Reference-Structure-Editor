@@ -2,6 +2,7 @@
  */
 package mrs.impl;
 
+import mrs.Classification;
 import mrs.Layer;
 import mrs.Metamodel;
 import mrs.ModularReferenceStructure;
@@ -10,6 +11,7 @@ import mrs.MrsPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -46,6 +48,13 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	private EClass metamodelEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum classificationEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -73,7 +82,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link MrsPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -87,7 +96,8 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 		if (isInited) return (MrsPackage)EPackage.Registry.INSTANCE.getEPackage(MrsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		MrsPackageImpl theMrsPackage = (MrsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof MrsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new MrsPackageImpl());
+		Object registeredMrsPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		MrsPackageImpl theMrsPackage = registeredMrsPackage instanceof MrsPackageImpl ? (MrsPackageImpl)registeredMrsPackage : new MrsPackageImpl();
 
 		isInited = true;
 
@@ -104,7 +114,6 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 		// Mark meta-data to indicate it can't be changed
 		theMrsPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(MrsPackage.eNS_URI, theMrsPackage);
 		return theMrsPackage;
@@ -115,6 +124,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModularReferenceStructure() {
 		return modularReferenceStructureEClass;
 	}
@@ -124,6 +134,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModularReferenceStructure_Layers() {
 		return (EReference)modularReferenceStructureEClass.getEStructuralFeatures().get(0);
 	}
@@ -133,7 +144,8 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getModularReferenceStructure_LoadedProfiles() {
+    @Override
+				public EReference getModularReferenceStructure_LoadedProfiles() {
 		return (EReference)modularReferenceStructureEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -142,6 +154,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLayer() {
 		return layerEClass;
 	}
@@ -151,6 +164,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLayer_Name() {
 		return (EAttribute)layerEClass.getEStructuralFeatures().get(0);
 	}
@@ -160,6 +174,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLayer_Metamodels() {
 		return (EReference)layerEClass.getEStructuralFeatures().get(1);
 	}
@@ -169,6 +184,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLayer_ModularReferenceStructure() {
 		return (EReference)layerEClass.getEStructuralFeatures().get(2);
 	}
@@ -178,6 +194,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMetamodel() {
 		return metamodelEClass;
 	}
@@ -187,6 +204,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMetamodel_MainPackage() {
 		return (EReference)metamodelEClass.getEStructuralFeatures().get(0);
 	}
@@ -196,6 +214,7 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getMetamodel_Layer() {
 		return (EReference)metamodelEClass.getEStructuralFeatures().get(1);
 	}
@@ -205,7 +224,8 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getMetamodel_Name() {
+    @Override
+				public EAttribute getMetamodel_Name() {
 		return (EAttribute)metamodelEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -214,6 +234,27 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getMetamodel_Classification() {
+		return (EAttribute)metamodelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getClassification() {
+		return classificationEEnum;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public MrsFactory getMrsFactory() {
 		return (MrsFactory)getEFactoryInstance();
 	}
@@ -250,6 +291,10 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 		createEReference(metamodelEClass, METAMODEL__MAIN_PACKAGE);
 		createEReference(metamodelEClass, METAMODEL__LAYER);
 		createEAttribute(metamodelEClass, METAMODEL__NAME);
+		createEAttribute(metamodelEClass, METAMODEL__CLASSIFICATION);
+
+		// Create enums
+		classificationEEnum = createEEnum(CLASSIFICATION);
 	}
 
 	/**
@@ -299,6 +344,12 @@ public class MrsPackageImpl extends EPackageImpl implements MrsPackage {
 		initEReference(getMetamodel_MainPackage(), theEcorePackage.getEPackage(), null, "mainPackage", null, 1, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMetamodel_Layer(), this.getLayer(), this.getLayer_Metamodels(), "layer", null, 1, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMetamodel_Name(), theEcorePackage.getEString(), "name", "aMetamodel", 1, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetamodel_Classification(), this.getClassification(), "classification", null, 1, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(classificationEEnum, Classification.class, "Classification");
+		addEEnumLiteral(classificationEEnum, Classification.MANDATORY);
+		addEEnumLiteral(classificationEEnum, Classification.OPTIONAL);
 
 		// Create resource
 		createResource(eNS_URI);

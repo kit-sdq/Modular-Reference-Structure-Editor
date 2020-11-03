@@ -1,7 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: MRS Edit
+Bundle-Name: %pluginName
 Bundle-SymbolicName: mrs.edit;singleton:=true
+Automatic-Module-Name: mrs.edit
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: mrs.provider.MrsEditPlugin$Implementation

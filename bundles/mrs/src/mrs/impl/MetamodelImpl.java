@@ -2,6 +2,7 @@
  */
 package mrs.impl;
 
+import mrs.Classification;
 import mrs.Layer;
 import mrs.Metamodel;
 import mrs.MrsPackage;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link mrs.impl.MetamodelImpl#getMainPackage <em>Main Package</em>}</li>
  *   <li>{@link mrs.impl.MetamodelImpl#getLayer <em>Layer</em>}</li>
  *   <li>{@link mrs.impl.MetamodelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link mrs.impl.MetamodelImpl#getClassification <em>Classification</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,6 +66,26 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
     protected String name = NAME_EDEFAULT;
 
     /**
+	 * The default value of the '{@link #getClassification() <em>Classification</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassification()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Classification CLASSIFICATION_EDEFAULT = Classification.MANDATORY;
+
+				/**
+	 * The cached value of the '{@link #getClassification() <em>Classification</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClassification()
+	 * @generated
+	 * @ordered
+	 */
+	protected Classification classification = CLASSIFICATION_EDEFAULT;
+
+				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -87,6 +109,7 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EPackage getMainPackage() {
 		if (mainPackage != null && mainPackage.eIsProxy()) {
 			InternalEObject oldMainPackage = (InternalEObject)mainPackage;
@@ -113,6 +136,7 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMainPackage(EPackage newMainPackage) {
 		EPackage oldMainPackage = mainPackage;
 		mainPackage = newMainPackage;
@@ -125,6 +149,7 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Layer getLayer() {
 		if (eContainerFeatureID() != MrsPackage.METAMODEL__LAYER) return null;
 		return (Layer)eInternalContainer();
@@ -145,6 +170,7 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLayer(Layer newLayer) {
 		if (newLayer != eInternalContainer() || (eContainerFeatureID() != MrsPackage.METAMODEL__LAYER && newLayer != null)) {
 			if (EcoreUtil.isAncestor(this, newLayer))
@@ -166,7 +192,8 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
+    @Override
+				public String getName() {
 		return name;
 	}
 
@@ -175,7 +202,8 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+    @Override
+				public void setName(String newName) {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
@@ -183,6 +211,29 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Classification getClassification() {
+		return classification;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setClassification(Classification newClassification) {
+		Classification oldClassification = classification;
+		classification = newClassification == null ? CLASSIFICATION_EDEFAULT : newClassification;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MrsPackage.METAMODEL__CLASSIFICATION, oldClassification, classification));
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -241,6 +292,8 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 				return getLayer();
 			case MrsPackage.METAMODEL__NAME:
 				return getName();
+			case MrsPackage.METAMODEL__CLASSIFICATION:
+				return getClassification();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -263,6 +316,9 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 			case MrsPackage.METAMODEL__NAME:
 				setName((String)newValue);
 				return;
+			case MrsPackage.METAMODEL__CLASSIFICATION:
+				setClassification((Classification)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -284,6 +340,9 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 			case MrsPackage.METAMODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case MrsPackage.METAMODEL__CLASSIFICATION:
+				setClassification(CLASSIFICATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -302,6 +361,8 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
 				return getLayer() != null;
 			case MrsPackage.METAMODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case MrsPackage.METAMODEL__CLASSIFICATION:
+				return classification != CLASSIFICATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -315,9 +376,11 @@ public class MetamodelImpl extends MinimalEObjectImpl.Container implements Metam
     public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", classification: ");
+		result.append(classification);
 		result.append(')');
 		return result.toString();
 	}

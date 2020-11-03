@@ -62,6 +62,7 @@ public class MetamodelItemProvider
 
 			addMainPackagePropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addClassificationPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -111,6 +112,28 @@ public class MetamodelItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Classification feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClassificationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Metamodel_classification_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Metamodel_classification_feature", "_UI_Metamodel_type"),
+				 MrsPackage.Literals.METAMODEL__CLASSIFICATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This returns Metamodel.gif.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -149,6 +172,7 @@ public class MetamodelItemProvider
 
 		switch (notification.getFeatureID(Metamodel.class)) {
 			case MrsPackage.METAMODEL__NAME:
+			case MrsPackage.METAMODEL__CLASSIFICATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

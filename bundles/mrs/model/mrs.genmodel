@@ -6,6 +6,10 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>mrs.ecore</foreignModel>
   <genPackages prefix="Mrs" disposableProviderFactory="true" ecorePackage="mrs.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="mrs.ecore#//Classification">
+      <genEnumLiterals ecoreEnumLiteral="mrs.ecore#//Classification/MANDATORY"/>
+      <genEnumLiterals ecoreEnumLiteral="mrs.ecore#//Classification/OPTIONAL"/>
+    </genEnums>
     <genClasses ecoreClass="mrs.ecore#//ModularReferenceStructure">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mrs.ecore#//ModularReferenceStructure/layers"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//ModularReferenceStructure/loadedProfiles"/>
@@ -19,6 +23,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//Metamodel/mainPackage"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference mrs.ecore#//Metamodel/layer"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mrs.ecore#//Metamodel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mrs.ecore#//Metamodel/classification"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

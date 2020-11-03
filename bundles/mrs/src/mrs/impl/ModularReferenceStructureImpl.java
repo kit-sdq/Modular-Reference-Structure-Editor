@@ -78,6 +78,7 @@ public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Layer> getLayers() {
 		if (layers == null) {
 			layers = new EObjectContainmentWithInverseEList<Layer>(Layer.class, this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LAYERS, MrsPackage.LAYER__MODULAR_REFERENCE_STRUCTURE);
@@ -90,7 +91,8 @@ public class ModularReferenceStructureImpl extends MinimalEObjectImpl.Container 
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<Profile> getLoadedProfiles() {
+    @Override
+				public EList<Profile> getLoadedProfiles() {
 		if (loadedProfiles == null) {
 			loadedProfiles = new EObjectResolvingEList<Profile>(Profile.class, this, MrsPackage.MODULAR_REFERENCE_STRUCTURE__LOADED_PROFILES);
 		}

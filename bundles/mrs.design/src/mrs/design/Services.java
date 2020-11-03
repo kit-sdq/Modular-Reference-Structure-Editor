@@ -328,10 +328,53 @@ public class Services {
     	return false;
     }
     
-    /*public EObject print(EObject o) {
+    /**
+     * Gets all EClassifiers inside a Layer recursively. 
+     * @param ePackage
+     * @return a List containing the EClassfiers
+     */
+    public static  List<EClassifier> getAllClassifiersFromLayer(Layer layer) {
+        List<EClassifier> result = new ArrayList<EClassifier>();
+        for(Metamodel metamodel : layer.getMetamodels()) {
+            result.addAll(metamodel.getMainPackage().getEClassifiers());
+            metamodel.getMainPackage().getESubpackages().forEach(x -> result.addAll(getEAllClassifiers(x)));
+        }
+        return result;
+    }
+    
+    /**
+     * Gets all packages inside a Layer recursively
+     * 
+     * @param ePackage
+     * @return a Collection of all packages
+     */    
+    public Collection<EPackage> getAllPackagesFromLayer(Layer layer) {
+        Collection<EPackage> result = new ArrayList<EPackage>();
+        for(Metamodel metamodel : layer.getMetamodels()) {
+        	result.add(metamodel.getMainPackage());
+        	result.addAll(getEAllSubPackages(metamodel.getMainPackage()));
+        }
+        return result;
+    }
+    
+    /**
+     * Gets all packages inside a Layer recursively
+     * 
+     * @param ePackage
+     * @return a Collection of all packages
+     */    
+    public Collection<EPackage> getAllMainPackagesFromLayer(Layer layer) {
+        Collection<EPackage> result = new ArrayList<EPackage>();
+        for(Metamodel metamodel : layer.getMetamodels()) {
+        	result.add(metamodel.getMainPackage());
+        }
+        return result;
+    }
+    
+    public EObject print(EObject o) {
     	System.out.println(o);
     	return o;
-    }*/
+    }
     
     
 }

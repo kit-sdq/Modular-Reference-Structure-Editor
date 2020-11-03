@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>{@link mrs.Metamodel#getMainPackage <em>Main Package</em>}</li>
  *   <li>{@link mrs.Metamodel#getLayer <em>Layer</em>}</li>
  *   <li>{@link mrs.Metamodel#getName <em>Name</em>}</li>
+ *   <li>{@link mrs.Metamodel#getClassification <em>Classification</em>}</li>
  * </ul>
  *
  * @see mrs.MrsPackage#getMetamodel()
@@ -104,5 +105,34 @@ public interface Metamodel extends EObject {
 	 * @generated
 	 */
     void setName(String value);
+
+				/**
+	 * Returns the value of the '<em><b>Classification</b></em>' attribute.
+	 * The literals are from the enumeration {@link mrs.Classification}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Classification</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Classification</em>' attribute.
+	 * @see mrs.Classification
+	 * @see #setClassification(Classification)
+	 * @see mrs.MrsPackage#getMetamodel_Classification()
+	 * @model required="true"
+	 * @generated
+	 */
+	Classification getClassification();
+
+				/**
+	 * Sets the value of the '{@link mrs.Metamodel#getClassification <em>Classification</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Classification</em>' attribute.
+	 * @see mrs.Classification
+	 * @see #getClassification()
+	 * @generated
+	 */
+	void setClassification(Classification value);
 
 } // Metamodel
