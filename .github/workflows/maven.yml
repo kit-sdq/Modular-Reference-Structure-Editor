@@ -17,6 +17,8 @@ jobs:
     steps:
     - name: Checkout source code
       uses: actions/checkout@v2
+      with:
+        persist-credentials: false
     - name: Set up JDK 11
       uses: actions/setup-java@v1
       with:
@@ -33,15 +35,16 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: mrs.updatesite
-        path: releng/mrs.updatesite/target/mrs.updatesite-0.1.0-SNAPSHOT.zip # Do not forget to change this at version jumps!
+        path: releng/edu.kit.kastel.sdq.mrs.updatesite/target/edu.kit.kastel.sdq.mrs.updatesite-0.1.0-SNAPSHOT.zip # Do not forget to change this at version jumps!
     - name: Extract updatesite content
       uses: DuckSoft/extract-7z-action@v1.0
       with:
-        pathSource: releng/mrs.updatesite/target/mrs.updatesite-0.1.0-SNAPSHOT.zip # Do not forget to change this at version jumps!
+        pathSource: releng/edu.kit.kastel.sdq.mrs.updatesite/target/edu.kit.kastel.sdq.mrs.updatesite-0.1.0-SNAPSHOT.zip # Do not forget to change this at version jumps!
         pathTarget: /tmp/updatesite
     - name: Publish generated content to GitHub Pages
-      uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+      uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        dir: /tmp/updatesite
-        branch: gh-pages
-        token: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: /tmp/updatesite # The folder the action should deploy.
+        CLEAN: true # Automatically remove deleted files from the deploy branch
