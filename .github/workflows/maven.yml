@@ -33,4 +33,15 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: mrs.updatesite
-        path: releng/mrs.updatesite/target/mrs.updatesite-0.1.0-SNAPSHOT.zip
+        path: releng/mrs.updatesite/target/mrs.updatesite-0.1.0-SNAPSHOT.zip # Do not forget to change this at version jumps!
+    - name: Extract updatesite content
+      uses: DuckSoft/extract-7z-action@v1.0
+      with:
+        pathSource: releng/mrs.updatesite/target/mrs.updatesite-0.1.0-SNAPSHOT.zip # Do not forget to change this at version jumps!
+        pathTarget: /tmp/updatesite
+    - name: Publish generated content to GitHub Pages
+      uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+      with:
+        dir: /tmp/updatesite
+        branch: gh-pages
+        token: ${{ secrets.GITHUB_TOKEN }}
