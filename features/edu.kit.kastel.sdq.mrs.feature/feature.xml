@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="edu.kit.kastel.sdq.mrs.feature"
+      label="Modular Reference Structure Graphical Editor"
+      version="1.0.0.qualifier">
+
+   <description url="https://github.com/kit-sdq/Modular-Reference-Structure-Editor">
+      This editor features a high-level view of metamodels and their dependencies. It detects cyclical dependencies and dependencies that are forbidden in a layered architecture. The editor originated from research about a reference structure for metamodels that are used for quality modeling and analysis (with the layers paradigm, domain, quality and analysis). It is, however, also very usefull for metamodeling in general.
+   </description>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import feature="org.eclipse.sirius.runtime" version="5.0.2.201709080927"/>
+      <import feature="org.eclipse.sirius.runtime.aql" version="5.0.2.201709080927"/>
+      <import feature="org.modelversioning.emfprofile.feature" version="1.0.0.201708100840"/>
+      <import feature="org.eclipse.emf" version="2.13.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.common" version="2.13.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.common.ui" version="2.12.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="edu.kit.kastel.sdq.mrs.editor"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.kastel.sdq.mrs.edit"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.kastel.sdq.mrs"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.kastel.sdq.mrs.custom"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="edu.kit.kastel.sdq.mrs.design"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+   <!--<plugin
+         id="edu.kit.kastel.sdq.mrs.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>-->
+
+</feature>

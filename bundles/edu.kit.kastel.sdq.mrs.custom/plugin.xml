@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="4.10"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="edu.kit.kastel.sdq.mrs.custom.externaljavaactions.LoadMetamodel"
+            id="LoadMetamodel">
+      </javaActions>
+      <javaActions
+            actionClass="edu.kit.kastel.sdq.mrs.custom.externaljavaactions.CreateMetamodel"
+            id="CreateMetamodel">
+      </javaActions>
+      <javaActions
+            actionClass="edu.kit.kastel.sdq.mrs.custom.externaljavaactions.OpenRepresentation"
+            id="OpenRepresentation">
+      </javaActions>
+      <javaActions
+            actionClass="edu.kit.kastel.sdq.mrs.custom.externaljavaactions.LoadProfile"
+            id="LoadProfile">
+      </javaActions>
+      <javaActions
+            actionClass="edu.kit.kastel.sdq.mrs.custom.externaljavaactions.DropMetamodels"
+            id="DropMetamodels">
+      </javaActions>
+   </extension>
+
+</plugin>

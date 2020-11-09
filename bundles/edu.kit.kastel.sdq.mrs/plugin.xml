@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated mrs -->
+      <package
+            uri="http://www.example.org/edu.kit.kastel.sdq.mrs"
+            class="edu.kit.kastel.sdq.mrs.MrsPackage"
+            genModel="model/mrs.genmodel"/>
+   </extension>
+
+</plugin>

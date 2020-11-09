@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="edu.kit.kastel.sdq.mrs" version="12.0.0.2017041100">
+  <ownedViewpoints name="edu.kit.kastel.sdq.mrs.viewpoint" label="MRS Viewpoint" modelFileExtension="mrs">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="edu.kit.kastel.sdq.mrs.diagram" label="MRS Diagram" initialisation="true" domainClass="edu.kit.kastel.sdq.mrs.ModularReferenceStructure" enablePopupBars="true">
+      <metamodel href="http://www.example.org/edu.kit.kastel.sdq.mrs#/"/>
+      <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
+      <layout xsi:type="description_1:CompositeLayout" padding="10" direction="LeftToRight"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="Dependency" sourceMapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetMapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']" targetFinderExpression="aql:self.getExtendedMetamodels()->union(self.getReferencedMetamodels())">
+          <style sizeComputationExpression="[eContents()->size()/]">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:view.printStereotypes()">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="aql:view.oclAsType(diagram::DEdge).edgeIsPointingDownwards()">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="aql:view.printStereotypes()">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:view.oclAsType(diagram::DEdge).edgeIsPartOfCycle()">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="aql:view.printStereotypes()">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <containerMappings name="ModularReferenceStructure" semanticCandidatesExpression="var:self" domainClass="edu.kit.kastel.sdq.mrs.ModularReferenceStructure" childrenPresentation="VerticalStack">
+          <subContainerMappings name="Layer" labelDirectEdit="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:layers" domainClass="edu.kit.kastel.sdq.mrs.Layer" dropDescriptions="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20into%20layer'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel%20from%20Explorer%20into%20Layer']">
+            <subContainerMappings name="Metamodel" deletionDescription="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Metamodel']" labelDirectEdit="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:metamodels" domainClass="edu.kit.kastel.sdq.mrs.Metamodel" childrenPresentation="VerticalStack">
+              <subContainerMappings name="Main Package" labelDirectEdit="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:mainPackage" doubleClickDescription="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackage%20%20from%20Model'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20from%20Model']">
+                <subContainerMappings name="EClassifier" deletionDescription="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier']" labelDirectEdit="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:eClassifiers" createElements="false" domainClass="ecore::EClassifier">
+                  <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" heightComputationExpression="1">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                    <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  </style>
+                </subContainerMappings>
+                <subContainerMappings name="EPackage" deletionDescription="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackage']" labelDirectEdit="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:eSubpackages" createElements="false" doubleClickDescription="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Open%20representation']" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20in%20EPackage'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Subpackage%20in%20EPackage'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EPackage%20%20from%20Model'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='EClassifier%20from%20Model']" reusedContainerMappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EClassifier']">
+                  <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.1"/>
+                  </style>
+                </subContainerMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelExpression="" hideLabelByDefault="true">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                </style>
+                <conditionnalStyles predicateExpression="aql:self.eResource().getURI().isPlatformResource() == false">
+                  <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelExpression="" backgroundStyle="Liquid">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                    <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                  </style>
+                </conditionnalStyles>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="2" showIcon="false" labelExpression="aql:self.name">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+              <conditionnalStyles predicateExpression="aql:self.mainPackage.eResource().getURI().isPlatformResource() == false">
+                <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" backgroundStyle="Liquid">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </conditionnalStyles>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelExpression="Modular metamodel">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="General">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add layer" containerMappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']" extraMappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:container.oclIsTypeOf(mrs::Layer)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainer()">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="edu.kit.kastel.sdq.mrs.Layer" referenceName="layers">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['Layer' + container.eContainer().oclAsType(mrs::ModularReferenceStructure).layers->size()/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:container.oclIsTypeOf(mrs::ModularReferenceStructure)">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="edu.kit.kastel.sdq.mrs.Layer" referenceName="layers">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Layer' + container.oclAsType(mrs::ModularReferenceStructure).layers->size()"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create metamodel" containerMappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="edu.kit.kastel.sdq.mrs.Metamodel" referenceName="metamodels"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Create New Metamodel" id="CreateMetamodel">
+                  <parameters name="metamodel" value="var:instance"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.mainPackage == null">
+                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Load metamodel" containerMappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Metamodel Action" id="LoadMetamodel"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Load Profile" containerMappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Profile" id="LoadProfile"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Metamodel">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.target.oclAsType(mrs::Layer)">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="metamodels" elementExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="EClassifier">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
+                <subModelOperations xsi:type="tool_1:DeleteView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="EPackage">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
+                <subModelOperations xsi:type="tool_1:DeleteView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Metamodel into layer" mappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="metamodels"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Metamodel from Explorer into Layer" precondition="aql:true" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.oclIsTypeOf(ecore::EPackage)">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.getTopMostPackage().metamodelAlreadyExists(newSemanticContainer.oclAsType(mrs::Layer).modularReferenceStructure) == false">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="mrs::Metamodel" referenceName="metamodels">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="mainPackage" valueExpression="aql:element.getTopMostPackage()"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:self.mainPackage.name"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element.oclIsTypeOf(ecore::EPackage) == false">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Drop Metamodels" id="DropMetamodels">
+                    <parameters name="element" value="var:element"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="EClassifier in EPackage" precondition="aql:self.eContainer().oclAsType(ecore::EPackage).getTopMostPackage().eResource().getURI().isPlatformResource()" mappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EClassifier']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="aql:newSemanticContainer.oclAsType(ecore::EPackage).getTopMostPackage().eResource().getURI().isPlatformResource()">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Subpackage in EPackage" precondition="aql:self.getTopMostPackage().eResource().getURI().isPlatformResource()" mappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="aql:newSemanticContainer.oclAsType(ecore::EPackage).getTopMostPackage().eResource().getURI().isPlatformResource()">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eSubpackages"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="EClassifier from Model" precondition="aql:self.oclIsTypeOf(ecore::EClass) or self.oclIsTypeOf(ecore::EDataType) or self.oclIsTypeOf(ecore::EEnum)" forceRefresh="true" mappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EClassifier']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool_1:Let" variableName="containers" valueExpression="aql:element.getChainOfContainers(newSemanticContainer)">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="packageView" valueExpression="var:newContainerView">
+                    <subModelOperations xsi:type="tool_1:For" expression="var:containers" iteratorName="j">
+                      <subModelOperations xsi:type="tool_1:Let" variableName="existingPackageViews" valueExpression="aql:packageView.oclAsType(diagram::DNodeContainer).containers->select(x: diagram::DDiagramElementContainer | x.target == j)">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:existingPackageViews->isEmpty() = false">
+                          <subModelOperations xsi:type="tool_1:Let" variableName="packageView" valueExpression="aql:existingPackageViews->first()"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:existingPackageViews->isEmpty()">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="var:packageView" variableName="packageView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EClassifier']" containerViewExpression="var:packageView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="EPackage  from Model" precondition="aql:self.oclIsTypeOf(ecore::EPackage)" forceRefresh="true" mappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:Let" variableName="containers" valueExpression="aql:element.getChainOfContainers(newSemanticContainer)">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="packageView" valueExpression="var:newContainerView">
+                    <subModelOperations xsi:type="tool_1:For" expression="var:containers" iteratorName="j">
+                      <subModelOperations xsi:type="tool_1:Let" variableName="existingPackageViews" valueExpression="aql:packageView.oclAsType(diagram::DNodeContainer).containers->select(x: diagram::DDiagramElementContainer | x.target == j)">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:existingPackageViews->isEmpty() = false">
+                          <subModelOperations xsi:type="tool_1:Let" variableName="packageView" valueExpression="aql:existingPackageViews->first()"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:existingPackageViews->isEmpty()">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="aql:packageView" variableName="packageView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="aql:packageView.print()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Open representation" mappings="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package'] //@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Open Representation" id="OpenRepresentation">
+                  <parameters name="Viewpoint" value="Design"/>
+                  <parameters name="element" value="var:element"/>
+                  <parameters name="RepresentationDescription" value="Entities"/>
+                  <parameters name="Diagram name" value="aql:element.name + ' diagram'"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="Select Visible EClassifiers/EPackages" precondition="aql:container.oclIsTypeOf(ecore::EPackage)" forceRefresh="true" message="Select the EClassifiers that should be visible inside this EPackage" candidatesExpression="aql:container.oclAsType(ecore::EPackage).getEAllClassifiers()->concat(container.oclAsType(ecore::EPackage).getAllPackages())" tree="true" rootExpression="aql:container.oclAsType(ecore::EPackage)" childrenExpression="aql:self.oclAsType(ecore::EPackage).eClassifiers->union(self.oclAsType(ecore::EPackage).eSubpackages->asSequence())" preSelectedCandidatesExpression="aql:containerView.eAllContents()->select(x | x.oclAsType(diagram::DDiagramElement).target.oclIsKindOf(ecore::EClassifier) or  x.oclAsType(diagram::DDiagramElement).target.oclIsTypeOf(ecore::EPackage))->collect(x | x.oclAsType(diagram::DDiagramElement).target)">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:For" expression="var:element">
+                  <subModelOperations xsi:type="tool_1:Let" variableName="containers" valueExpression="aql:i.getChainOfContainers(container)">
+                    <subModelOperations xsi:type="tool_1:Let" variableName="packageView" valueExpression="var:containerView">
+                      <subModelOperations xsi:type="tool_1:For" expression="var:containers" iteratorName="j">
+                        <subModelOperations xsi:type="tool_1:Let" variableName="existingPackageViews" valueExpression="aql:packageView.oclAsType(diagram::DNodeContainer).containers->select(x: diagram::DDiagramElementContainer | x.target == j)">
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:existingPackageViews->isEmpty() = false">
+                            <subModelOperations xsi:type="tool_1:Let" variableName="packageView" valueExpression="aql:existingPackageViews->first()"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:existingPackageViews->isEmpty()">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="var:packageView" variableName="packageView"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsKindOf(ecore::EClassifier)">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EClassifier']" containerViewExpression="var:packageView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsTypeOf(ecore::EPackage)">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='edu.kit.kastel.sdq.mrs.viewpoint']/@ownedRepresentations[name='edu.kit.kastel.sdq.mrs.diagram']/@defaultLayer/@containerMappings[name='ModularReferenceStructure']/@subContainerMappings[name='Layer']/@subContainerMappings[name='Metamodel']/@subContainerMappings[name='Main%20Package']/@subContainerMappings[name='EPackage']" containerViewExpression="var:packageView"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:For" expression="aql:containerView.oclAsType(diagram::DNodeContainer).containers" iteratorName="k">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element->excludes(k.target) and k.containers->isEmpty()">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:k">
+                      <subModelOperations xsi:type="tool_1:DeleteView"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:OperationAction" name="Hide transitive dependencies">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:diagram.hideTransitiveEdges(true)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PaneBasedSelectionWizardDescription" name="Select EClassifiers/EPackages to export to another metamodel" precondition="aql:container.oclIsTypeOf(mrs::Layer)" forceRefresh="true" message="Select the EClassifiers that will be exported to another metamodel" candidatesExpression="aql:container.getAllClassifiersFromLayer()->concat(container.getAllPackagesFromLayer())" tree="true" rootExpression="aql:container.getAllMainPackagesFromLayer()" childrenExpression="aql:self.oclAsType(ecore::EPackage).eClassifiers->union(self.oclAsType(ecore::EPackage).eSubpackages->asSequence())">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="edu.kit.kastel.sdq.mrs.Metamodel" referenceName="metamodels"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Create New Metamodel" id="CreateMetamodel">
+                  <parameters name="metamodel" value="var:instance"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.mainPackage == null">
+                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:Let" variableName="instanceMainPackage" valueExpression="aql:instance.mainPackage"/>
+                <subModelOperations xsi:type="tool_1:For" expression="var:element">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsKindOf(ecore::EClassifier)">
+                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:instanceMainPackage" featureName="eClassifiers"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:i.oclIsTypeOf(ecore::EPackage)">
+                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:instanceMainPackage" featureName="eSubpackages"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="edu.kit.kastel.sdq.mrs.design.Services"/>
+  </ownedViewpoints>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
+    <metamodels href="http://www.example.org/edu.kit.kastel.sdq.mrs#/"/>
+    <categories name="Default Category">
+      <pages name="List of dependencies" labelExpression="List of dependencies" domainClass="edu.kit.kastel.sdq.mrs.Metamodel" semanticCandidateExpression="var:self" preconditionExpression="aql:input.context().semanticDecorator().oclIsTypeOf(diagram::DEdge)" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <groups name="Dependencies" labelExpression="List of dependencies" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:TextAreaDescription" name="Dependencies" labelExpression="List of dependencies:" lineCount="8" valueExpression="aql:input.context().semanticDecorator().oclAsType(diagram::DEdge).printDependencies()">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self"/>
+          </initialOperation>
+        </controls>
+        <style barStyle="NO_TITLE" toggleStyle="NONE" expandedByDefault="true"/>
+      </groups>
+    </categories>
+  </extensions>
+</description:Group>

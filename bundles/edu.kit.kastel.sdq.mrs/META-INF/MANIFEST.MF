@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: edu.kit.kastel.sdq.mrs;singleton:=true
+Automatic-Module-Name: edu.kit.kastel.sdq.mrs
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: edu.kit.kastel.sdq.mrs,
+ edu.kit.kastel.sdq.mrs.impl,
+ edu.kit.kastel.sdq.mrs.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.modelversioning.emfprofile;visibility:=reexport
+Bundle-ActivationPolicy: lazy
