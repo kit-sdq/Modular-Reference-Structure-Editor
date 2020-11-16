@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated mrs -->
       <factory
-            uri="http://www.example.org/edu.kit.kastel.sdq.mrs"
+            uri="http://www.example.org/edu/kit/kastel/sdq/mrs"
             class="edu.kit.kastel.sdq.mrs.provider.MrsItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

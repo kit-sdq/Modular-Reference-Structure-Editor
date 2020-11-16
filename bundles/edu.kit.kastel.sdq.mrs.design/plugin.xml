@@ -4,7 +4,7 @@
   <extension point="org.eclipse.sirius.componentization">
     <component class="edu.kit.kastel.sdq.mrs.design.Activator"
                id="edu.kit.kastel.sdq.mrs.design"
-	       name="edu.kit.kastel.sdq.mrs">
+	       name="edu.kit.kastel.sdq.mrs.design">
     </component>
   </extension>
 </plugin>

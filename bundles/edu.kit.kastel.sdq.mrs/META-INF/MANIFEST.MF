@@ -9,6 +9,9 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: edu.kit.kastel.sdq.mrs,
  edu.kit.kastel.sdq.mrs.impl,
+ edu.kit.kastel.sdq.mrs.util,
+ edu.kit.kastel.sdq.mrs,
+ edu.kit.kastel.sdq.mrs.impl,
  edu.kit.kastel.sdq.mrs.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

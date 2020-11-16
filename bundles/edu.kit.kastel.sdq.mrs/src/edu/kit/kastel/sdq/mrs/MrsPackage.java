@@ -30,7 +30,7 @@ public interface MrsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "edu.kit.kastel.sdq.mrs";
+	String eNAME = "mrs";
 
 	/**
 	 * The package namespace URI.
@@ -38,7 +38,7 @@ public interface MrsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.example.org/edu.kit.kastel.sdq.mrs";
+	String eNS_URI = "http://www.example.org/edu/kit/kastel/sdq/mrs";
 
 	/**
 	 * The package namespace name.
@@ -46,7 +46,7 @@ public interface MrsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "edu.kit.kastel.sdq.mrs";
+	String eNS_PREFIX = "edu.kit.kastel.sdq";
 
 	/**
 	 * The singleton instance of the package.

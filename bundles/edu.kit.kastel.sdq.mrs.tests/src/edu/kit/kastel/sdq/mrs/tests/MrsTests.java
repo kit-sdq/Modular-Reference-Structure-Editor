@@ -30,7 +30,7 @@ public class MrsTests extends TestSuite {
 	 * @generated
 	 */
 	public static Test suite() {
-		TestSuite suite = new MrsTests("edu.kit.kastel.sdq.mrs Tests");
+		TestSuite suite = new MrsTests("mrs Tests");
 		return suite;
 	}
 

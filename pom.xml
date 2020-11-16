@@ -13,9 +13,11 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
+	<!-- targetplatform not used
 	<properties>
 		<org.palladiosimulator.maven.tychotprefresh.tplocation.1>${project.basedir}/releng/mrs.targetplatform/tp.target</org.palladiosimulator.maven.tychotprefresh.tplocation.1>
 	</properties>
+	-->
 	
 	<modules>
 		<module>bundles</module>
@@ -27,10 +29,10 @@
 	<repositories>
 		<!-- If you adjust a repository here, please also adjust the repository in the b3 aggregator. -->
 		<repository>
-			<id>Eclipse 4.10 (2018-12)</id>
+			<id>Eclipse 2020-09</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/2018-12</url>
-		</repository>	
+			<url>http://download.eclipse.org/releases/2020-09</url>
+		</repository>
 		
 		<repository>
 			<id>EMF Profiles</id>

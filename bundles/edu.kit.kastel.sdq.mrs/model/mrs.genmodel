@@ -5,21 +5,22 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="11.0" copyrightFields="false"
     usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.modelversioning.emfprofile/model/emfprofiles.genmodel#//emfprofile"
     operationReflection="true" importOrganizing="true">
-  <foreignModel>edu.kit.kastel.sdq.mrs.ecore</foreignModel>
-  <genPackages prefix="Mrs" disposableProviderFactory="true" ecorePackage="edu.kit.kastel.sdq.mrs.ecore#/">
-    <genClasses ecoreClass="edu.kit.kastel.sdq.mrs.ecore#//ModularReferenceStructure">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edu.kit.kastel.sdq.mrs.ecore#//ModularReferenceStructure/layers"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edu.kit.kastel.sdq.mrs.ecore#//ModularReferenceStructure/loadedProfiles"/>
+  <foreignModel>mrs.ecore</foreignModel>
+  <genPackages prefix="Mrs" basePackage="edu.kit.kastel.sdq" disposableProviderFactory="true"
+      ecorePackage="mrs.ecore#/">
+    <genClasses ecoreClass="mrs.ecore#//ModularReferenceStructure">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mrs.ecore#//ModularReferenceStructure/layers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//ModularReferenceStructure/loadedProfiles"/>
     </genClasses>
-    <genClasses ecoreClass="edu.kit.kastel.sdq.mrs.ecore#//Layer">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edu.kit.kastel.sdq.mrs.ecore#//Layer/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edu.kit.kastel.sdq.mrs.ecore#//Layer/metamodels"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference edu.kit.kastel.sdq.mrs.ecore#//Layer/modularReferenceStructure"/>
+    <genClasses ecoreClass="mrs.ecore#//Layer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mrs.ecore#//Layer/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mrs.ecore#//Layer/metamodels"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference mrs.ecore#//Layer/modularReferenceStructure"/>
     </genClasses>
-    <genClasses ecoreClass="edu.kit.kastel.sdq.mrs.ecore#//Metamodel">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edu.kit.kastel.sdq.mrs.ecore#//Metamodel/mainPackage"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference edu.kit.kastel.sdq.mrs.ecore#//Metamodel/layer"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edu.kit.kastel.sdq.mrs.ecore#//Metamodel/name"/>
+    <genClasses ecoreClass="mrs.ecore#//Metamodel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mrs.ecore#//Metamodel/mainPackage"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference mrs.ecore#//Metamodel/layer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mrs.ecore#//Metamodel/name"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

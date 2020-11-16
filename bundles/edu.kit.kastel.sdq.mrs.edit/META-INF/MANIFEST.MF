@@ -8,7 +8,8 @@ Bundle-ClassPath: .
 Bundle-Activator: edu.kit.kastel.sdq.mrs.provider.MrsEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: edu.kit.kastel.sdq.mrs.provider
+Export-Package: edu.kit.kastel.sdq.mrs.provider,
+ edu.kit.kastel.sdq.mrs.provider
 Require-Bundle: org.eclipse.core.runtime,
  edu.kit.kastel.sdq.mrs;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
