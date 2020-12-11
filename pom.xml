@@ -39,5 +39,12 @@
 			<layout>p2</layout>
 			<url>https://sdqweb.ipd.kit.edu/eclipse/emf-profiles/releases/latest/</url>
 		</repository>
+
+		<repository>
+			<id>CASE4Lang</id>
+			<layout>p2</layout>
+			<url>https://layornos.github.io/CASE4Lang/</url>
+		</repository>
+		
 	</repositories>
 </project>

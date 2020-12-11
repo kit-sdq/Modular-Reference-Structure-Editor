@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="edu.kit.kastel.sdq.case4lang.wizards"
+            class="edu.kit.kastel.sdq.mrs.newmrsprojectfromecorewizard.NewMrsProjectFromEcoreWizard"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+            id="edu.kit.kastel.sdq.mrs.newMrsProjectFromEcoreWizard"
+            name="Mrs Project From Ecore"
+            project="true">
+      </wizard>
+   </extension>
+
+</plugin>

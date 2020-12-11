@@ -17,6 +17,8 @@
 		<module>edu.kit.kastel.sdq.mrs.design</module>
 		<module>edu.kit.kastel.sdq.mrs.edit</module>
 		<module>edu.kit.kastel.sdq.mrs.editor</module>
+		<module>edu.kit.kastel.sdq.mrs.newMrsProjectWizard</module>
+		<module>edu.kit.kastel.sdq.mrs.newMrsProjectFromEcoreWizard</module>
 	</modules>
 	
 </project>

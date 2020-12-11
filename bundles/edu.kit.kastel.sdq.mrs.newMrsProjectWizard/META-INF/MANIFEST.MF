@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: NewWizard
+Bundle-SymbolicName: edu.kit.kastel.sdq.mrs.newMrsProjectWizard;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: edu.kit.kastel.sdq.mrs.newmrsprojectwizard.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ edu.kit.kastel.sdq.case4lang.common;bundle-version="1.0.0",
+ edu.kit.kastel.sdq.mrs;bundle-version="1.0.0",
+ edu.kit.kastel.sdq.mrs.edit;bundle-version="1.0.0",
+ edu.kit.kastel.sdq.mrs.editor;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: edu.kit.kastel.sdq.mrs.newWizard
+Bundle-ActivationPolicy: lazy
+Export-Package: edu.kit.kastel.sdq.mrs.newmrsprojectwizard

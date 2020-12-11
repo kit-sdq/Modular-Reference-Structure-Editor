@@ -55,6 +55,20 @@
          install-size="0"
          version="1.0.0.qualifier"
          unpack="false"/>
+	
+    <plugin
+         id="edu.kit.kastel.sdq.mrs.newMrsProjectWizard"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
+
+    <plugin
+         id="edu.kit.kastel.sdq.mrs.newMrsProjectFromEcoreWizard"
+         download-size="0"
+         install-size="0"
+         version="1.0.0.qualifier"
+         unpack="false"/>
 
    <!--<plugin
          id="edu.kit.kastel.sdq.mrs.tests"
