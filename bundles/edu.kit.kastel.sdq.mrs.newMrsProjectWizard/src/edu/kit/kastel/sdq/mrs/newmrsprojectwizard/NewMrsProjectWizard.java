@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.INewWizard;
 
-import edu.kit.kastel.sdq.case4lang.newprojectwizard.NewProjectWizard;
+import edu.kit.kastel.sdq.case4lang.common.NewProjectWizard;
 import edu.kit.kastel.sdq.mrs.Layer;
 import edu.kit.kastel.sdq.mrs.ModularReferenceStructure;
 import edu.kit.kastel.sdq.mrs.MrsFactory;

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: NewWizard
+Bundle-Name: NewMrsProjectFromEcoreWizard
 Bundle-SymbolicName: edu.kit.kastel.sdq.mrs.newMrsProjectFromEcoreWizard;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: edu.kit.kastel.sdq.mrs.newmrsprojectfromecorewizard.Activator
